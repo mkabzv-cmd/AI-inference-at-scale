@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.kubeconfig
+kubeconfig
+.aws/
+.kube/
+credentials
+
+# Infrastructure state
+*.tfstate
+*.tfstate.*
+.terraform/
+cdk.out/
+
+# Models, datasets, caches, and experiment artifacts
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+models/cache/
+datasets/private/
+results/raw/
+wandb/
+mlruns/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/

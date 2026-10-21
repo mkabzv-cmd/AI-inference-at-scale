@@ -1,0 +1,35 @@
+# This file is a course-wide compatibility manifest, not a package-manager lock.
+# Replace TODO values during lesson implementation and retain validated historical
+# combinations rather than silently following latest releases.
+
+last_broad_review: 2026-10-21
+
+[platform]
+kubernetes = "TODO"
+eks_platform = "TODO"
+node_os = "AL2023-or-current-equivalent"
+container_runtime = "containerd"
+nvidia_driver = "TODO"
+cuda_runtime = "TODO"
+
+[serving]
+transformers = "TODO"
+vllm = "TODO-current-V1"
+sglang = "TODO"
+llama_cpp_commit = "TODO"
+tensorrt_llm = "TODO-current-PyTorch-backend"
+
+[distributed]
+pytorch = "TODO"
+nccl = "TODO"
+ray = "TODO"
+kuberay = "TODO"
+
+[training]
+trl = "TODO"
+peft = "TODO"
+deepspeed = "TODO"
+
+[observability]
+dcgm_exporter = "TODO"
+opentelemetry = "TODO"

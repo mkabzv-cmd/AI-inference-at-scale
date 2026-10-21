@@ -1,0 +1,49 @@
+schema_version: 1
+
+profiles:
+  tiny:
+    purpose: correctness, mechanics, and smoke tests
+    parameter_range: 0.5B-1.5B
+    required_fields:
+      - model_id
+      - model_revision
+      - tokenizer_id
+      - tokenizer_revision
+      - license
+      - expected_download_bytes
+
+  small:
+    purpose: single-GPU serving, engine comparison, and affordable fine-tuning
+    parameter_range: 3B-8B
+    required_fields:
+      - model_id
+      - model_revision
+      - tokenizer_revision
+      - license
+      - supported_engines
+      - minimum_vram_bytes
+
+  medium:
+    purpose: memory pressure and early model-sharding experiments
+    parameter_range: 14B-32B
+    typical_representation: quantized
+    required_fields:
+      - model_id
+      - model_revision
+      - quantization
+      - license
+      - supported_parallel_degrees
+      - minimum_total_vram_bytes
+
+  large:
+    purpose: three-node pipeline-parallel capstone
+    parameter_range: 70B-class
+    typical_representation: 4-bit
+    required_fields:
+      - model_id
+      - model_revision
+      - quantization
+      - license
+      - expected_weight_bytes
+      - supported_engines
+      - minimum_total_vram_bytes

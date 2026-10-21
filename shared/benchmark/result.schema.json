@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Open Model Systems Benchmark Result",
+  "type": "object",
+  "required": [
+    "experiment_id",
+    "timestamp",
+    "environment",
+    "model",
+    "engine",
+    "workload",
+    "metrics",
+    "quality",
+    "cleanup_verified"
+  ],
+  "properties": {
+    "experiment_id": { "type": "string" },
+    "timestamp": { "type": "string", "format": "date-time" },
+    "environment": {
+      "type": "object",
+      "required": ["hardware_profile", "image_digest"],
+      "properties": {
+        "hardware_profile": { "type": "string" },
+        "image_digest": { "type": "string" },
+        "cuda_version": { "type": "string" },
+        "driver_version": { "type": "string" },
+        "kubernetes_version": { "type": "string" }
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": ["id", "revision", "tokenizer_revision"],
+      "properties": {
+        "id": { "type": "string" },
+        "revision": { "type": "string" },
+        "tokenizer_revision": { "type": "string" },
+        "quantization": { "type": ["string", "null"] }
+      }
+    },
+    "engine": {
+      "type": "object",
+      "required": ["name", "version", "configuration"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "configuration": { "type": "object" }
+      }
+    },
+    "workload": {
+      "type": "object",
+      "required": ["prompt_tokens", "requested_output_tokens", "concurrency"],
+      "properties": {
+        "prompt_tokens": { "type": "integer", "minimum": 0 },
+        "requested_output_tokens": { "type": "integer", "minimum": 1 },
+        "concurrency": { "type": "integer", "minimum": 1 },
+        "request_count": { "type": "integer", "minimum": 1 },
+        "warm_state": { "type": "boolean" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "ttft_ms_p50": { "type": "number" },
+        "ttft_ms_p95": { "type": "number" },
+        "tpot_ms_p50": { "type": "number" },
+        "tpot_ms_p95": { "type": "number" },
+        "end_to_end_ms_p95": { "type": "number" },
+        "output_tokens_per_second": { "type": "number" },
+        "gpu_memory_peak_bytes": { "type": "integer" },
+        "gpu_utilization_mean": { "type": "number" },
+        "network_tx_bytes": { "type": "integer" },
+        "network_rx_bytes": { "type": "integer" },
+        "failure_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "required": ["check_name", "passed"],
+      "properties": {
+        "check_name": { "type": "string" },
+        "passed": { "type": "boolean" },
+        "score": { "type": ["number", "null"] }
+      }
+    },
+    "cleanup_verified": { "type": "boolean" }
+  }
+}

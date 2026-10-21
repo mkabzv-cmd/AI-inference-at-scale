@@ -1,0 +1,14 @@
+id: "NN"
+title: Lesson title
+phase: phase-name
+status: outline
+estimated_minutes: 180
+estimated_gpu_minutes: 0
+hardware_profiles:
+  - local-cpu
+prerequisites: []
+outcomes: []
+deliverables:
+  - results.json
+  - report.md
+last_validated: null
