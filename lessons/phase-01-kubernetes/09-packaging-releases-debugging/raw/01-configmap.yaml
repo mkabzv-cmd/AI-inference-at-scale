@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: lesson-service
+  namespace: packaging-lab
+  labels:
+    app.kubernetes.io/name: lesson-service
+    lesson.open-model-course/id: "09"
+data:
+  APP_MESSAGE: hello from raw YAML
+  APP_VERSION: raw-v1
+  FAULT_MODE: none
+  READY_DELAY_SECONDS: "2"

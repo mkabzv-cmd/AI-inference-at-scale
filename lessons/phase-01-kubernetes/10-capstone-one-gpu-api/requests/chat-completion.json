@@ -1,0 +1,16 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Be concise and technically accurate."
+    },
+    {
+      "role": "user",
+      "content": "Explain a Kubernetes Pod in one sentence."
+    }
+  ],
+  "temperature": 0,
+  "max_tokens": 64,
+  "stream": false
+}

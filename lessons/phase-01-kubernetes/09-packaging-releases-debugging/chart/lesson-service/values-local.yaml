@@ -1,0 +1,10 @@
+replicaCount: 1
+
+image:
+  repository: lesson-service
+  tag: lesson-09-v1
+  pullPolicy: IfNotPresent
+
+app:
+  message: hello from a local Helm release
+  version: local-v1

@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: health-app
+  namespace: llm-health
+  labels:
+    app.kubernetes.io/name: health-app
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: health-app
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP

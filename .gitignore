@@ -31,6 +31,11 @@ cdk.out/
 models/cache/
 datasets/private/
 results/raw/
+artifacts/
+**/artifacts/
+**/.model-cache/
+**/.cache/
+*.log
 wandb/
 mlruns/
 

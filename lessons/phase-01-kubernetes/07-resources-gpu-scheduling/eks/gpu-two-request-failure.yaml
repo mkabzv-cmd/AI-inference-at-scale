@@ -1,0 +1,21 @@
+# Apply only on a lab whose nodes each advertise one GPU.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: failure-needs-two-gpus-on-one-node
+  namespace: gpu-scheduling
+spec:
+  restartPolicy: Never
+  tolerations:
+    - key: nvidia.com/gpu
+      operator: Equal
+      value: "true"
+      effect: NoSchedule
+  containers:
+    - name: pause
+      image: registry.k8s.io/pause:3.10.2@sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4
+      resources:
+        requests:
+          nvidia.com/gpu: 2
+        limits:
+          nvidia.com/gpu: 2

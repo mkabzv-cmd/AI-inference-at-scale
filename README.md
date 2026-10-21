@@ -81,17 +81,25 @@ to launch anything.
 
 ## Repository status
 
-This is the curriculum scaffold:
+The repository is under active development:
 
-- all 50 lesson folders and lesson outlines exist;
-- each outline specifies objectives, internals, lab evidence, and a completion
-  gate;
-- reusable templates, profiles, safety rules, and validation scripts exist;
-- runnable lesson code and manifests are intended to be authored and validated
-  incrementally.
+- lessons 00–10 are detailed practical drafts with runnable code, scripts,
+  Kubernetes manifests, Helm charts, guided failure drills, verification, and
+  cleanup;
+- lessons 11–49 remain visible as roadmap outlines and must not be mistaken for
+  finished teaching material;
+- all practical drafts receive repository-level static validation in CI;
+- Docker, GPU, and EKS labs remain `draft` until they are completed from clean
+  learner environments and independently reviewed.
+
+CI checks structure, lesson metadata, source syntax, JSON, relative links,
+script permissions, and likely credential material. It does not prove that an
+image builds, a manifest applies, a Helm release installs, a GPU is visible, an
+EKS request succeeds, or cleanup removes cloud resources. Those claims require
+the lesson's documented runtime validation and review.
 
 Publishing shallow tutorials as “complete” would undermine the course. The
-recommended release plan is:
+release plan remains:
 
 - `v0.1`: lessons 00–16, first useful one-GPU system;
 - `v0.2`: lessons 17–31, optimization and distributed systems;
@@ -104,10 +112,11 @@ See [docs/publication-plan.md](docs/publication-plan.md).
 
 1. Read [docs/prerequisites.md](docs/prerequisites.md).
 2. Read [docs/cost-and-cleanup-safety.md](docs/cost-and-cleanup-safety.md).
-3. Select a compute profile under [profiles/](profiles/README.md).
-4. Begin with lesson `00`; do not skip phase gates.
-5. Save every experiment as raw JSON plus a short report.
-6. Run `make validate` before committing.
+3. Read [docs/running-labs.md](docs/running-labs.md).
+4. Select a compute profile under [profiles/](profiles/README.md).
+5. Begin with lesson `00`; do not skip phase gates.
+6. Save every experiment as raw JSON plus a short report.
+7. Run `make validate` before committing.
 
 ```bash
 make list

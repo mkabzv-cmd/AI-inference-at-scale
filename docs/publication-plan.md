@@ -2,6 +2,21 @@
 
 Keep the complete roadmap visible while publishing only validated lessons.
 
+## Current authored slice
+
+Lessons 00–10 contain runnable drafts. Static checks cover document structure,
+lesson metadata, shell and Python syntax, JSON validity, relative links,
+executable scripts, practical-file presence, and high-confidence credential
+patterns. They remain `draft` until their relevant local, container, GPU, and
+EKS paths have been completed from clean environments.
+
+Passing CI is not runtime validation. CI does not currently build lesson images,
+render every Helm chart, apply Kubernetes manifests, download models, exercise
+GPUs, call EKS, or verify cloud cleanup. Record those results in the lesson's
+validation metadata before promoting it.
+
+Lessons 11–49 remain outlines.
+
 ## v0.1 — First useful system
 
 Lessons 00–16. A learner can understand a request, use one GPU, operate basic

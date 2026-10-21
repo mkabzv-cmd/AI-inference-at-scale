@@ -1,0 +1,12 @@
+# Direct teaching dependency.
+torch==2.5.1
+
+# Portable transitive lock validated with CPython 3.9 on 2026-10-21.
+filelock==3.19.1
+fsspec==2025.10.0
+Jinja2==3.1.6
+MarkupSafe==3.0.4
+mpmath==1.3.0
+networkx==3.2.1
+sympy==1.13.1
+typing_extensions==4.16.0

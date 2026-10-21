@@ -1,0 +1,88 @@
+replicaCount: 1
+
+image:
+  repository: one-gpu-api
+  tag: lesson-10-v1
+  digest: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: ""
+  automountServiceAccountToken: false
+
+model:
+  id: Qwen/Qwen2.5-0.5B-Instruct
+  revision: 7ae557604adf67be50417f59c2c2f167def9a775
+  path: /models/snapshot
+  maxInputTokens: 2048
+  maxNewTokens: 256
+  warmup: true
+
+cache:
+  persistence:
+    enabled: true
+    existingClaim: ""
+    storageClassName: ""
+    accessModes:
+      - ReadWriteOnce
+    size: 20Gi
+    keepOnDelete: false
+  emptyDir:
+    sizeLimit: 5Gi
+
+downloader:
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: "2"
+      memory: 2Gi
+
+service:
+  type: ClusterIP
+  port: 80
+
+probes:
+  startup:
+    path: /health/ready
+    periodSeconds: 10
+    failureThreshold: 120
+  readiness:
+    path: /health/ready
+    periodSeconds: 5
+    failureThreshold: 3
+  liveness:
+    path: /health/live
+    periodSeconds: 10
+    failureThreshold: 3
+
+resources:
+  requests:
+    cpu: "2"
+    memory: 4Gi
+    nvidia.com/gpu: "1"
+  limits:
+    cpu: "4"
+    memory: 10Gi
+    nvidia.com/gpu: "1"
+
+terminationGracePeriodSeconds: 60
+
+podAnnotations: {}
+podLabels: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+test:
+  image:
+    repository: curlimages/curl
+    tag: 8.11.1
+    digest: ""
+    pullPolicy: IfNotPresent

@@ -1,0 +1,7 @@
+.git
+results
+README.md
+SOLUTIONS.md
+scripts
+__pycache__
+*.pyc

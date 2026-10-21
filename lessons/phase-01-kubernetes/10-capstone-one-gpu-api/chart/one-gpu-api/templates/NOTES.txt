@@ -1,0 +1,17 @@
+The Service is private.
+
+Watch model download and load:
+  kubectl -n {{ .Release.Namespace }} get pods -w
+  kubectl -n {{ .Release.Namespace }} logs \
+    deployment/{{ include "one-gpu-api.fullname" . }} \
+    -c download-model -f
+  kubectl -n {{ .Release.Namespace }} logs \
+    deployment/{{ include "one-gpu-api.fullname" . }} \
+    -c api -f
+
+Forward it:
+  kubectl -n {{ .Release.Namespace }} port-forward \
+    service/{{ include "one-gpu-api.fullname" . }} 18000:{{ .Values.service.port }}
+
+Test readiness:
+  curl -fsS http://127.0.0.1:18000/health/ready

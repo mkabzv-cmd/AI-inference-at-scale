@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: model-cache
+  namespace: model-storage-lab
+  labels:
+    app.kubernetes.io/name: model-cache
+    lesson.open-model-course/id: "08"
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: REPLACE_STORAGE_CLASS
+  resources:
+    requests:
+      storage: 20Gi

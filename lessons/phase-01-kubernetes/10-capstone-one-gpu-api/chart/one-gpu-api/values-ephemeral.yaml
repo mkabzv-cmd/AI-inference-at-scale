@@ -1,0 +1,9 @@
+cache:
+  persistence:
+    enabled: false
+  emptyDir:
+    sizeLimit: 5Gi
+
+model:
+  maxInputTokens: 1024
+  maxNewTokens: 128

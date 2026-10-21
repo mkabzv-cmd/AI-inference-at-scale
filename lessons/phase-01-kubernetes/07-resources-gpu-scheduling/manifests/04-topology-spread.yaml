@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spread-demo
+  namespace: gpu-scheduling
+  labels:
+    app.kubernetes.io/name: spread-demo
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: spread-demo
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: spread-demo
+    spec:
+      # This demo is explicitly admitted to both workers so it can illustrate
+      # spreading. Do not give this toleration to arbitrary production Pods.
+      tolerations:
+        - key: nvidia.com/gpu
+          operator: Equal
+          value: "true"
+          effect: NoSchedule
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: spread-demo
+      containers:
+        - name: pause
+          image: registry.k8s.io/pause:3.10.2@sha256:f548e0e8e3dc1896ca956272154dde3314e8cc4fde0a57577ee9fa1c63f5baf4
+          resources:
+            requests:
+              cpu: 25m
+              memory: 16Mi
+            limits:
+              cpu: 50m
+              memory: 32Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL

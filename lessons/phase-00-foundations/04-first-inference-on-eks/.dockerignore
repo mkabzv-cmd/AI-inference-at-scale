@@ -1,0 +1,9 @@
+.git
+.lab
+results
+README.md
+SOLUTIONS.md
+k8s
+scripts
+__pycache__
+*.pyc

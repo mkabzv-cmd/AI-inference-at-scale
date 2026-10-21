@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: model-storage-lab
+  labels:
+    app.kubernetes.io/part-of: open-model-course
+    lesson.open-model-course/id: "08"

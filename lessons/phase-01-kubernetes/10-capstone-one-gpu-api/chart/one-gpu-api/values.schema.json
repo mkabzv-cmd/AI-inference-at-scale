@@ -1,0 +1,371 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "replicaCount",
+    "image",
+    "imagePullSecrets",
+    "nameOverride",
+    "fullnameOverride",
+    "serviceAccount",
+    "model",
+    "cache",
+    "downloader",
+    "service",
+    "probes",
+    "resources",
+    "terminationGracePeriodSeconds",
+    "podAnnotations",
+    "podLabels",
+    "nodeSelector",
+    "tolerations",
+    "affinity",
+    "test"
+  ],
+  "properties": {
+    "replicaCount": {
+      "type": "integer",
+      "const": 1,
+      "description": "This capstone intentionally supports exactly one replica."
+    },
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "tag", "digest", "pullPolicy"],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tag": {
+          "type": "string",
+          "minLength": 1
+        },
+        "digest": {
+          "$ref": "#/definitions/optionalSha256Digest"
+        },
+        "pullPolicy": {
+          "enum": ["Always", "IfNotPresent", "Never"]
+        }
+      }
+    },
+    "imagePullSecrets": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "nameOverride": {
+      "type": "string"
+    },
+    "fullnameOverride": {
+      "type": "string"
+    },
+    "serviceAccount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["create", "name", "automountServiceAccountToken"],
+      "properties": {
+        "create": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "automountServiceAccountToken": {
+          "const": false
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "revision",
+        "path",
+        "maxInputTokens",
+        "maxNewTokens",
+        "warmup"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{40}$"
+        },
+        "path": {
+          "const": "/models/snapshot",
+          "description": "The chart mounts persistent storage at /models."
+        },
+        "maxInputTokens": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 8192
+        },
+        "maxNewTokens": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1024
+        },
+        "warmup": {
+          "type": "boolean"
+        }
+      }
+    },
+    "cache": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["persistence", "emptyDir"],
+      "properties": {
+        "persistence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "enabled",
+            "existingClaim",
+            "storageClassName",
+            "accessModes",
+            "size",
+            "keepOnDelete"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "existingClaim": {
+              "type": "string"
+            },
+            "storageClassName": {
+              "type": "string"
+            },
+            "accessModes": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 1,
+              "items": {
+                "const": "ReadWriteOnce"
+              }
+            },
+            "size": {
+              "$ref": "#/definitions/storageQuantity"
+            },
+            "keepOnDelete": {
+              "type": "boolean"
+            }
+          }
+        },
+        "emptyDir": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["sizeLimit"],
+          "properties": {
+            "sizeLimit": {
+              "$ref": "#/definitions/storageQuantity"
+            }
+          }
+        }
+      }
+    },
+    "downloader": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resources"],
+      "properties": {
+        "resources": {
+          "$ref": "#/definitions/cpuMemoryResources"
+        }
+      }
+    },
+    "service": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "port"],
+      "properties": {
+        "type": {
+          "const": "ClusterIP"
+        },
+        "port": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 65535
+        }
+      }
+    },
+    "probes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["startup", "readiness", "liveness"],
+      "properties": {
+        "startup": {
+          "$ref": "#/definitions/probe"
+        },
+        "readiness": {
+          "$ref": "#/definitions/probe"
+        },
+        "liveness": {
+          "$ref": "#/definitions/probe"
+        }
+      }
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requests", "limits"],
+      "properties": {
+        "requests": {
+          "$ref": "#/definitions/gpuResourceList"
+        },
+        "limits": {
+          "$ref": "#/definitions/gpuResourceList"
+        }
+      }
+    },
+    "terminationGracePeriodSeconds": {
+      "type": "integer",
+      "minimum": 10,
+      "maximum": 600
+    },
+    "podAnnotations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "podLabels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "nodeSelector": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "tolerations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "affinity": {
+      "type": "object"
+    },
+    "test": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["image"],
+      "properties": {
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "tag", "digest", "pullPolicy"],
+          "properties": {
+            "repository": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tag": {
+              "type": "string",
+              "minLength": 1
+            },
+            "digest": {
+              "$ref": "#/definitions/optionalSha256Digest"
+            },
+            "pullPolicy": {
+              "enum": ["Always", "IfNotPresent", "Never"]
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "optionalSha256Digest": {
+      "type": "string",
+      "anyOf": [
+        {
+          "const": ""
+        },
+        {
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      ]
+    },
+    "storageQuantity": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*(Mi|Gi|Ti)$"
+    },
+    "probe": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "periodSeconds", "failureThreshold"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^/"
+        },
+        "periodSeconds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "failureThreshold": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "cpuMemoryResources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requests", "limits"],
+      "properties": {
+        "requests": {
+          "$ref": "#/definitions/cpuMemoryList"
+        },
+        "limits": {
+          "$ref": "#/definitions/cpuMemoryList"
+        }
+      }
+    },
+    "cpuMemoryList": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpu", "memory"],
+      "properties": {
+        "cpu": {
+          "type": "string",
+          "minLength": 1
+        },
+        "memory": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "gpuResourceList": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpu", "memory", "nvidia.com/gpu"],
+      "properties": {
+        "cpu": {
+          "type": "string",
+          "minLength": 1
+        },
+        "memory": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nvidia.com/gpu": {
+          "const": "1"
+        }
+      }
+    }
+  }
+}

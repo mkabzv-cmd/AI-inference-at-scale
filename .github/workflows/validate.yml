@@ -9,9 +9,10 @@ permissions:
   contents: read
 
 jobs:
-  structure:
+  validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - name: Validate lesson structure
-        run: bash scripts/validate-structure.sh
+      - uses: actions/checkout@v7
+      - name: Run all repository checks
+        run: make validate

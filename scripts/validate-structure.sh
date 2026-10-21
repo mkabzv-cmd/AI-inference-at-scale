@@ -23,19 +23,17 @@ while IFS= read -r lesson_readme; do
       failures=$((failures + 1))
     fi
   done
-done < <(find "$repo_root/lessons" -mindepth 3 -maxdepth 3 -name README.md -print | sort)
+done < <(
+  find "$repo_root/lessons" \
+    -mindepth 3 \
+    -maxdepth 3 \
+    -name README.md \
+    -print \
+    | LC_ALL=C sort
+)
 
 if [[ "$lesson_count" -ne 50 ]]; then
   printf 'Expected 50 lesson READMEs, found %d\n' "$lesson_count" >&2
-  failures=$((failures + 1))
-fi
-
-if grep -RIEq \
-  '(AKIA[0-9A-Z]{16}|aws_secret_access_key|BEGIN (RSA|OPENSSH) PRIVATE KEY)' \
-  "$repo_root" \
-  --exclude-dir=.git \
-  --exclude=validate-structure.sh; then
-  printf 'Possible credential material detected\n' >&2
   failures=$((failures + 1))
 fi
 
@@ -44,4 +42,4 @@ if [[ "$failures" -ne 0 ]]; then
   exit 1
 fi
 
-printf 'Validated %d lesson outlines successfully\n' "$lesson_count"
+printf 'Validated the structure of %d lessons successfully\n' "$lesson_count"

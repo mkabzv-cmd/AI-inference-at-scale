@@ -1,0 +1,19 @@
+# Intentional failure: "hello-systemz" does not match the Deployment Pod label.
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-systems
+  namespace: llm-systems
+  labels:
+    app.kubernetes.io/name: hello-systems
+    app.kubernetes.io/part-of: open-model-systems-course
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: hello-systemz
+    app.kubernetes.io/component: web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP

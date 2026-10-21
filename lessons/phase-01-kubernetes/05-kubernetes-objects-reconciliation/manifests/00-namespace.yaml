@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: llm-systems
+  labels:
+    app.kubernetes.io/part-of: open-model-systems-course
+    lesson.open-model-systems/id: "05"

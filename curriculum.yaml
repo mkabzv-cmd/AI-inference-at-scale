@@ -1,26 +1,26 @@
 schema_version: 1
 last_reviewed: 2026-10-21
-status: curriculum-scaffold
+status: active-development
 
 phases:
   - id: phase-00-foundations
     title: Foundations and first GPU success
     lessons:
-      - { id: "00", slug: course-map-cost-safety, status: outline, compute: [local-cpu] }
-      - { id: "01", slug: tokens-to-generated-text, status: outline, compute: [local-cpu] }
-      - { id: "02", slug: gpu-systems-for-llms, status: outline, compute: [local-cpu, g1] }
-      - { id: "03", slug: containers-cuda-contract, status: outline, compute: [g1] }
-      - { id: "04", slug: first-inference-on-eks, status: outline, compute: [g1] }
+      - { id: "00", slug: course-map-cost-safety, status: draft, compute: [local-cpu] }
+      - { id: "01", slug: tokens-to-generated-text, status: draft, compute: [local-cpu] }
+      - { id: "02", slug: gpu-systems-for-llms, status: draft, compute: [local-cpu, g1] }
+      - { id: "03", slug: containers-cuda-contract, status: draft, compute: [g1] }
+      - { id: "04", slug: first-inference-on-eks, status: draft, compute: [g1] }
 
   - id: phase-01-kubernetes
     title: Kubernetes and EKS
     lessons:
-      - { id: "05", slug: kubernetes-objects-reconciliation, status: outline, compute: [local-cpu] }
-      - { id: "06", slug: configuration-health-request-flow, status: outline, compute: [local-cpu] }
-      - { id: "07", slug: resources-gpu-scheduling, status: outline, compute: [g1] }
-      - { id: "08", slug: model-artifacts-storage-caches, status: outline, compute: [g1] }
-      - { id: "09", slug: packaging-releases-debugging, status: outline, compute: [local-cpu, g1] }
-      - { id: "10", slug: capstone-one-gpu-api, status: outline, compute: [g1] }
+      - { id: "05", slug: kubernetes-objects-reconciliation, status: draft, compute: [local-cpu] }
+      - { id: "06", slug: configuration-health-request-flow, status: draft, compute: [local-cpu] }
+      - { id: "07", slug: resources-gpu-scheduling, status: draft, compute: [g1] }
+      - { id: "08", slug: model-artifacts-storage-caches, status: draft, compute: [g1] }
+      - { id: "09", slug: packaging-releases-debugging, status: draft, compute: [local-cpu, g1] }
+      - { id: "10", slug: capstone-one-gpu-api, status: draft, compute: [g1] }
 
   - id: phase-02-engines
     title: Single-GPU inference engines

@@ -1,0 +1,60 @@
+replicaCount: 2
+
+image:
+  repository: lesson-service
+  tag: lesson-09-v1
+  digest: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: ""
+  automountServiceAccountToken: false
+
+app:
+  message: hello from Helm
+  version: helm-v1
+  faultMode: none
+  readyDelaySeconds: 2
+
+service:
+  type: ClusterIP
+  port: 80
+
+probes:
+  startup:
+    path: /health/live
+    failureThreshold: 30
+    periodSeconds: 2
+  readiness:
+    path: /health/ready
+    failureThreshold: 2
+    periodSeconds: 3
+  liveness:
+    path: /health/live
+    failureThreshold: 3
+    periodSeconds: 10
+
+resources:
+  requests:
+    cpu: 25m
+    memory: 32Mi
+  limits:
+    cpu: 250m
+    memory: 128Mi
+
+rollout:
+  maxUnavailable: 0
+  maxSurge: 1
+  progressDeadlineSeconds: 120
+  revisionHistoryLimit: 5
+
+podAnnotations: {}
+podLabels: {}
+nodeSelector: {}
+tolerations: []
+affinity: {}

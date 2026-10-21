@@ -1,0 +1,20 @@
+# Direct application dependencies.
+numpy==1.26.4
+transformers==4.46.3
+huggingface-hub==0.26.2
+tokenizers==0.20.3
+safetensors==0.4.5
+
+# Transitive lock for the Linux/AMD64 image, validated on 2026-10-21.
+certifi==2026.10.19
+charset-normalizer==3.5.2
+filelock==3.19.1
+fsspec==2025.10.0
+idna==3.20
+packaging==26.3
+PyYAML==6.0.3
+regex==2026.1.15
+requests==2.32.5
+tqdm==4.70.1
+typing_extensions==4.16.0
+urllib3==2.6.3

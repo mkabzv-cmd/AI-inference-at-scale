@@ -11,8 +11,14 @@ The numbered sequence is intentionally cumulative:
 - [Phase 6 — RAG](phase-06-rag/): lessons 40–44
 - [Phase 7 — Production and LLMOps](phase-07-production/): lessons 45–49
 
-Every current lesson is an `outline`. Follow
-[the publication plan](../docs/publication-plan.md) as runnable labs, solutions,
-checks, and pinned version combinations are authored.
+Lessons 00–10 are runnable `draft` lessons. They include practical files and
+guided labs, but cloud/GPU exercises still require clean-environment learner
+validation before publication. Lessons 11–49 are `outline` roadmap entries.
+Static CI does not claim that Docker, Kubernetes, GPU, or AWS commands have run
+successfully.
+
+Read [Running the Labs](../docs/running-labs.md) before executing commands, and
+follow [the publication plan](../docs/publication-plan.md) as later phases are
+authored and reviewed.
 
 Use `make list` from the repository root to print every lesson.
