@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "project_id": "__REQUIRED__",
+  "release_id": "__REQUIRED__",
+  "evidence_type": "security",
+  "origin": "observed",
+  "claim_scope": "__REQUIRED__",
+  "status": "incomplete",
+  "attestation": {
+    "actor": "__REQUIRED__",
+    "observed_at": "__REQUIRED__",
+    "command": "__REQUIRED__",
+    "result_source": "__REQUIRED__",
+    "live_environment": true
+  },
+  "anonymous_denial": "incomplete",
+  "authenticated_unauthorized_denial": "incomplete",
+  "authorized_request": "incomplete",
+  "public_exposure": true,
+  "kubernetes_policy_check": "incomplete",
+  "artifact_provenance": "incomplete",
+  "threat_model_reviewed": false,
+  "cross_tenant_negative_cases": "incomplete",
+  "raw_results_sha256": "__REQUIRED__"
+}

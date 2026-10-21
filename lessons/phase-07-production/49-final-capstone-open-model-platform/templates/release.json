@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "project_id": "__REQUIRED__",
+  "environment_id": "__REQUIRED__",
+  "release_id": "__REQUIRED__",
+  "source_revision": "__REQUIRED__",
+  "image": "__REQUIRED__",
+  "model": {
+    "id": "__REQUIRED__",
+    "revision": "__REQUIRED__",
+    "tokenizer_revision": "__REQUIRED__"
+  },
+  "serving": {
+    "topology": "one-gpu",
+    "engine": "__REQUIRED__",
+    "engine_version": "__REQUIRED__",
+    "configuration_path": "artifact-records/serving-config.json",
+    "configuration_sha256": "__REQUIRED__"
+  },
+  "evaluation": {
+    "dataset_path": "artifact-records/eval-dataset.json",
+    "dataset_sha256": "__REQUIRED__"
+  },
+  "adapter": {
+    "enabled": false,
+    "path": "artifact-records/adapter.json",
+    "sha256": "__REQUIRED__",
+    "format": "safetensors",
+    "base_model_revision": "__REQUIRED__"
+  },
+  "rag": {
+    "enabled": false,
+    "path": "artifact-records/rag-index.json",
+    "sha256": "__REQUIRED__",
+    "corpus_version": "not-produced",
+    "index_version": "not-produced"
+  },
+  "gates": [
+    {
+      "name": "quality",
+      "status": "incomplete",
+      "evidence_path": "evidence/quality.json",
+      "evidence_sha256": "__REQUIRED__"
+    },
+    {
+      "name": "performance",
+      "status": "incomplete",
+      "evidence_path": "evidence/performance.json",
+      "evidence_sha256": "__REQUIRED__"
+    },
+    {
+      "name": "security",
+      "status": "incomplete",
+      "evidence_path": "evidence/security.json",
+      "evidence_sha256": "__REQUIRED__"
+    },
+    {
+      "name": "reliability",
+      "status": "incomplete",
+      "evidence_path": "evidence/reliability.json",
+      "evidence_sha256": "__REQUIRED__"
+    },
+    {
+      "name": "cost",
+      "status": "incomplete",
+      "evidence_path": "evidence/cost.json",
+      "evidence_sha256": "__REQUIRED__"
+    },
+    {
+      "name": "cleanup",
+      "status": "incomplete",
+      "evidence_path": "evidence/cleanup.json",
+      "evidence_sha256": "__REQUIRED__"
+    }
+  ],
+  "promotion": {
+    "candidate_status": "incomplete",
+    "production_status": "incomplete",
+    "known_good_release_id": "__REQUIRED__",
+    "rollback_target_release_id": "__REQUIRED__",
+    "gitops_revision": "__REQUIRED__"
+  }
+}

@@ -15,6 +15,7 @@ from urllib.parse import urlparse
 
 STARTED_AT = time.monotonic()
 PORT = int(os.environ.get("PORT", "8080"))
+BIND_HOST = os.environ.get("BIND_HOST", "127.0.0.1")
 STARTUP_SECONDS = float(os.environ.get("STARTUP_SECONDS", "8"))
 NOT_READY_FILE = Path("/tmp/lesson-not-ready")
 NOT_LIVE_FILE = Path("/tmp/lesson-kill-liveness")
@@ -125,14 +126,17 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main() -> None:
+    if BIND_HOST not in {"127.0.0.1", "0.0.0.0"}:
+        raise ValueError("BIND_HOST must be 127.0.0.1 or 0.0.0.0")
     log(
         "server_starting",
+        bind_host=BIND_HOST,
         port=PORT,
         startup_seconds=STARTUP_SECONDS,
         python=sys.version.split()[0],
     )
-    server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
-    log("server_listening", address="0.0.0.0", port=PORT)
+    server = ThreadingHTTPServer((BIND_HOST, PORT), Handler)
+    log("server_listening", address=BIND_HOST, port=PORT)
     server.serve_forever()
 
 

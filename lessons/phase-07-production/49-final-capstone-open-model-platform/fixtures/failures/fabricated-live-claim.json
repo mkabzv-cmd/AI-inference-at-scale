@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "name": "fabricated-live-claim",
+  "expect_codes": [
+    "FABRICATED_LIVE_CLAIM"
+  ],
+  "operations": [
+    {
+      "op": "set_json",
+      "path": "evidence/performance.json",
+      "pointer": "/attestation/live_environment",
+      "value": true
+    }
+  ]
+}

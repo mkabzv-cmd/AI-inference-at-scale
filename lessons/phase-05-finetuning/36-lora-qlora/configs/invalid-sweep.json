@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "layers": 24,
+    "hidden_size": 896,
+    "intermediate_size": 4864,
+    "attention_heads": 14,
+    "key_value_heads": 2,
+    "head_dimension": 64
+  },
+  "candidates": [
+    {
+      "name": "broken-target-and-merge",
+      "method": "qlora-nf4",
+      "rank": 8,
+      "alpha": 16,
+      "dropout": 0.05,
+      "targets": ["query_projection"],
+      "merge_policy": "merge-directly-into-nf4-storage"
+    }
+  ]
+}

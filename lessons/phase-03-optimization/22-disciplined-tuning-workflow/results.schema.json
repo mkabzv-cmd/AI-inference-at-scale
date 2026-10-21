@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "result_kind",
+    "diagnoses",
+    "comparison"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "oms-tuning-workflow/v1"
+    },
+    "result_kind": {
+      "const": "synthetic_case_analysis_not_engine_measurement"
+    }
+  }
+}

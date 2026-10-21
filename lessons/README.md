@@ -11,11 +11,11 @@ The numbered sequence is intentionally cumulative:
 - [Phase 6 — RAG](phase-06-rag/): lessons 40–44
 - [Phase 7 — Production and LLMOps](phase-07-production/): lessons 45–49
 
-Lessons 00–10 are runnable `draft` lessons. They include practical files and
-guided labs, but cloud/GPU exercises still require clean-environment learner
-validation before publication. Lessons 11–49 are `outline` roadmap entries.
-Static CI does not claim that Docker, Kubernetes, GPU, or AWS commands have run
-successfully.
+All lessons 00–49 are runnable `draft` lessons. They include practical files,
+guided labs, failure drills, machine-readable evidence, verification, and
+cleanup. Cloud/GPU exercises still require clean-environment learner validation
+before publication. Static CI does not claim that Docker, Kubernetes, GPU, or
+AWS commands have run successfully.
 
 Read [Running the Labs](../docs/running-labs.md) before executing commands, and
 follow [the publication plan](../docs/publication-plan.md) as later phases are

@@ -1,35 +1,81 @@
-# This file is a course-wide compatibility manifest, not a package-manager lock.
-# Replace TODO values during lesson implementation and retain validated historical
-# combinations rather than silently following latest releases.
+# Course-wide compatibility record. Individual lessons remain authoritative for
+# their exact environment and immutable image/model digests.
 
-last_broad_review: 2026-10-21
+schema_version = 1
+last_broad_review = "2026-10-21"
+validation_boundary = "Static schemas, source checks, and feasible CPU fixtures; no course-wide live EKS/GPU certification."
+
+[ci]
+actions_checkout = "3d3c42e5aac5ba805825da76410c181273ba90b1"
+actions_checkout_release = "v7.0.1"
+
+[python]
+repository_static_checks = "3.9+"
+foundations_runtime = "3.9+"
+modern_serving_runtime = "3.10+"
+training_runtime = "3.10+"
+distributed_ray_runtime = "3.10+"
+
+[course_model]
+model_id = "Qwen/Qwen2.5-0.5B-Instruct"
+model_revision = "7ae557604adf67be50417f59c2c2f167def9a775"
+tokenizer_revision = "7ae557604adf67be50417f59c2c2f167def9a775"
+license = "Apache-2.0"
+parameter_count = 494032768
+primary_weight_bytes = 988097824
+gguf_repository = "Qwen/Qwen2.5-0.5B-Instruct-GGUF"
+gguf_revision = "9217f5db79a29953eb74d5343926648285ec7e67"
+gguf_q4_k_m_bytes = 491400032
 
 [platform]
-kubernetes = "TODO"
-eks_platform = "TODO"
-node_os = "AL2023-or-current-equivalent"
+kubernetes_manifest_schema = "1.34"
+helm_static_validation = "4.3.1"
+kubeconform_static_validation = "0.8.0"
+eks_platform = "learner-current; record control-plane and platform version in every run"
+node_os = "AL2023-or-current-supported-equivalent"
 container_runtime = "containerd"
-nvidia_driver = "TODO"
-cuda_runtime = "TODO"
+nvidia_driver = "target-dependent; record nvidia-smi output"
+cuda_runtime = "owned by the selected immutable engine/training image; verify against host driver"
+
+[foundations]
+python = "3.9-compatible teaching path"
+torch = "2.5.1"
+transformers = ["4.46.3", "4.48.1"]
+huggingface_hub = ["0.26.2", "0.27.1"]
 
 [serving]
-transformers = "TODO"
-vllm = "TODO-current-V1"
-sglang = "TODO"
-llama_cpp_commit = "TODO"
-tensorrt_llm = "TODO-current-PyTorch-backend"
+transformers = "5.20.0"
+fastapi = "0.119.0"
+uvicorn = "0.37.0"
+httpx_benchmark_client = "0.28.1"
+vllm = "0.28.0"
+sglang = "0.5.21"
+sglang_image_variant = "v0.5.21-cu130"
+llama_cpp_release = "v0.5.0"
+llama_cpp_commit = "7fe450e19305b828c199d602c23a8337aaa1f03b"
 
 [distributed]
-pytorch = "TODO"
-nccl = "TODO"
-ray = "TODO"
-kuberay = "TODO"
+torch_mechanics = "2.5.1"
+ray = "2.59.0"
+kuberay_operator_chart = "1.7.0"
+vllm = "0.28.0"
+nccl = "engine/image-provided; capture runtime version and transport logs"
 
 [training]
-trl = "TODO"
-peft = "TODO"
-deepspeed = "TODO"
+torch = "2.14.0"
+transformers = "5.15.0"
+huggingface_hub = "1.4.1"
+safetensors = "0.8.0"
+peft = "0.20.0"
+accelerate = "1.14.0"
+bitsandbytes = "0.49.2"
+deepspeed = "0.19.6"
+
+[retrieval]
+required_cpu_path = "Python standard library"
+optional_sentence_transformers = "5.1.1"
 
 [observability]
-dcgm_exporter = "TODO"
-opentelemetry = "TODO"
+prometheus_format = "0.0.4 exposition in the local simulator"
+opentelemetry_collector = "configuration example only; pin an image digest before deployment"
+dcgm_exporter = "map and pin the installed image/metric set before a GPU study"

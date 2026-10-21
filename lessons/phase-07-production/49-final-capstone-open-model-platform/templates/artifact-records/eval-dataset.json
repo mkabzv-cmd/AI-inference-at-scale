@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "dataset_id": "__REQUIRED__",
+  "revision": "__REQUIRED__",
+  "license_review": "__REQUIRED__",
+  "split": "capstone-evaluation",
+  "case_count": 0,
+  "content_included": false,
+  "cases_manifest_sha256": "__REQUIRED__"
+}

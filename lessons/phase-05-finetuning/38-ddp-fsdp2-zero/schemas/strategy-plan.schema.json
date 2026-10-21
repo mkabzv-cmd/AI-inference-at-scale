@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-38/strategy-plan.schema.json",
+  "title": "Distributed training strategy estimate",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "world_size",
+    "model_parameters",
+    "replication_rule",
+    "estimates",
+    "warning"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "world_size": {"const": 3},
+    "model_parameters": {"type": "integer", "minimum": 1},
+    "estimates": {"type": "object"}
+  }
+}

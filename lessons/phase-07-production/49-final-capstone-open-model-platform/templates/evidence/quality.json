@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "project_id": "__REQUIRED__",
+  "release_id": "__REQUIRED__",
+  "evidence_type": "quality",
+  "origin": "observed",
+  "claim_scope": "__REQUIRED__",
+  "status": "incomplete",
+  "attestation": {
+    "actor": "__REQUIRED__",
+    "observed_at": "__REQUIRED__",
+    "command": "__REQUIRED__",
+    "result_source": "__REQUIRED__",
+    "live_environment": true
+  },
+  "frozen_dataset_sha256": "__REQUIRED__",
+  "metric_name": "__REQUIRED__",
+  "threshold": 0.0,
+  "baseline_value": 0.0,
+  "candidate_value": 0.0,
+  "higher_is_better": true,
+  "safety_cases_passed": 0,
+  "safety_cases_total": 0,
+  "raw_results_sha256": "__REQUIRED__"
+}

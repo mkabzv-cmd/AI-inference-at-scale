@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-32/results.schema.json",
+  "title": "Lesson 32 evidence bundle",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "experiment",
+    "seed",
+    "initial_loss",
+    "final_loss",
+    "steps",
+    "graph_inventory"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "experiment": {
+      "const": "tiny-bigram-adamw"
+    },
+    "seed": {
+      "type": "integer"
+    },
+    "initial_loss": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "final_loss": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 2
+    },
+    "graph_inventory": {
+      "type": "object",
+      "required": [
+        "parameter_elements",
+        "gradient_elements",
+        "optimizer_state_elements",
+        "saved_activation_elements_per_example"
+      ]
+    }
+  }
+}

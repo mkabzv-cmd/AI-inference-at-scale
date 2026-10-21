@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-48/release.schema.json",
+  "title": "OMS immutable release contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release_id",
+    "kind",
+    "source_revision",
+    "image",
+    "model",
+    "adapter",
+    "index",
+    "configuration_sha256",
+    "gates",
+    "smoke_response"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "release_id": {"type": "string", "minLength": 3},
+    "kind": {"type": "string"},
+    "source_revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "image": {"type": "string", "pattern": "@sha256:[0-9a-f]{64}$"},
+    "model": {"type": "object"},
+    "adapter": {"type": "object"},
+    "index": {"type": "object"},
+    "configuration_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gates": {"type": "array", "minItems": 1},
+    "smoke_response": {"type": "string"}
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-49/capstone.schema.json",
+  "title": "Open-model platform capstone contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project_id",
+    "validation_mode",
+    "claim_scope",
+    "environment_id",
+    "release_id",
+    "serving_topology",
+    "features",
+    "model",
+    "paths",
+    "required_files"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "project_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{2,62}$"
+    },
+    "validation_mode": {
+      "enum": [
+        "fixture",
+        "operator-run"
+      ]
+    },
+    "claim_scope": {
+      "type": "string",
+      "minLength": 3
+    },
+    "environment_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "release_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "serving_topology": {
+      "enum": [
+        "one-gpu",
+        "three-node"
+      ]
+    },
+    "features": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adapter",
+        "rag"
+      ],
+      "properties": {
+        "adapter": {
+          "type": "boolean"
+        },
+        "rag": {
+          "type": "boolean"
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "revision",
+        "tokenizer_revision"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "tokenizer_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "environment",
+        "release",
+        "evidence_index",
+        "kubernetes_manifest"
+      ],
+      "properties": {
+        "environment": {
+          "type": "string"
+        },
+        "release": {
+          "type": "string"
+        },
+        "evidence_index": {
+          "type": "string"
+        },
+        "kubernetes_manifest": {
+          "type": "string"
+        }
+      }
+    },
+    "required_files": {
+      "type": "array",
+      "minItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

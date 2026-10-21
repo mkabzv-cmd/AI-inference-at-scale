@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "synthetic-analyzer-fixture-not-a-performance-claim",
+  "invariants": {
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dataset_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "seed": 3701,
+    "maximum_optimizer_steps": 50,
+    "token_slots_per_optimizer_step": 4096
+  },
+  "runs": [
+    {
+      "name": "baseline",
+      "median_tokens_per_second": 100.0,
+      "peak_allocated_gib": 8.0,
+      "validation_loss": 2.0,
+      "measured_optimizer_steps": 40
+    },
+    {
+      "name": "larger-microbatch",
+      "median_tokens_per_second": 125.0,
+      "peak_allocated_gib": 11.0,
+      "validation_loss": 2.0,
+      "measured_optimizer_steps": 40
+    },
+    {
+      "name": "checkpointed",
+      "median_tokens_per_second": 82.0,
+      "peak_allocated_gib": 6.2,
+      "validation_loss": 2.0,
+      "measured_optimizer_steps": 40
+    },
+    {
+      "name": "dominated-example",
+      "median_tokens_per_second": 70.0,
+      "peak_allocated_gib": 12.0,
+      "validation_loss": 2.1,
+      "measured_optimizer_steps": 40
+    }
+  ]
+}

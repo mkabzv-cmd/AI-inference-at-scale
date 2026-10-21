@@ -1,0 +1,14 @@
+--revision
+7ae557604adf67be50417f59c2c2f167def9a775
+--served-model-name
+oms-model
+--dtype
+half
+--max-model-len
+4096
+--gpu-memory-utilization
+0.80
+--max-num-seqs
+16
+--max-num-batched-tokens
+2048

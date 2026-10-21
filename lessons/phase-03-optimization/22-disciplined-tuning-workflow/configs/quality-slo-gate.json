@@ -1,0 +1,9 @@
+{
+  "schema_version": "oms-tuning-gate/v1",
+  "minimum_success_rate": 0.99,
+  "minimum_quality_pass_rate": 0.95,
+  "maximum_ttft_p95_ms": 1000,
+  "maximum_tpot_p95_ms": 40,
+  "require_same_workload_hash": true,
+  "require_same_output_tokens_mean": true
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "study": "lesson-38-three-node-training-strategies",
+  "world_size": 3,
+  "model": {
+    "parameters_billions": 7.0,
+    "largest_layer_parameters_millions": 225.0
+  },
+  "bytes_per_parameter": {
+    "bf16_parameter": 2,
+    "bf16_gradient": 2,
+    "fp32_master_parameter": 4,
+    "fp32_adam_moments": 8
+  },
+  "per_rank_nonmodel_reserve_gib": 4.0,
+  "strategies": [
+    "ddp",
+    "zero-1",
+    "zero-2",
+    "zero-3",
+    "fsdp2-full-shard"
+  ],
+  "warning": "Estimates exclude allocator fragmentation, kernels, temporary collectives, embeddings tied differently by implementation, and checkpoint staging."
+}

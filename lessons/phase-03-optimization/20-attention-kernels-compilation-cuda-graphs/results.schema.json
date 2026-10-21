@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "result_kind",
+    "shapes",
+    "launch_structures"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "oms-kernel-mechanisms/v1"
+    },
+    "result_kind": {
+      "const": "analytical_and_reference_cpu_not_gpu_profile"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "index_source_sha256": "f84050791aec38a48d7f78ee9c96f30df0f86c2bd3227abaa2af13430b83c874",
+  "queries": [
+    {
+      "id": "token-expiry",
+      "tenant_id": "alpha",
+      "text": "How long are production API credentials valid?",
+      "relevance": {
+        "chk_c24be6435c797f88b4d3665d": 3,
+        "chk_aa956d81037d561312c97778": 2
+      },
+      "intent": "lexical and paraphrase"
+    },
+    {
+      "id": "credential-leak",
+      "tenant_id": "alpha",
+      "text": "Where should a suspected credential leak be reported?",
+      "relevance": {
+        "chk_16b26212b95a1e96e5b719d9": 3,
+        "chk_0c47c49be667629d692b63c7": 1
+      },
+      "intent": "precise lexical"
+    },
+    {
+      "id": "support-window",
+      "tenant_id": "alpha",
+      "text": "During which UTC hours is the support desk staffed?",
+      "relevance": {
+        "chk_0cb78f3adc5a597e5fb66fc4": 3
+      },
+      "intent": "numeric and temporal"
+    },
+    {
+      "id": "release-freeze",
+      "tenant_id": "beta",
+      "text": "When is the weekly production release freeze?",
+      "relevance": {
+        "chk_9916081b5b920457cd713035": 3
+      },
+      "intent": "temporal"
+    },
+    {
+      "id": "snapshot-retention",
+      "tenant_id": "beta",
+      "text": "How long are backup snapshots kept?",
+      "relevance": {
+        "chk_6ab725d722a70af2c5169314": 3
+      },
+      "intent": "synonym confound: backup versus encrypted snapshot"
+    },
+    {
+      "id": "restore-before-traffic",
+      "tenant_id": "alpha",
+      "text": "What validation happens before traffic is redirected after a restore?",
+      "relevance": {
+        "chk_3d7e75941d46993a6c9273f5": 3
+      },
+      "intent": "procedure"
+    },
+    {
+      "id": "private-service",
+      "tenant_id": "alpha",
+      "text": "Which Kubernetes service type keeps the knowledge API internal?",
+      "relevance": {
+        "chk_0aae11107202988f0ed9fd34": 3
+      },
+      "intent": "technical term"
+    },
+    {
+      "id": "readiness",
+      "tenant_id": "beta",
+      "text": "Which health signal verifies that the requested index is loaded?",
+      "relevance": {
+        "chk_2aa2eb3ef512a927b4b93575": 3
+      },
+      "intent": "definition"
+    }
+  ]
+}

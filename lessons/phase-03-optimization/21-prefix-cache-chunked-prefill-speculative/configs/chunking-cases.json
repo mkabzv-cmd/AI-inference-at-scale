@@ -1,0 +1,9 @@
+{
+  "schema_version": "oms-chunking-cases/v1",
+  "token_budget_per_tick": 16,
+  "long_prefill_tokens": 64,
+  "short_request_arrival_tick": 1,
+  "short_prefill_tokens": 4,
+  "short_decode_tokens": 2,
+  "chunk_sizes": [64, 16, 8]
+}

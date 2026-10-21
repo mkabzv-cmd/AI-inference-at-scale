@@ -106,6 +106,7 @@ explain object by object.
 │       ├── NOTES.txt
 │       └── tests/test-connection.yaml
 └── scripts/
+    ├── assert-target.sh
     ├── build-push-image.sh
     ├── check-prerequisites.sh
     ├── cleanup.sh
@@ -167,12 +168,12 @@ can remain fixed.
 `repository@sha256:digest` identifies exact image content. The chart supports
 tags for local learning and digests for EKS/reproducible evidence.
 
-That deployment digest freezes the built application image. The Dockerfile base
-and the transient Helm-test image are version-tagged in this lesson, and exact
-top-level Python dependencies are not the same as a fully hash-locked transitive
-dependency graph. Strict production supply-chain reproducibility also pins each
-`FROM` and hook image by digest and uses a reviewed lockfile. This draft does
-not claim that rebuilding source later will produce identical bytes.
+That deployment digest freezes the built application image. This lesson also
+pins the Dockerfile base and Helm-test image by digest. Even so, an immutable
+base plus exact top-level dependencies is not automatically a fully
+hash-locked transitive dependency graph. Strict production supply-chain
+reproducibility also uses reviewed lockfiles and build provenance. This draft
+does not claim that rebuilding source later will produce identical bytes.
 
 ### Rollout versus rollback
 
@@ -266,12 +267,12 @@ Confirm the active context:
 ```bash
 kubectl config current-context
 kubectl cluster-info
-./scripts/check-prerequisites.sh
 ```
 
 For a local cluster, build and load the tagged image:
 
 ```bash
+./scripts/check-prerequisites.sh
 docker build -t lesson-service:lesson-09-v1 app
 
 # kind:
@@ -285,12 +286,16 @@ For EKS, configure non-secret variables:
 
 ```bash
 export AWS_REGION=us-east-1
+export EKS_CLUSTER=replace-with-your-approved-lab-cluster
 export AWS_ACCOUNT_ID="$(
   aws sts get-caller-identity --query Account --output text
 )"
 export ECR_REPOSITORY=open-model-course/lesson-service
+export I_UNDERSTAND_ECR_CHANGES=yes
+export CONFIRM_ECR_REPOSITORY="$ECR_REPOSITORY"
 
 aws sts get-caller-identity
+./scripts/check-prerequisites.sh
 ./scripts/build-push-image.sh
 ```
 
@@ -348,7 +353,7 @@ Write predictions in `artifacts/expected-vs-observed.md`:
 ```bash
 docker build -t lesson-service:lesson-09-v1 app
 docker run --rm -d --name lesson-service-local \
-  -p 18080:8080 \
+  -p 127.0.0.1:18080:8080 \
   -e APP_MESSAGE='hello before Kubernetes' \
   -e APP_VERSION='container-v1' \
   lesson-service:lesson-09-v1
@@ -485,9 +490,9 @@ For EKS:
 For local:
 
 ```bash
+kubectl apply -f raw/00-namespace.yaml
 helm upgrade --install course chart/lesson-service \
   --namespace packaging-lab \
-  --create-namespace \
   -f chart/lesson-service/values-local.yaml \
   --wait \
   --timeout 3m
@@ -917,6 +922,13 @@ Remove the Helm release and namespace:
 ```bash
 ./scripts/cleanup.sh
 ```
+
+The install, smoke-test, and cleanup scripts re-check the active target. The
+course context `kind-llm-lab` is accepted directly. After inspecting another
+disposable kind, minikube, or Docker Desktop context, opt in for that command
+with `ALLOW_NON_COURSE_LOCAL_CONTEXT=1`. For EKS, the active API endpoint must
+match `AWS_REGION` and `EKS_CLUSTER`. Cleanup also requires the lesson
+ownership labels before it can delete the namespace.
 
 Prove removal:
 

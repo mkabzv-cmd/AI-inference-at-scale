@@ -1,0 +1,32 @@
+ARG BUILD_IMAGE
+ARG RUNTIME_IMAGE
+FROM ${BUILD_IMAGE} AS build
+
+ARG LLAMA_CPP_COMMIT="7fe450e19305b828c199d602c23a8337aaa1f03b"
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+       build-essential ca-certificates cmake git libcurl4-openssl-dev \
+    && rm -rf /var/lib/apt/lists/*
+RUN git clone --filter=blob:none https://github.com/ggml-org/llama.cpp.git /src \
+    && git -C /src fetch --depth 1 origin "${LLAMA_CPP_COMMIT}" \
+    && git -C /src checkout --detach "${LLAMA_CPP_COMMIT}" \
+    && cmake -S /src -B /src/build \
+       -DCMAKE_BUILD_TYPE=Release \
+       -DGGML_NATIVE=OFF \
+       -DGGML_CUDA=OFF \
+       -DLLAMA_CURL=ON \
+    && cmake --build /src/build --config Release -j2 \
+       --target llama-server llama-bench llama-cli
+
+FROM ${RUNTIME_IMAGE}
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+       ca-certificates curl libcurl4 libgomp1 \
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd --create-home --uid 10001 model
+COPY --from=build /src/build/bin/llama-server /usr/local/bin/
+COPY --from=build /src/build/bin/llama-bench /usr/local/bin/
+COPY --from=build /src/build/bin/llama-cli /usr/local/bin/
+USER 10001
+EXPOSE 8000
+ENTRYPOINT ["llama-server"]

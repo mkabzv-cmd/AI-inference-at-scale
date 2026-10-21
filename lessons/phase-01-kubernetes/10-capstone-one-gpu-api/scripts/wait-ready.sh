@@ -4,6 +4,12 @@ set -euo pipefail
 namespace="${LAB_NAMESPACE:-one-gpu-api}"
 release="${HELM_RELEASE:-one-gpu}"
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_eks_target
+assert_safe_release_name
+assert_namespace_owned_or_absent
+
 pod="$(
   kubectl -n "$namespace" get pods \
     -l "app.kubernetes.io/instance=${release}" \

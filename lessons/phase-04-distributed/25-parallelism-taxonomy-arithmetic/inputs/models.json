@@ -1,0 +1,53 @@
+{
+  "divisible-small-shape": {
+    "parameters_billion": 0.125,
+    "layers": 12,
+    "hidden_size": 768,
+    "attention_heads": 12,
+    "kv_heads": 12,
+    "vocab_size": 50304,
+    "bytes_per_weight": 2.0,
+    "kv_element_bytes": 2,
+    "activation_bytes": 2,
+    "sequence_tokens": 1024,
+    "concurrent_sequences": 1,
+    "runtime_overhead_gib": 1.0,
+    "gpu_vram_gib": 24.0,
+    "reserve_fraction": 0.1,
+    "allow_kv_head_replication": false
+  },
+  "power-of-two-7b-shape": {
+    "parameters_billion": 7.0,
+    "layers": 32,
+    "hidden_size": 4096,
+    "attention_heads": 32,
+    "kv_heads": 8,
+    "vocab_size": 128256,
+    "bytes_per_weight": 0.55,
+    "kv_element_bytes": 2,
+    "activation_bytes": 2,
+    "sequence_tokens": 4096,
+    "concurrent_sequences": 4,
+    "runtime_overhead_gib": 3.0,
+    "gpu_vram_gib": 24.0,
+    "reserve_fraction": 0.1,
+    "allow_kv_head_replication": false
+  },
+  "illustrative-30-layer": {
+    "parameters_billion": 30.0,
+    "layers": 30,
+    "hidden_size": 6144,
+    "attention_heads": 48,
+    "kv_heads": 12,
+    "vocab_size": 50400,
+    "bytes_per_weight": 0.58,
+    "kv_element_bytes": 2,
+    "activation_bytes": 2,
+    "sequence_tokens": 2048,
+    "concurrent_sequences": 1,
+    "runtime_overhead_gib": 2.5,
+    "gpu_vram_gib": 24.0,
+    "reserve_fraction": 0.1,
+    "allow_kv_head_replication": false
+  }
+}

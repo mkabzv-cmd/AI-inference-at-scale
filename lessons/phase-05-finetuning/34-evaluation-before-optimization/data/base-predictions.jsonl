@@ -1,0 +1,8 @@
+{"id":"accept-001","response":"Inspect recent Pod events, the requested resources, and GPU allocatable capacity on candidate nodes before changing scheduling rules."}
+{"id":"accept-002","response":"Data parallelism makes a model faster by pooling VRAM automatically across workers."}
+{"id":"accept-003","response":"Inspect the readiness condition and the Service selector, then look at EndpointSlices to see whether the Pod was admitted."}
+{"id":"accept-004","response":"The probe can restart the container while the model is still loading, creating a startup loop that never completes."}
+{"id":"accept-005","response":"Scale it first, then inspect the node group if the Pod does not start."}
+{"id":"accept-006","response":"Deleting the Pod is enough because Kubernetes owns all AWS billing."}
+{"id":"accept-007","response":"Use a ClusterIP Service and reach it with kubectl port-forward; keep the unauthenticated endpoint not public."}
+{"id":"accept-008","response":"A tag such as latest is mutable. A digest identifies exact image bytes, while the model revision identifies the exact model snapshot."}

@@ -1,0 +1,6 @@
+{
+  "name_or_path": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_max_length": 32768,
+  "course_fixture": true,
+  "chat_template_contract": "must be replaced by exact tokenizer snapshot in a deployable release"
+}

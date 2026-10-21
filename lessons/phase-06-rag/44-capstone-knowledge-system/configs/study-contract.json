@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "contract_id": "lesson-44-comparison-v1",
+  "corpus_snapshot": "corpus-v1.jsonl",
+  "retrieval_config": "lesson-42-reviewed",
+  "grounding_config": "lesson-43-reviewed",
+  "variants": {
+    "base": {
+      "knowledge_mode": "none",
+      "behavior_mode": "plain",
+      "implementation_class": "deterministic_contract_proxy_not_a_model"
+    },
+    "tuned": {
+      "knowledge_mode": "none",
+      "behavior_mode": "strict_json",
+      "implementation_class": "deterministic_contract_proxy_not_a_trained_adapter"
+    },
+    "rag": {
+      "knowledge_mode": "retrieval",
+      "behavior_mode": "plain",
+      "implementation_class": "lesson_43_deterministic_extractive_rag"
+    },
+    "tuned_plus_rag": {
+      "knowledge_mode": "retrieval",
+      "behavior_mode": "strict_json",
+      "implementation_class": "deterministic_format_proxy_plus_lesson_43_rag"
+    }
+  },
+  "acceptance": {
+    "required_json_fields": ["status", "answer", "citations"],
+    "citation_required_when_supported": true,
+    "no_evidence_requires_abstention": true
+  },
+  "interpretation": "This CPU study validates the four-way experiment harness and expected system capabilities. It is not evidence about a real base model or fine-tuned adapter."
+}

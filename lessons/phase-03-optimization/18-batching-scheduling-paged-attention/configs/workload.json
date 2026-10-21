@@ -1,0 +1,29 @@
+{
+  "schema_version": "oms-scheduler-workload/v1",
+  "requests": [
+    {
+      "id": "long-a",
+      "arrival_tick": 0,
+      "prompt_tokens": 96,
+      "output_tokens": 24
+    },
+    {
+      "id": "long-b",
+      "arrival_tick": 0,
+      "prompt_tokens": 80,
+      "output_tokens": 20
+    },
+    {
+      "id": "short-late",
+      "arrival_tick": 2,
+      "prompt_tokens": 8,
+      "output_tokens": 3
+    },
+    {
+      "id": "medium-late",
+      "arrival_tick": 4,
+      "prompt_tokens": 32,
+      "output_tokens": 8
+    }
+  ]
+}

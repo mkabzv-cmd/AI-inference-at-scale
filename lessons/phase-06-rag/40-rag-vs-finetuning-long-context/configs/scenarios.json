@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "scenarios": [
+    {
+      "id": "daily-policy",
+      "description": "Answer from policies that change daily, cite exact sources, and filter documents by caller entitlement.",
+      "importance": {
+        "behavior_change": 0,
+        "knowledge_freshness": 5,
+        "source_citations": 5,
+        "low_request_latency": 2,
+        "rapid_update": 5,
+        "access_filtering": 5,
+        "small_operations_surface": 1
+      },
+      "hard_requirements": ["citations", "daily_updates", "per_request_filtering"],
+      "expected_recommendation": "rag"
+    },
+    {
+      "id": "stable-json-style",
+      "description": "Consistently transform stable inputs into a strict JSON style with low request overhead; no external knowledge is required.",
+      "importance": {
+        "behavior_change": 5,
+        "knowledge_freshness": 0,
+        "source_citations": 0,
+        "low_request_latency": 5,
+        "rapid_update": 1,
+        "access_filtering": 0,
+        "small_operations_surface": 4
+      },
+      "hard_requirements": ["learned_behavior", "stable_low_latency"],
+      "expected_recommendation": "finetuning"
+    },
+    {
+      "id": "one-off-three-documents",
+      "description": "Answer a one-off question over three short supplied documents with citations and no persistent service.",
+      "importance": {
+        "behavior_change": 0,
+        "knowledge_freshness": 3,
+        "source_citations": 5,
+        "low_request_latency": 1,
+        "rapid_update": 5,
+        "access_filtering": 1,
+        "small_operations_surface": 5
+      },
+      "hard_requirements": ["citations", "daily_updates"],
+      "expected_recommendation": "long_context"
+    },
+    {
+      "id": "fresh-knowledge-and-special-format",
+      "description": "Use changing runbooks with citations while always producing a learned incident-report format.",
+      "importance": {
+        "behavior_change": 5,
+        "knowledge_freshness": 5,
+        "source_citations": 5,
+        "low_request_latency": 2,
+        "rapid_update": 5,
+        "access_filtering": 4,
+        "small_operations_surface": 1
+      },
+      "hard_requirements": ["citations", "daily_updates", "learned_behavior"],
+      "expected_recommendation": "rag_plus_finetuning"
+    }
+  ]
+}

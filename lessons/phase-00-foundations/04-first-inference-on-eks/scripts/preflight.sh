@@ -66,14 +66,22 @@ fi
 assert_safe_namespace_name
 assert_kube_context_matches_cluster
 assert_namespace_owned_or_absent
-kubectl auth can-i get pods --all-namespaces >/dev/null
-kubectl auth can-i get nodes >/dev/null
-kubectl auth can-i create namespaces >/dev/null
-kubectl auth can-i delete namespaces >/dev/null
-kubectl auth can-i create deployments.apps \
-  --namespace "$LAB_NAMESPACE" >/dev/null
-kubectl auth can-i create services \
-  --namespace "$LAB_NAMESPACE" >/dev/null
+
+require_kube_permission() {
+  if ! kubectl auth can-i "$@" --quiet; then
+    printf '[fail] Kubernetes authorization denied: kubectl auth can-i %s\n' \
+      "$*" >&2
+    return 1
+  fi
+  printf '[ok] Kubernetes authorization allows: %s\n' "$*"
+}
+
+require_kube_permission get pods --all-namespaces
+require_kube_permission get nodes
+require_kube_permission create namespaces
+require_kube_permission delete namespaces
+require_kube_permission create deployments.apps --namespace "$LAB_NAMESPACE"
+require_kube_permission create services --namespace "$LAB_NAMESPACE"
 
 nodegroup="$(
   aws eks describe-nodegroup \

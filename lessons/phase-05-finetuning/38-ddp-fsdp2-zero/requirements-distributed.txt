@@ -1,0 +1,4 @@
+torch==2.14.0
+transformers==5.15.0
+deepspeed==0.19.6
+safetensors==0.8.0

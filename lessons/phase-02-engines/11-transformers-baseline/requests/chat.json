@@ -1,0 +1,17 @@
+{
+  "model": "course-model",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Answer briefly and accurately."
+    },
+    {
+      "role": "user",
+      "content": "Explain the difference between model weights and a KV cache in two sentences."
+    }
+  ],
+  "max_tokens": 80,
+  "temperature": 0.0,
+  "seed": 42,
+  "stream": false
+}

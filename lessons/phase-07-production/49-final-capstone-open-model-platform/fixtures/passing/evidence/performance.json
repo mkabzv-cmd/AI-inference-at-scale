@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "project_id": "oms-fixture",
+  "release_id": "oms-fixture-1",
+  "evidence_type": "performance",
+  "origin": "synthetic",
+  "claim_scope": "verifier-exercise-only",
+  "status": "pass",
+  "attestation": {
+    "actor": "fixture-generator",
+    "observed_at": "2026-10-21T12:00:00Z",
+    "command": "checked-in synthetic fixture",
+    "result_source": "deterministic verifier test values; not a benchmark",
+    "live_environment": false
+  },
+  "workload_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+  "sample_count": 20,
+  "limits": {
+    "p95_ttft_ms_max": 500.0,
+    "p95_total_latency_ms_max": 2000.0,
+    "error_rate_max": 0.01
+  },
+  "observed": {
+    "p95_ttft_ms": 400.0,
+    "p95_total_latency_ms": 1500.0,
+    "error_rate": 0.0,
+    "input_tokens_per_second": 100.0,
+    "output_tokens_per_second": 40.0
+  },
+  "raw_results_sha256": "abababababababababababababababababababababababababababababababab"
+}

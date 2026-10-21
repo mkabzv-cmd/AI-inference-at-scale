@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "engine": "__REQUIRED__",
+  "engine_version": "__REQUIRED__",
+  "tensor_parallel_size": 1,
+  "pipeline_parallel_size": 1,
+  "data_parallel_size": 1,
+  "dtype": "__REQUIRED__",
+  "quantization": "none",
+  "max_model_length": 2048,
+  "max_concurrent_requests": 1,
+  "gpu_memory_utilization": 0.8,
+  "prefix_cache": false,
+  "chunked_prefill": false,
+  "speculative_decoding": false,
+  "request_limits": {
+    "max_prompt_tokens": 1024,
+    "max_output_tokens": 256,
+    "timeout_seconds": 120
+  }
+}

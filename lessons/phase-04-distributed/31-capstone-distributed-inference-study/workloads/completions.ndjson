@@ -1,0 +1,3 @@
+{"case":"definition","body":{"model":"lesson-31-model","prompt":"Distributed inference means","max_tokens":16,"temperature":0,"seed":42}}
+{"case":"comparison","body":{"model":"lesson-31-model","prompt":"Data parallelism differs from tensor parallelism because","max_tokens":24,"temperature":0,"seed":42}}
+{"case":"kubernetes","body":{"model":"lesson-31-model","prompt":"A Kubernetes Pod is","max_tokens":16,"temperature":0,"seed":42}}

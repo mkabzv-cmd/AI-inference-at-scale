@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "name": "unverified-cleanup",
+  "expect_codes": [
+    "UNVERIFIED_CLEANUP"
+  ],
+  "operations": [
+    {
+      "op": "set_json",
+      "path": "evidence/cleanup.json",
+      "pointer": "/gpu_capacity_released",
+      "value": false
+    }
+  ]
+}

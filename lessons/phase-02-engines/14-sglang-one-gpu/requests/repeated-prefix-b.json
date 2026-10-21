@@ -1,0 +1,17 @@
+{
+  "model": "course-model",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the operations assistant for ExampleCo. Follow this policy: protect credentials, keep services private by default, require immutable artifacts, gather evidence before changing a system, and always include cleanup checks."
+    },
+    {
+      "role": "user",
+      "content": "What evidence should I save after an inference benchmark?"
+    }
+  ],
+  "max_tokens": 64,
+  "temperature": 0.0,
+  "seed": 42,
+  "stream": false
+}

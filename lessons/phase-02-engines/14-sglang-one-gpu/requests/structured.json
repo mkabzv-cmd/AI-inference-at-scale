@@ -1,0 +1,28 @@
+{
+  "model": "course-model",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Classify this incident: a GPU Pod is Pending because it requests two GPUs but each node has one. Return a short category and next action."
+    }
+  ],
+  "max_tokens": 96,
+  "temperature": 0.0,
+  "seed": 42,
+  "response_format": {
+    "type": "json_schema",
+    "json_schema": {
+      "name": "incident_classification",
+      "strict": true,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "category": {"type": "string"},
+          "next_action": {"type": "string"}
+        },
+        "required": ["category", "next_action"],
+        "additionalProperties": false
+      }
+    }
+  }
+}

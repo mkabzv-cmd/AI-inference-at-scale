@@ -1,0 +1,45 @@
+{
+  "schema_version": "oms-capstone-workload/v1",
+  "mode": "closed_loop",
+  "concurrency": 4,
+  "warmup_requests": 3,
+  "measured_requests": 24,
+  "request_timeout_seconds": 60,
+  "sampling": {
+    "temperature": 0,
+    "max_tokens": 24,
+    "stream": true
+  },
+  "prompts": [
+    {
+      "id": "blue",
+      "system": "You are a precise test assistant. Follow the requested output format.",
+      "user": "Reply with the single uppercase word BLUE.",
+      "required_substring": "BLUE"
+    },
+    {
+      "id": "arithmetic",
+      "system": "You are a precise test assistant. Follow the requested output format.",
+      "user": "What is 2 + 3? Reply with only the digit.",
+      "required_substring": "5"
+    },
+    {
+      "id": "capital",
+      "system": "You are a precise test assistant. Follow the requested output format.",
+      "user": "Name the capital of France using one word.",
+      "required_substring": "Paris"
+    },
+    {
+      "id": "shared-prefix-a",
+      "system": "You are a precise test assistant. Follow the requested output format.",
+      "user": "Shared policy: answers must be concise and factual. Task A: name Earth's natural satellite.",
+      "required_substring": "Moon"
+    },
+    {
+      "id": "shared-prefix-b",
+      "system": "You are a precise test assistant. Follow the requested output format.",
+      "user": "Shared policy: answers must be concise and factual. Task B: name the largest planet in the Solar System.",
+      "required_substring": "Jupiter"
+    }
+  ]
+}

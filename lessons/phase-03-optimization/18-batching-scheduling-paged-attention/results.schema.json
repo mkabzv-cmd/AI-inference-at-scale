@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "result_kind",
+    "experiments"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "oms-scheduler-simulation/v1"
+    },
+    "result_kind": {
+      "const": "discrete_event_simulation_not_engine_measurement"
+    },
+    "experiments": {
+      "type": "array",
+      "minItems": 2
+    }
+  }
+}

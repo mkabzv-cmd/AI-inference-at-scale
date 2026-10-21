@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "format": "safetensors",
+  "base_model_revision": "1111111111111111111111111111111111111111",
+  "adapter_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+  "training_dataset_revision": "synthetic-fixture-v1",
+  "training_code_revision": "2222222222222222222222222222222222222222",
+  "license_review": "synthetic-public-domain-teaching-data"
+}

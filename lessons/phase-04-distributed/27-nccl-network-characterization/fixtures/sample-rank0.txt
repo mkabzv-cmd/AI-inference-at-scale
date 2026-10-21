@@ -1,0 +1,4 @@
+NCCL INFO NET/Socket : Using [0]eth0:10.0.0.1<0>
+{"event":"BENCHMARK_RESULT","operation":"ping-pong","message_bytes":1024,"logical_payload_bytes":2048,"world_size":3,"median_seconds_slowest_rank":0.001,"payload_gbps":0.016384,"all_reduce_busbw_gbps_convention":null,"correctness_passed":true,"ranks":[]}
+{"event":"BENCHMARK_RESULT","operation":"all-reduce","message_bytes":1024,"logical_payload_bytes":1024,"world_size":3,"median_seconds_slowest_rank":0.002,"payload_gbps":0.004096,"all_reduce_busbw_gbps_convention":0.005461333333333333,"correctness_passed":true,"ranks":[]}
+{"event":"BENCHMARK_RESULT","operation":"all-to-all","message_bytes":1024,"logical_payload_bytes":1020,"world_size":3,"median_seconds_slowest_rank":0.003,"payload_gbps":0.00272,"all_reduce_busbw_gbps_convention":null,"correctness_passed":true,"ranks":[]}

@@ -323,7 +323,9 @@ sed -n '1,120p' Dockerfile
 ```
 
 The server uses only Python's standard library. Its image runs as numeric user
-10001 and drops Linux capabilities in the Pod.
+10001, uses a read-only root filesystem, drops Linux capabilities, and receives
+only a small writable `emptyDir` at `/tmp` for the deliberate health-state
+files. The Pod does not receive a service-account token.
 
 The Dockerfile keeps the readable base tag
 `python:3.13.15-alpine3.23` and pins the corresponding multi-platform OCI index

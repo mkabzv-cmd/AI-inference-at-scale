@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "index_source_sha256": "wrong-source-snapshot",
+  "questions": [
+    {
+      "id": "unauthorized-label",
+      "tenant_id": "beta",
+      "question": "After how many hours do Alpha production API tokens expire?",
+      "answerable": true,
+      "expected_phrases": ["twelve hours"],
+      "relevant_chunk_ids": ["chk_c24be6435c797f88b4d3665d"],
+      "forbidden_document_ids": ["alpha-access-policy"]
+    }
+  ]
+}

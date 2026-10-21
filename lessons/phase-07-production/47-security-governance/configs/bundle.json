@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "bundle_name": "oms-security-teaching-bundle",
+  "bundle_version": "1.0.0",
+  "allowed_licenses": ["Apache-2.0", "CC0-1.0"],
+  "allowed_artifact_suffixes": [".json", ".md", ".safetensors"],
+  "files": [
+    {
+      "path": "model-card.json",
+      "role": "model-metadata",
+      "license": "Apache-2.0",
+      "source": "course-authored-fixture"
+    },
+    {
+      "path": "adapter-config.json",
+      "role": "adapter-configuration",
+      "license": "Apache-2.0",
+      "source": "course-authored-fixture"
+    },
+    {
+      "path": "index-manifest.json",
+      "role": "retrieval-index-metadata",
+      "license": "CC0-1.0",
+      "source": "course-authored-fixture"
+    }
+  ]
+}

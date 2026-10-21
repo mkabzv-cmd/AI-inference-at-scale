@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "project_id": "__REQUIRED__",
+  "release_id": "__REQUIRED__",
+  "evidence_type": "cleanup",
+  "origin": "observed",
+  "claim_scope": "__REQUIRED__",
+  "status": "incomplete",
+  "attestation": {
+    "actor": "__REQUIRED__",
+    "observed_at": "__REQUIRED__",
+    "command": "__REQUIRED__",
+    "result_source": "__REQUIRED__",
+    "live_environment": true
+  },
+  "inventory_before": [],
+  "teardown_actions": [],
+  "inventory_after": [],
+  "residual_billable_resources": [],
+  "load_generators_stopped": false,
+  "endpoint_removed": false,
+  "gpu_capacity_released": false,
+  "verification_commands": [],
+  "inventory_sha256": "__REQUIRED__"
+}

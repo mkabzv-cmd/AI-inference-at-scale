@@ -1,0 +1,7 @@
+{
+  "model": "lesson-29-smoke",
+  "prompt": "Distributed inference means",
+  "max_tokens": 16,
+  "temperature": 0,
+  "seed": 42
+}

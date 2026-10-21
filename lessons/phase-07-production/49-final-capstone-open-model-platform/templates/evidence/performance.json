@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "project_id": "__REQUIRED__",
+  "release_id": "__REQUIRED__",
+  "evidence_type": "performance",
+  "origin": "observed",
+  "claim_scope": "__REQUIRED__",
+  "status": "incomplete",
+  "attestation": {
+    "actor": "__REQUIRED__",
+    "observed_at": "__REQUIRED__",
+    "command": "__REQUIRED__",
+    "result_source": "__REQUIRED__",
+    "live_environment": true
+  },
+  "workload_sha256": "__REQUIRED__",
+  "sample_count": 0,
+  "limits": {
+    "p95_ttft_ms_max": 0.0,
+    "p95_total_latency_ms_max": 0.0,
+    "error_rate_max": 0.0
+  },
+  "observed": {
+    "p95_ttft_ms": 0.0,
+    "p95_total_latency_ms": 0.0,
+    "error_rate": 0.0,
+    "input_tokens_per_second": 0.0,
+    "output_tokens_per_second": 0.0
+  },
+  "raw_results_sha256": "__REQUIRED__"
+}

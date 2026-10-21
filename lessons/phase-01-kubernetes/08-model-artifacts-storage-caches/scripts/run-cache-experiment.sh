@@ -4,6 +4,25 @@ set -euo pipefail
 : "${DOWNLOADER_IMAGE:?set DOWNLOADER_IMAGE to an image@sha256 reference}"
 : "${MODEL_STORAGE_CLASS:?set MODEL_STORAGE_CLASS to the class you selected}"
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_eks_target
+assert_namespace_owned_or_absent
+
+if [[ ! "$DOWNLOADER_IMAGE" =~ ^[0-9]{12}\.dkr\.ecr\.[a-z0-9-]+\.amazonaws\.com(\.cn)?/[a-z0-9][a-z0-9._/-]*@sha256:[0-9a-f]{64}$ ]]; then
+  printf 'DOWNLOADER_IMAGE must be a complete private ECR image@sha256 reference\n' >&2
+  exit 2
+fi
+case "$MODEL_STORAGE_CLASS" in
+  model-cache-gp3 | model-cache-gp3-auto)
+    assert_storageclass_owned_or_absent "$MODEL_STORAGE_CLASS"
+    ;;
+  *)
+    printf 'MODEL_STORAGE_CLASS must be model-cache-gp3 or model-cache-gp3-auto\n' >&2
+    exit 2
+    ;;
+esac
+
 namespace=model-storage-lab
 evidence_dir="${EVIDENCE_DIR:-artifacts}"
 mkdir -p "$evidence_dir"

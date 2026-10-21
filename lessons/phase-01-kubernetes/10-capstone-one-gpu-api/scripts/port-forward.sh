@@ -4,6 +4,13 @@ set -euo pipefail
 namespace="${LAB_NAMESPACE:-one-gpu-api}"
 release="${HELM_RELEASE:-one-gpu}"
 local_port="${LOCAL_PORT:-18000}"
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_eks_target
+assert_safe_release_name
+assert_namespace_owned_or_absent
+
 service="$(
   kubectl -n "$namespace" get service \
     -l "app.kubernetes.io/instance=${release}" \

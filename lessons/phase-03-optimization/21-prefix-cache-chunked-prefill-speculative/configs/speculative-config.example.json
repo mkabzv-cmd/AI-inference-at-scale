@@ -1,0 +1,5 @@
+{
+  "method": "replace-after-reading-v0.28.0-docs",
+  "num_speculative_tokens": 3,
+  "warning": "This is intentionally not runnable. Select a target-compatible method and pin every draft artifact revision before use."
+}

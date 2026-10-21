@@ -1,0 +1,17 @@
+{
+  "schema_version": "oms-speculation-cases/v1",
+  "cases": [
+    {
+      "name": "useful-draft",
+      "target_tokens": [10, 20, 30, 40, 50, 60, 70, 80],
+      "draft_tokens": [10, 20, 30, 99, 50, 60, 70, 80],
+      "proposal_width": 4
+    },
+    {
+      "name": "poor-draft",
+      "target_tokens": [10, 20, 30, 40, 50, 60, 70, 80],
+      "draft_tokens": [99, 98, 97, 96, 95, 94, 93, 92],
+      "proposal_width": 4
+    }
+  ]
+}

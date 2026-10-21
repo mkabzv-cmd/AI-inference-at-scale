@@ -18,13 +18,38 @@ tag="${IMAGE_TAG:-lesson-09-v1}"
 registry="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
 image="${registry}/${repository}:${tag}"
 
-aws ecr describe-repositories \
-  --region "$AWS_REGION" \
-  --repository-names "$repository" >/dev/null 2>&1 ||
+if repository_state="$(
+  aws ecr describe-repositories \
+    --region "$AWS_REGION" \
+    --repository-names "$repository" \
+    --query 'repositories[0].[imageTagMutability,imageScanningConfiguration.scanOnPush]' \
+    --output text 2>&1
+)"; then
+  read -r tag_mutability scan_on_push <<<"$repository_state"
+  if [[ "$tag_mutability" != "IMMUTABLE" || "$scan_on_push" != "True" ]]; then
+    printf 'ECR repository must use IMMUTABLE tags and scan-on-push: %s\n' \
+      "$repository" >&2
+    exit 1
+  fi
+else
+  if [[ "$repository_state" != *RepositoryNotFoundException* ]]; then
+    printf 'could not inspect ECR repository %s:\n%s\n' \
+      "$repository" "$repository_state" >&2
+    exit 1
+  fi
+  if [[ "${I_UNDERSTAND_ECR_CHANGES:-no}" != "yes" ||
+    "${CONFIRM_ECR_REPOSITORY:-}" != "$repository" ]]; then
+    printf 'repository is absent; to create it, set both:\n' >&2
+    printf '  I_UNDERSTAND_ECR_CHANGES=yes\n' >&2
+    printf '  CONFIRM_ECR_REPOSITORY=%s\n' "$repository" >&2
+    exit 3
+  fi
   aws ecr create-repository \
     --region "$AWS_REGION" \
     --repository-name "$repository" \
+    --image-tag-mutability IMMUTABLE \
     --image-scanning-configuration scanOnPush=true >/dev/null
+fi
 
 aws ecr get-login-password --region "$AWS_REGION" |
   docker login --username AWS --password-stdin "$registry"

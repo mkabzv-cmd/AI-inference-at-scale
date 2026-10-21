@@ -1,0 +1,27 @@
+{
+  "schema_version": "oms-prefix-workload/v1",
+  "block_size_tokens": 4,
+  "cache_capacity_blocks": 12,
+  "requests": [
+    {
+      "id": "tenant-a-first",
+      "tenant": "tenant-a",
+      "tokens": [11, 12, 13, 14, 21, 22, 23, 24, 31, 32]
+    },
+    {
+      "id": "tenant-a-repeat",
+      "tenant": "tenant-a",
+      "tokens": [11, 12, 13, 14, 21, 22, 23, 24, 41, 42]
+    },
+    {
+      "id": "tenant-b-same-text",
+      "tenant": "tenant-b",
+      "tokens": [11, 12, 13, 14, 21, 22, 23, 24, 51, 52]
+    },
+    {
+      "id": "tenant-a-unique",
+      "tenant": "tenant-a",
+      "tokens": [61, 62, 63, 64, 71, 72, 73, 74, 81, 82]
+    }
+  ]
+}

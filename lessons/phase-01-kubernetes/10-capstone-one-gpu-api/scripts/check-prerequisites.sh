@@ -16,6 +16,21 @@ docker buildx version >/dev/null
 : "${EKS_CLUSTER:?set EKS_CLUSTER}"
 : "${GPU_NODEGROUP:?set GPU_NODEGROUP}"
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_eks_target
+assert_namespace_owned_or_absent
+namespace="$(lesson_namespace)"
+
+require_kube_permission() {
+  if ! kubectl auth can-i "$@" --quiet; then
+    printf 'Kubernetes authorization denied: kubectl auth can-i %s\n' \
+      "$*" >&2
+    return 1
+  fi
+  printf 'Kubernetes authorization allows: %s\n' "$*"
+}
+
 printf 'AWS identity:\n'
 aws sts get-caller-identity
 printf 'cluster=%s region=%s nodegroup=%s\n' \
@@ -52,13 +67,18 @@ aws eks describe-nodegroup \
 
 printf 'kubectl context: %s\n' "$(kubectl config current-context)"
 kubectl cluster-info
-kubectl auth can-i create deployments.apps --namespace one-gpu-api
-kubectl auth can-i create services --namespace one-gpu-api
-kubectl auth can-i create persistentvolumeclaims --namespace one-gpu-api
+require_kube_permission create namespaces
+require_kube_permission delete namespaces
+require_kube_permission create secrets --namespace "$namespace"
+require_kube_permission create serviceaccounts --namespace "$namespace"
+require_kube_permission create deployments.apps --namespace "$namespace"
+require_kube_permission create services --namespace "$namespace"
+require_kube_permission create persistentvolumeclaims --namespace "$namespace"
+require_kube_permission delete persistentvolumeclaims --namespace "$namespace"
 
 helm lint chart/one-gpu-api
 helm template one-gpu chart/one-gpu-api \
-  --namespace one-gpu-api >/dev/null
+  --namespace "$namespace" >/dev/null
 
 printf 'GPU capacity currently advertised:\n'
 kubectl get nodes \

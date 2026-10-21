@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "project_id": "oms-fixture",
+  "environment_id": "local-fixture",
+  "release_id": "oms-fixture-1",
+  "source_revision": "2222222222222222222222222222222222222222",
+  "image": "example.invalid/oms-fixture@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "model": {
+    "id": "fixture/tiny-open-model",
+    "revision": "1111111111111111111111111111111111111111",
+    "tokenizer_revision": "1111111111111111111111111111111111111111"
+  },
+  "serving": {
+    "topology": "one-gpu",
+    "engine": "teaching-simulator",
+    "engine_version": "1.0.0-fixture",
+    "configuration_path": "artifact-records/serving-config.json",
+    "configuration_sha256": "235db60f006ad17dabf96e83cee9019befed32a6716dded4f194e87b3d339152"
+  },
+  "evaluation": {
+    "dataset_path": "artifact-records/eval-dataset.json",
+    "dataset_sha256": "7df45385e5769de475cb645295264f5f54c4804155036767507710541263fe70"
+  },
+  "adapter": {
+    "enabled": true,
+    "path": "artifact-records/adapter.json",
+    "sha256": "36887bb0194000a8f71dd0749c315d37548bffba259950884696874e5f8a39bc",
+    "format": "safetensors",
+    "base_model_revision": "1111111111111111111111111111111111111111"
+  },
+  "rag": {
+    "enabled": true,
+    "path": "artifact-records/rag-index.json",
+    "sha256": "6b5b578f7a9552a512e43f840547dd361ab7c238f342ae5b309ee826ac8eec4f",
+    "corpus_version": "synthetic-corpus-v1",
+    "index_version": "synthetic-index-v1"
+  },
+  "gates": [
+    {
+      "name": "quality",
+      "status": "pass",
+      "evidence_path": "evidence/quality.json",
+      "evidence_sha256": "13059aba03d40802d70ce664f8bd4d6b7853bc959fc0ee9f1dd8d82d1078f1b8"
+    },
+    {
+      "name": "performance",
+      "status": "pass",
+      "evidence_path": "evidence/performance.json",
+      "evidence_sha256": "ff0222d01c3bde96c88c52416bc7bc9352d167f1c35b81e67976574e81d55299"
+    },
+    {
+      "name": "security",
+      "status": "pass",
+      "evidence_path": "evidence/security.json",
+      "evidence_sha256": "42f28afa03de64ab9bca9ba0ba3a14bec36e2eab24ceeb2cf5fce7a7e6359567"
+    },
+    {
+      "name": "reliability",
+      "status": "pass",
+      "evidence_path": "evidence/reliability.json",
+      "evidence_sha256": "f55e0cf5c5bd1f41750eb3d6914f0b62fe30d51114a4fcf8b2dfa5509bfc966b"
+    },
+    {
+      "name": "cost",
+      "status": "pass",
+      "evidence_path": "evidence/cost.json",
+      "evidence_sha256": "40af2bdeaabdc9fce56924cfef018570233766c2701f06e8d78fbd2e33ec5c2d"
+    },
+    {
+      "name": "cleanup",
+      "status": "pass",
+      "evidence_path": "evidence/cleanup.json",
+      "evidence_sha256": "ccd0aa1536dc516b87dbe5578454367b515d54f7a86c9558b4e68e2e6f8d6bce"
+    }
+  ],
+  "promotion": {
+    "candidate_status": "pass",
+    "production_status": "pass",
+    "known_good_release_id": "oms-fixture-0",
+    "rollback_target_release_id": "oms-fixture-0",
+    "gitops_revision": "3333333333333333333333333333333333333333"
+  }
+}

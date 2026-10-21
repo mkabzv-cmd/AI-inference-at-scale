@@ -1,0 +1,13 @@
+{
+  "engine": "sglang",
+  "version": "0.5.21",
+  "image_tag": "lmsysorg/sglang:v0.5.21-cu130",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "served_model_name": "course-model",
+  "dtype": "float16",
+  "context_length": 4096,
+  "mem_fraction_static": 0.75,
+  "max_running_requests": 16,
+  "radix_cache": true
+}

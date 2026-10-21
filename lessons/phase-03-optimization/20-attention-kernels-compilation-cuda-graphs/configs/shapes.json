@@ -1,0 +1,35 @@
+{
+  "schema_version": "oms-attention-shapes/v1",
+  "shapes": [
+    {
+      "name": "short-prefill",
+      "batch": 1,
+      "heads": 14,
+      "query_tokens": 256,
+      "key_value_tokens": 256,
+      "head_dim": 64,
+      "tile_q": 64,
+      "tile_k": 64
+    },
+    {
+      "name": "long-prefill",
+      "batch": 1,
+      "heads": 14,
+      "query_tokens": 4096,
+      "key_value_tokens": 4096,
+      "head_dim": 64,
+      "tile_q": 64,
+      "tile_k": 64
+    },
+    {
+      "name": "single-token-decode",
+      "batch": 8,
+      "heads": 14,
+      "query_tokens": 1,
+      "key_value_tokens": 4096,
+      "head_dim": 64,
+      "tile_q": 1,
+      "tile_k": 64
+    }
+  ]
+}

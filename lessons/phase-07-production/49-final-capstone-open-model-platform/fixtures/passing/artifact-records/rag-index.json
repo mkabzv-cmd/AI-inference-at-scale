@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "enabled": true,
+  "corpus_version": "synthetic-corpus-v1",
+  "index_version": "synthetic-index-v1",
+  "embedding_model_revision": "fixture-embedding-v1",
+  "chunker_configuration_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+  "index_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+  "authorization_filter_stage": "before-prompt",
+  "license_review": "synthetic-public-domain-teaching-data"
+}

@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "release_id": "oms-2026-10-21.1",
+  "kind": "teaching-fixture",
+  "source_revision": "1111111111111111111111111111111111111111",
+  "image": "example.invalid/oms-platform@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775"
+  },
+  "adapter": {
+    "enabled": true,
+    "format": "safetensors",
+    "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "base_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775"
+  },
+  "index": {
+    "version": "oms-corpus-1.0.0",
+    "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "configuration_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "gates": [
+    {
+      "name": "quality-evaluation",
+      "status": "pass",
+      "evidence_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+      "name": "performance-slo",
+      "status": "pass",
+      "evidence_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "name": "security-policy",
+      "status": "pass",
+      "evidence_sha256": "1212121212121212121212121212121212121212121212121212121212121212"
+    }
+  ],
+  "smoke_response": "readiness selector endpoints"
+}

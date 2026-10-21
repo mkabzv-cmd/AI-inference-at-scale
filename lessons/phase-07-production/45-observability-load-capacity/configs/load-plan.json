@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "endpoint_path": "/v1/chat/completions",
+  "request_timeout_seconds": 10,
+  "prompt": "Explain why a Kubernetes readiness failure removes a Pod from Service endpoints.",
+  "max_tokens": 16,
+  "slo": {
+    "maximum_error_rate": 0.0,
+    "maximum_p95_ttft_seconds": 0.2,
+    "maximum_p95_total_seconds": 1.5
+  },
+  "stages": [
+    {"name": "c1", "concurrency": 1, "requests": 6},
+    {"name": "c2", "concurrency": 2, "requests": 8},
+    {"name": "c4", "concurrency": 4, "requests": 12},
+    {"name": "c8", "concurrency": 8, "requests": 16}
+  ]
+}

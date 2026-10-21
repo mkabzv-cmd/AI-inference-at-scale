@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "release_name": "oms-operations-adapter-v1",
+  "served_adapter_name": "oms-operations",
+  "adaptation_method": "lora",
+  "base_model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "license": "Apache-2.0"
+  },
+  "tokenizer": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775"
+  },
+  "dataset_contract": "oms-operations-mini/1.0.0",
+  "evaluation_contract": "oms-operations-acceptance-v1",
+  "benchmark_contract": "oms-benchmark/v1",
+  "intended_use": "Educational answers about evidence-first Kubernetes GPU operations.",
+  "excluded_uses": [
+    "Autonomous cluster changes",
+    "Public unauthenticated deployment",
+    "Claims of broad Kubernetes expertise",
+    "Use with private operational data without governance approval"
+  ]
+}

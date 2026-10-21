@@ -1,0 +1,35 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicy
+metadata:
+  name: oms-require-restricted-images
+spec:
+  failurePolicy: Fail
+  matchConstraints:
+    resourceRules:
+      - apiGroups: ["apps"]
+        apiVersions: ["v1"]
+        operations: ["CREATE", "UPDATE"]
+        resources: ["deployments"]
+  validations:
+    - expression: "object.spec.template.spec.containers.all(c, c.image.matches('^.+@sha256:[0-9a-f]{64}$'))"
+      message: "Every container image must be pinned by sha256 digest."
+    - expression: "object.spec.template.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.runAsNonRoot) && c.securityContext.runAsNonRoot == true)"
+      message: "Every container must require non-root execution."
+    - expression: "object.spec.template.spec.containers.all(c, has(c.securityContext) && c.securityContext.allowPrivilegeEscalation == false)"
+      message: "Privilege escalation must be disabled."
+    - expression: "object.spec.template.spec.containers.all(c, has(c.securityContext) && c.securityContext.readOnlyRootFilesystem == true)"
+      message: "Every container must use a read-only root filesystem."
+    - expression: "object.spec.template.spec.containers.all(c, has(c.securityContext) && has(c.securityContext.capabilities) && c.securityContext.capabilities.drop.exists(x, x == 'ALL'))"
+      message: "Every container must drop all Linux capabilities."
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingAdmissionPolicyBinding
+metadata:
+  name: oms-require-restricted-images
+spec:
+  policyName: oms-require-restricted-images
+  validationActions: [Deny]
+  matchResources:
+    namespaceSelector:
+      matchLabels:
+        oms.open-model.systems/security-policy: enabled

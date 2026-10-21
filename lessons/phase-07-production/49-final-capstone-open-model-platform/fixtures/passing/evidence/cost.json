@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project_id": "oms-fixture",
+  "release_id": "oms-fixture-1",
+  "evidence_type": "cost",
+  "origin": "synthetic",
+  "claim_scope": "verifier-exercise-only",
+  "status": "pass",
+  "attestation": {
+    "actor": "fixture-generator",
+    "observed_at": "2026-10-21T12:00:00Z",
+    "command": "checked-in synthetic fixture",
+    "result_source": "deterministic budget test values; not a billing statement",
+    "live_environment": false
+  },
+  "currency": "USD",
+  "budget_limit": 10.0,
+  "estimated_total": 1.0,
+  "observed_total": 0.0,
+  "gpu_hours_limit": 2.0,
+  "gpu_hours_observed": 0.0,
+  "estimate_inputs_sha256": "efefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefef",
+  "billing_evidence_sha256": "1212121212121212121212121212121212121212121212121212121212121212"
+}

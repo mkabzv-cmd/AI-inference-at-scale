@@ -1,0 +1,39 @@
+{
+  "schema_version": "oms-quantization-matrix/v1",
+  "seed": 19023,
+  "rows": 64,
+  "columns": 128,
+  "evaluation_vectors": 24,
+  "experiments": [
+    {
+      "name": "fp16-storage-reference",
+      "kind": "reference",
+      "bits": 16,
+      "group_size": 0
+    },
+    {
+      "name": "int8-per-row",
+      "kind": "symmetric-grouped",
+      "bits": 8,
+      "group_size": 128
+    },
+    {
+      "name": "int4-group-32",
+      "kind": "symmetric-grouped",
+      "bits": 4,
+      "group_size": 32
+    },
+    {
+      "name": "int4-group-8",
+      "kind": "symmetric-grouped",
+      "bits": 4,
+      "group_size": 8
+    },
+    {
+      "name": "int3-group-32",
+      "kind": "symmetric-grouped",
+      "bits": 3,
+      "group_size": 32
+    }
+  ]
+}

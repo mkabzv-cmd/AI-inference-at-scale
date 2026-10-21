@@ -1,0 +1,7 @@
+{
+  "schema_version": "oms-toy-quality-gate/v1",
+  "metric": "mean_relative_l2_output_error",
+  "maximum": 0.20,
+  "minimum_compression_ratio": 1.5,
+  "warning": "This gate applies only to the deterministic toy layer, not to language-model quality."
+}

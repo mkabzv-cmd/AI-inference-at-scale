@@ -133,6 +133,7 @@ production security boundary.
 │       ├── NOTES.txt
 │       └── tests/test-ready.yaml
 └── scripts/
+    ├── assert-target.sh
     ├── build-push-image.sh
     ├── check-prerequisites.sh
     ├── cleanup.sh
@@ -352,6 +353,8 @@ export AWS_ACCOUNT_ID="$(
   aws sts get-caller-identity --query Account --output text
 )"
 export ECR_REPOSITORY=open-model-course/one-gpu-api
+export I_UNDERSTAND_ECR_CHANGES=yes
+export CONFIRM_ECR_REPOSITORY="$ECR_REPOSITORY"
 
 printf 'account=%s region=%s cluster=%s nodegroup=%s\n' \
   "$AWS_ACCOUNT_ID" "$AWS_REGION" "$EKS_CLUSTER" "$GPU_NODEGROUP"
@@ -548,7 +551,10 @@ sed -n '1,300p' chart/one-gpu-api/templates/deployment.yaml
 ```
 
 The build script refuses a tag-only `BASE_IMAGE`. It builds the AMD64 image,
-pushes it, resolves the ECR digest, and prints three export lines. Copy them:
+pushes it, resolves the ECR digest, and prints three export lines. If the ECR
+repository is absent, the two confirmation variables authorize creation of
+that exact repository with immutable tags and scan-on-push. An existing
+repository must already satisfy both controls. Copy the printed exports:
 
 ```bash
 export IMAGE_REPOSITORY='123456789012.dkr.ecr.REGION.amazonaws.com/open-model-course/one-gpu-api'
@@ -642,6 +648,10 @@ Because `--wait` waits for readiness, use a second terminal while it runs:
 ```bash
 kubectl -n one-gpu-api get pod,pvc -w
 ```
+
+The deploy script re-verifies the EKS API endpoint, creates the dedicated
+namespace with lesson ownership labels if it is absent, and refuses an
+unexpected existing namespace.
 
 When the Pod appears:
 
@@ -1194,7 +1204,8 @@ The cleanup script captures PVC → PV → CSI volume-handle mappings in
 `artifacts/storage-before-cleanup.tsv`. It refuses to delete the namespace if a
 PVC remains after Helm uninstall. That protects an explicitly kept PVC or an
 `existingClaim`; decide what should happen to that data and remove it explicitly
-before rerunning cleanup.
+before rerunning cleanup. It also re-checks the EKS API endpoint and namespace
+ownership labels, so a context switch or label mismatch stops deletion.
 
 Prove Kubernetes cleanup:
 

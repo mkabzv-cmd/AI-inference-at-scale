@@ -5,6 +5,12 @@ namespace="${LAB_NAMESPACE:-packaging-lab}"
 release="${HELM_RELEASE:-course}"
 local_port="${LOCAL_PORT:-18080}"
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_safe_target
+assert_safe_release_name
+assert_namespace_owned_or_absent
+
 mkdir -p artifacts
 service="$(
   kubectl -n "$namespace" get service \

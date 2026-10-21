@@ -18,29 +18,32 @@ fi
 : "${AWS_REGION:?set AWS_REGION, for example us-east-1}"
 : "${EKS_CLUSTER:?set EKS_CLUSTER to the intended lab cluster}"
 
-expected_server="$(
-  aws eks describe-cluster \
-    --region "$AWS_REGION" \
-    --name "$EKS_CLUSTER" \
-    --query 'cluster.endpoint' \
-    --output text
-)"
-active_server="$(
-  kubectl config view --minify \
-    -o jsonpath='{.clusters[0].cluster.server}'
-)"
-if [[ "$active_server" != "$expected_server" ]]; then
-  printf 'refusing to continue: kubectl points at %s\n' "$active_server" >&2
-  printf 'but EKS_CLUSTER=%s points at %s\n' \
-    "$EKS_CLUSTER" "$expected_server" >&2
-  exit 1
-fi
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_eks_target
+assert_namespace_owned_or_absent
+assert_storageclass_owned_or_absent model-cache-gp3
+assert_storageclass_owned_or_absent model-cache-gp3-auto
+
+require_kube_permission() {
+  if ! kubectl auth can-i "$@" --quiet; then
+    printf 'Kubernetes authorization denied: kubectl auth can-i %s\n' \
+      "$*" >&2
+    return 1
+  fi
+  printf 'Kubernetes authorization allows: %s\n' "$*"
+}
 
 printf 'kubectl context: %s\n' "$(kubectl config current-context)"
 kubectl cluster-info
-kubectl auth can-i create pods --namespace model-storage-lab
-kubectl auth can-i create persistentvolumeclaims --namespace model-storage-lab
-kubectl auth can-i create storageclasses.storage.k8s.io
+require_kube_permission create namespaces
+require_kube_permission create pods --namespace model-storage-lab
+require_kube_permission delete namespaces
+require_kube_permission create persistentvolumeclaims --namespace model-storage-lab
+require_kube_permission delete persistentvolumeclaims --namespace model-storage-lab
+require_kube_permission list persistentvolumes
+require_kube_permission create storageclasses.storage.k8s.io
+require_kube_permission delete storageclasses.storage.k8s.io
 kubectl get storageclass
 kubectl get csidrivers
 

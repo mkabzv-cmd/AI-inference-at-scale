@@ -1,0 +1,35 @@
+name: lesson-48-release-contract
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "lessons/phase-07-production/48-cicd-gitops-reproducibility/releases/**"
+      - "lessons/phase-07-production/48-cicd-gitops-reproducibility/gitops/**"
+      - "lessons/phase-07-production/48-cicd-gitops-reproducibility/src/**"
+      - "lessons/phase-07-production/48-cicd-gitops-reproducibility/scripts/**"
+      - ".github/workflows/lesson-48-release-contract.yml"
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: lessons/phase-07-production/48-cicd-gitops-reproducibility
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Validate immutable release contract
+        run: python3 src/validate_release.py --release releases/candidate-good.json
+      - name: Render private workload
+        run: |
+          python3 src/render_release.py \
+            --release releases/candidate-good.json \
+            --template gitops/deployment.yaml.tpl \
+            --namespace oms-lesson-48-ci \
+            --output /tmp/rendered.yaml
+      - name: Run loopback behavioral smoke
+        run: ./scripts/run-smoke.sh releases/candidate-good.json

@@ -1,0 +1,12 @@
+{
+  "capacity_start": "2026-10-21T00:00:00Z",
+  "capacity_end": "2026-10-21T01:00:00Z",
+  "capacity_window_seconds": 3600,
+  "node_count": 3,
+  "gpus_per_node": 1,
+  "gpu_hours": 3,
+  "price_per_node_hour": 1,
+  "estimated_node_cost": 3,
+  "currency": "USD",
+  "excluded": ["synthetic fixture"]
+}

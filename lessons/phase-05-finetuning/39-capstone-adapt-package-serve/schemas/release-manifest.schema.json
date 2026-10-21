@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-39/release-manifest.schema.json",
+  "title": "Adapted model release manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "deployable",
+    "release_name",
+    "served_adapter_name",
+    "adaptation_method",
+    "base_model",
+    "tokenizer",
+    "dataset_manifest_sha256",
+    "training_config_sha256",
+    "evaluation_lock_sha256",
+    "release_gates_sha256",
+    "files"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "deployable": {"type": "boolean"},
+    "dataset_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "training_config_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "evaluation_lock_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "release_gates_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "files": {"type": "array", "minItems": 8}
+  }
+}

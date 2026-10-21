@@ -6,6 +6,17 @@ release="${HELM_RELEASE:-one-gpu}"
 evidence_dir="${EVIDENCE_DIR:-artifacts}"
 storage_evidence="${evidence_dir}/storage-before-cleanup.tsv"
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_eks_target
+assert_safe_release_name
+assert_namespace_owned_or_absent
+
+if ! kubectl get namespace "$namespace" >/dev/null 2>&1; then
+  printf 'Helm release and namespace are already absent\n'
+  exit 0
+fi
+
 mkdir -p "$evidence_dir"
 : >"$storage_evidence"
 

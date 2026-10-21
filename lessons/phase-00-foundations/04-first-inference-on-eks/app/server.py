@@ -291,8 +291,11 @@ def load_model():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", "8080"))
-    server = ThreadingHTTPServer(("0.0.0.0", port), Handler)
+    bind_host = os.environ.get("BIND_HOST", "127.0.0.1")
+    if bind_host not in {"127.0.0.1", "0.0.0.0"}:
+        raise ValueError("BIND_HOST must be 127.0.0.1 or 0.0.0.0")
+    server = ThreadingHTTPServer((bind_host, port), Handler)
     loader = threading.Thread(target=load_model, name="model-loader", daemon=True)
-    print(f"server listening on 0.0.0.0:{port}; model loading", flush=True)
+    print(f"server listening on {bind_host}:{port}; model loading", flush=True)
     loader.start()
     server.serve_forever()

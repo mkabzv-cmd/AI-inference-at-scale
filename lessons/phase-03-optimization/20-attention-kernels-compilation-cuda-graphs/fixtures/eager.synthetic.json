@@ -1,0 +1,21 @@
+{
+  "schema_version": "oms-synthetic-launch-trace/v1",
+  "result_kind": "illustrative_structure_not_profiler_measurement",
+  "mode": "eager",
+  "events": [
+    "q_projection",
+    "k_projection",
+    "v_projection",
+    "qk_matmul",
+    "scale",
+    "causal_mask",
+    "softmax_max",
+    "softmax_subtract",
+    "softmax_exp",
+    "softmax_sum",
+    "softmax_divide",
+    "probability_v_matmul",
+    "output_projection",
+    "residual_add"
+  ]
+}

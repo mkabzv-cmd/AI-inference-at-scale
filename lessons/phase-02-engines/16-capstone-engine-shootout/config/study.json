@@ -1,0 +1,26 @@
+{
+  "study_id": "single-gpu-engine-shootout-v1",
+  "schema_version": "oms-benchmark/v1",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "served_model_name": "course-model",
+  "prompt_set": "../12-benchmarking-methodology/bench/prompts.jsonl",
+  "sampling": {
+    "temperature": 0.0,
+    "seed": 42,
+    "max_tokens": 64,
+    "stream": true
+  },
+  "workloads": [
+    {"mode": "closed", "concurrency": 1, "warmup_requests": 3, "measured_requests": 24},
+    {"mode": "closed", "concurrency": 4, "warmup_requests": 3, "measured_requests": 24},
+    {"mode": "closed", "concurrency": 16, "warmup_requests": 3, "measured_requests": 24},
+    {"mode": "open", "request_rate": 4.0, "concurrency": 64, "warmup_requests": 3, "measured_requests": 40}
+  ],
+  "required_engines": ["transformers", "vllm", "sglang", "llama-cpp"],
+  "minimum_success_rate": 1.0,
+  "minimum_quality_pass_rate": 0.8,
+  "repeat_count": 3,
+  "controlled_difference": "engine runtime and its native artifact representation",
+  "warning": "Q4 GGUF is a quantized secondary treatment; do not attribute its differences only to the scheduler."
+}

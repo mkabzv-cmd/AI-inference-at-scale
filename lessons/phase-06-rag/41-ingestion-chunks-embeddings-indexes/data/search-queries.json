@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "queries": [
+    {
+      "id": "q-token-expiry",
+      "tenant_id": "alpha",
+      "text": "How long do production API tokens remain valid?",
+      "relevant": [{"document_id": "alpha-access-policy", "section_id": "authentication"}]
+    },
+    {
+      "id": "q-recovery-time",
+      "tenant_id": "beta",
+      "text": "What is the database recovery time objective?",
+      "relevant": [{"document_id": "shared-recovery-runbook", "section_id": "objective"}]
+    },
+    {
+      "id": "q-private-service",
+      "tenant_id": "alpha",
+      "text": "How is the knowledge service exposed in Kubernetes?",
+      "relevant": [{"document_id": "shared-kubernetes-note", "section_id": "exposure"}]
+    }
+  ]
+}

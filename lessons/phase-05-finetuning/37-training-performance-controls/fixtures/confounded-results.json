@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "evidence_kind": "deliberately-invalid-fixture",
+  "invariants": {
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dataset_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "seed": 3701,
+    "maximum_optimizer_steps": 50,
+    "token_slots_per_optimizer_step": 4096
+  },
+  "runs": [
+    {
+      "name": "baseline",
+      "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dataset_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "maximum_optimizer_steps": 50,
+      "token_slots_per_optimizer_step": 4096,
+      "median_tokens_per_second": 100.0,
+      "peak_allocated_gib": 8.0,
+      "validation_loss": 2.0,
+      "measured_optimizer_steps": 40
+    },
+    {
+      "name": "secretly-shorter-and-different-data",
+      "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+      "dataset_manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "maximum_optimizer_steps": 20,
+      "token_slots_per_optimizer_step": 2048,
+      "median_tokens_per_second": 150.0,
+      "peak_allocated_gib": 7.0,
+      "validation_loss": 1.9,
+      "measured_optimizer_steps": 10
+    }
+  ]
+}

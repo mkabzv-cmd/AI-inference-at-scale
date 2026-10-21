@@ -21,6 +21,7 @@ RUN groupadd --gid 10001 learner \
 ENV MODEL_PATH=/opt/model \
     MODEL_ID=${MODEL_ID} \
     MODEL_REVISION=${MODEL_REVISION} \
+    BIND_HOST=0.0.0.0 \
     REQUIRE_CUDA=true \
     TRANSFORMERS_OFFLINE=1 \
     HF_HUB_OFFLINE=1 \

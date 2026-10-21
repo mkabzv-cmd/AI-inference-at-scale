@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-40/results.schema.json",
+  "title": "Lesson 40 decision results",
+  "type": "object",
+  "required": ["schema_version", "method", "results"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "method": {"type": "string"},
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "recommendation", "rankings"]
+      }
+    }
+  }
+}

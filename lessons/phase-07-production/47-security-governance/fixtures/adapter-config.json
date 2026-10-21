@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "base_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "adapter_type": "lora-teaching-fixture",
+  "rank": 8,
+  "alpha": 16,
+  "target_modules": ["q_proj", "v_proj"],
+  "artifact_format": "safetensors",
+  "license": "Apache-2.0"
+}

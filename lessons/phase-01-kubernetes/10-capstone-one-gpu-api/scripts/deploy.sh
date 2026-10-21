@@ -23,10 +23,16 @@ validate_digest TEST_IMAGE_DIGEST "$TEST_IMAGE_DIGEST"
 
 namespace="${LAB_NAMESPACE:-one-gpu-api}"
 release="${HELM_RELEASE:-one-gpu}"
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_eks_target
+assert_safe_release_name
+ensure_owned_namespace
+
 args=(
   upgrade --install "$release" chart/one-gpu-api
   --namespace "$namespace"
-  --create-namespace
   --set-string "image.repository=${IMAGE_REPOSITORY}"
   --set-string "image.digest=${IMAGE_DIGEST}"
   --set-string "cache.persistence.storageClassName=${MODEL_STORAGE_CLASS}"

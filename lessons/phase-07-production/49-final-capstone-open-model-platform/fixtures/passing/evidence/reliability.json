@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "project_id": "oms-fixture",
+  "release_id": "oms-fixture-1",
+  "evidence_type": "reliability",
+  "origin": "synthetic",
+  "claim_scope": "verifier-exercise-only",
+  "status": "pass",
+  "attestation": {
+    "actor": "fixture-generator",
+    "observed_at": "2026-10-21T12:00:00Z",
+    "command": "checked-in synthetic fixture",
+    "result_source": "deterministic lifecycle test values; not a live failure drill",
+    "live_environment": false
+  },
+  "failure_injection": "pass",
+  "bounded_degradation": "pass",
+  "readiness_recovery": "pass",
+  "rollback_to_known_good": "pass",
+  "post_rollback_smoke": "pass",
+  "reproduction_by_second_operator": "pass",
+  "timeline_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+}

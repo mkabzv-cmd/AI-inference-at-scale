@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/course/lesson-42-results.schema.json",
+  "type": "object",
+  "required": ["schema_version", "index_manifest_sha256", "methods", "security_cases"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "index_manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "methods": {
+      "type": "object",
+      "required": ["sparse", "dense", "hybrid", "reranked"]
+    },
+    "security_cases": {"type": "array", "minItems": 1}
+  }
+}

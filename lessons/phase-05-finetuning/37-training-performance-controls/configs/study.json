@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "study": "lesson-37-controlled-training-sweep",
+  "frozen_invariants": {
+    "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "dataset_contract": "oms-operations-mini/1.0.0",
+    "seed": 3701,
+    "optimizer": "adamw",
+    "learning_rate": 0.00002,
+    "weight_decay": 0.01,
+    "maximum_optimizer_steps": 50,
+    "maximum_gradient_norm": 1.0,
+    "validation_contract": "oms-operations-acceptance-v1"
+  },
+  "candidates": [
+    {
+      "name": "baseline",
+      "microbatch_size": 1,
+      "gradient_accumulation_steps": 8,
+      "sequence_length": 512,
+      "precision": "bf16",
+      "gradient_checkpointing": false,
+      "layout": "padded",
+      "dataloader_workers": 0
+    },
+    {
+      "name": "larger-microbatch",
+      "microbatch_size": 2,
+      "gradient_accumulation_steps": 4,
+      "sequence_length": 512,
+      "precision": "bf16",
+      "gradient_checkpointing": false,
+      "layout": "padded",
+      "dataloader_workers": 0
+    },
+    {
+      "name": "checkpointed",
+      "microbatch_size": 1,
+      "gradient_accumulation_steps": 8,
+      "sequence_length": 512,
+      "precision": "bf16",
+      "gradient_checkpointing": true,
+      "layout": "padded",
+      "dataloader_workers": 0
+    },
+    {
+      "name": "fp32-control",
+      "microbatch_size": 1,
+      "gradient_accumulation_steps": 8,
+      "sequence_length": 512,
+      "precision": "fp32",
+      "gradient_checkpointing": false,
+      "layout": "padded",
+      "dataloader_workers": 0
+    }
+  ]
+}

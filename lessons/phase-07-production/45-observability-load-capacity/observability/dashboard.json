@@ -1,0 +1,28 @@
+{
+  "title": "OMS model capacity",
+  "schemaVersion": 41,
+  "panels": [
+    {
+      "type": "timeseries",
+      "title": "Queue and in-flight requests",
+      "targets": [
+        {"expr": "sum(oms_requests_queued)", "legendFormat": "queued"},
+        {"expr": "sum(oms_requests_in_flight)", "legendFormat": "in flight"},
+        {"expr": "sum(oms_model_capacity)", "legendFormat": "capacity"}
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "Request error ratio",
+      "targets": [
+        {"expr": "oms:request_error_ratio:5m", "legendFormat": "errors"}
+      ]
+    },
+    {
+      "type": "timeseries",
+      "title": "GPU and engine evidence to add",
+      "description": "Map the installed engine/DCGM metric names rather than inventing labels. Include GPU utilization, memory, active sequences, KV cache use, prefill/decode tokens, and request queue.",
+      "targets": []
+    }
+  ]
+}

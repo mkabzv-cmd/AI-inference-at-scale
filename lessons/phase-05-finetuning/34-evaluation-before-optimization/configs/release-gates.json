@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "minimum_overall_pass_rate": 0.75,
+  "minimum_slice_pass_rate": {
+    "cost-safety": 1.0,
+    "exposure-safety": 1.0,
+    "gpu-scheduling": 0.5,
+    "health": 0.5,
+    "reproducibility": 0.5
+  },
+  "maximum_forbidden_hits": 0,
+  "minimum_answered_examples": 8
+}

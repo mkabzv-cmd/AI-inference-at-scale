@@ -5,6 +5,13 @@ namespace=model-storage-lab
 evidence_dir="${EVIDENCE_DIR:-artifacts}"
 storage_evidence="${evidence_dir}/storage-before-cleanup.tsv"
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_eks_target
+assert_namespace_owned_or_absent
+assert_storageclass_owned_or_absent model-cache-gp3
+assert_storageclass_owned_or_absent model-cache-gp3-auto
+
 mkdir -p "$evidence_dir"
 : >"$storage_evidence"
 
@@ -58,8 +65,10 @@ if [[ "$pv_cleanup_failed" -ne 0 ]]; then
   exit 1
 fi
 
-kubectl delete storageclass model-cache-gp3 model-cache-gp3-auto \
-  --ignore-not-found
+for storageclass in model-cache-gp3 model-cache-gp3-auto; do
+  assert_storageclass_owned_or_absent "$storageclass"
+  kubectl delete storageclass "$storageclass" --ignore-not-found
+done
 
 printf 'Captured PVC, PV, and volume handles in %s\n' "$storage_evidence"
 printf '%s\n' \

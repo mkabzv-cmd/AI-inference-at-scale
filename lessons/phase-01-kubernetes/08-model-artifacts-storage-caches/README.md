@@ -95,6 +95,7 @@ and recreating the PVC-backed Pod produces a hit.
 │   ├── 04-pvc-cache-pod.yaml
 │   └── 05-optional-gpu-load-pod.yaml
 ├── scripts/
+│   ├── assert-target.sh
 │   ├── build-push-downloader.sh
 │   ├── check-prerequisites.sh
 │   ├── cleanup.sh
@@ -333,9 +334,10 @@ and IAM guide.
 - The ECR login password is passed to Docker over stdin.
 - The lab StorageClass uses `Delete`, but you still verify the cloud volume is
   gone.
-- The optional GPU Pod deliberately uses version tags and installs Python
-  packages at startup to expose the mechanism. It is not reproducible evidence;
-  lesson 10 replaces that shortcut with a built image deployed by digest.
+- The optional GPU Pod pins its CUDA base image by digest, but installs Python
+  packages at startup without a reviewed hash-locked transitive set. It exposes
+  the mechanism, not a production-ready artifact; lesson 10 replaces that
+  shortcut with a built application image deployed by digest.
 
 Stop immediately if the context is a production/shared cluster, the selected
 StorageClass has unexpected retention behavior, or GPU capacity exceeds one
@@ -384,11 +386,16 @@ Do not change predictions after seeing results; append observations beside them.
 
 ```bash
 export ECR_REPOSITORY=open-model-course/model-downloader
+export I_UNDERSTAND_ECR_CHANGES=yes
+export CONFIRM_ECR_REPOSITORY="$ECR_REPOSITORY"
 ./scripts/build-push-downloader.sh
 ```
 
-The script creates the repository if needed, logs in, builds for `linux/amd64`,
-pushes, resolves the ECR digest, and prints:
+If the repository is absent, the two confirmation variables authorize creation
+of that exact repository. The script creates it with immutable tags and
+scan-on-push. If it already exists, the script refuses mutable tags or disabled
+scanning. It then logs in, builds for `linux/amd64`, pushes, resolves the ECR
+digest, and prints:
 
 ```text
 Use this immutable reference:
@@ -878,6 +885,8 @@ The script captures PVC → PV → CSI volume-handle mappings in
 `artifacts/storage-before-cleanup.tsv` and waits briefly for each PV object to
 disappear before deleting the lesson StorageClasses. A retained/stuck PV makes
 cleanup fail so you inspect it rather than assuming the EBS volume is gone.
+It also re-verifies the named EKS endpoint and the namespace/StorageClass
+ownership labels, so switching `kubectl` context causes a fail-closed stop.
 
 Prove Kubernetes cleanup:
 

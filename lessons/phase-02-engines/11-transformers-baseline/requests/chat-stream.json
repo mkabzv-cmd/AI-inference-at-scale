@@ -1,0 +1,13 @@
+{
+  "model": "course-model",
+  "messages": [
+    {
+      "role": "user",
+      "content": "List three reasons an inference server queues a request."
+    }
+  ],
+  "max_tokens": 80,
+  "temperature": 0.0,
+  "seed": 42,
+  "stream": true
+}

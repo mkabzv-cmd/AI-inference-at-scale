@@ -23,6 +23,14 @@ spec:
         app.kubernetes.io/component: server
         app.kubernetes.io/version: 0.1.0
     spec:
+      automountServiceAccountToken: false
+      enableServiceLinks: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: server
           image: lesson06/health-app:0.1.0
@@ -75,6 +83,8 @@ spec:
             - name: api-token
               mountPath: /var/run/secrets/lesson
               readOnly: true
+            - name: runtime
+              mountPath: /tmp
           resources:
             requests:
               cpu: 25m
@@ -86,6 +96,8 @@ spec:
             allowPrivilegeEscalation: false
             runAsNonRoot: true
             runAsUser: 10001
+            runAsGroup: 10001
+            readOnlyRootFilesystem: true
             capabilities:
               drop:
                 - ALL
@@ -99,3 +111,6 @@ spec:
             items:
               - key: api-token
                 path: api-token
+        - name: runtime
+          emptyDir:
+            sizeLimit: 16Mi

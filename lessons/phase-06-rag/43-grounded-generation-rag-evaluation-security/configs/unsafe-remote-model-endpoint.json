@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "api_style": "openai-compatible-chat-completions",
+  "base_url": "http://caller@192.0.2.1:8001/v1",
+  "model": "deliberate-failure-model",
+  "timeout_seconds": 1,
+  "allowed_hosts": ["192.0.2.1"],
+  "send_authorization_header": false,
+  "purpose": "Deliberate failure: a non-loopback endpoint with embedded URL identity"
+}

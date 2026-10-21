@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Lesson 17 memory-accounting result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "result_kind",
+    "model",
+    "assumptions",
+    "scenarios"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "oms-optimization-memory/v1"
+    },
+    "result_kind": {
+      "const": "analytical_prediction_not_measurement"
+    },
+    "model": {
+      "type": "object"
+    },
+    "assumptions": {
+      "type": "object"
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 1
+    }
+  }
+}

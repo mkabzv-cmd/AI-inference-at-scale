@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "dataset_name": "oms-operations-mini",
+  "dataset_version": "1.0.0",
+  "seed": "oms-lesson-33-v1",
+  "split_thresholds": {
+    "train": 0.7,
+    "validation": 0.85,
+    "test": 1.0
+  },
+  "allowed_licenses": [
+    "CC0-1.0"
+  ],
+  "maximum_rendered_bytes": 2048,
+  "assistant_loss_only": true,
+  "template": {
+    "system_prefix": "<|system|>\n",
+    "user_prefix": "<|user|>\n",
+    "assistant_prefix": "<|assistant|>\n",
+    "message_suffix": "\n",
+    "conversation_suffix": "<|end|>\n"
+  }
+}

@@ -6,6 +6,12 @@ release="${HELM_RELEASE:-one-gpu}"
 local_port="${LOCAL_PORT:-18000}"
 base_url="http://127.0.0.1:${local_port}"
 
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "$script_dir/assert-target.sh"
+assert_eks_target
+assert_safe_release_name
+assert_namespace_owned_or_absent
+
 mkdir -p artifacts
 service="$(
   kubectl -n "$namespace" get service \

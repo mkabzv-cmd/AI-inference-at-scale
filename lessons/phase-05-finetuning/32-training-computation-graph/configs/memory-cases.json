@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "name": "inference-bf16",
+      "mode": "inference",
+      "parameter_count": 7000000000,
+      "weight_bytes_per_parameter": 2,
+      "gradient_bytes_per_parameter": 0,
+      "optimizer_state_bytes_per_parameter": 0,
+      "master_weight_bytes_per_parameter": 0,
+      "retained_activation_elements": 0,
+      "activation_bytes_per_element": 2,
+      "kv_cache_bytes": 2147483648,
+      "workspace_bytes": 1073741824
+    },
+    {
+      "name": "full-training-adamw-mixed-precision",
+      "mode": "training",
+      "parameter_count": 7000000000,
+      "weight_bytes_per_parameter": 2,
+      "gradient_bytes_per_parameter": 2,
+      "optimizer_state_bytes_per_parameter": 8,
+      "master_weight_bytes_per_parameter": 4,
+      "retained_activation_elements": 700000000,
+      "activation_bytes_per_element": 2,
+      "kv_cache_bytes": 0,
+      "workspace_bytes": 2147483648
+    },
+    {
+      "name": "full-training-checkpointed-activations",
+      "mode": "training",
+      "parameter_count": 7000000000,
+      "weight_bytes_per_parameter": 2,
+      "gradient_bytes_per_parameter": 2,
+      "optimizer_state_bytes_per_parameter": 8,
+      "master_weight_bytes_per_parameter": 4,
+      "retained_activation_elements": 220000000,
+      "activation_bytes_per_element": 2,
+      "kv_cache_bytes": 0,
+      "workspace_bytes": 2147483648
+    }
+  ]
+}

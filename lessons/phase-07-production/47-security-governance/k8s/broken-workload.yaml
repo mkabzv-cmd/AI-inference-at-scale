@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unsafe-model
+spec:
+  selector:
+    matchLabels: {app: unsafe-model}
+  template:
+    metadata:
+      labels: {app: unsafe-model}
+    spec:
+      hostNetwork: true
+      containers:
+        - name: model
+          image: example.invalid/model:latest
+          securityContext:
+            privileged: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: unsafe-model
+spec:
+  type: LoadBalancer
+  selector: {app: unsafe-model}
+  ports:
+    - {port: 80, targetPort: 8000}

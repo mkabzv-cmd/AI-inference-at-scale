@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "corpus_name": "oms-synthetic-runbooks",
+  "corpus_version": "1.0.0",
+  "chunk_count": 24,
+  "embedding_model": "transparent-course-hashing-baseline",
+  "access_control_fields": ["tenant", "visibility"],
+  "license": "CC0-1.0"
+}

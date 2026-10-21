@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "layers": 24,
+    "hidden_size": 896,
+    "intermediate_size": 4864,
+    "attention_heads": 14,
+    "key_value_heads": 2,
+    "head_dimension": 64
+  },
+  "candidates": [
+    {
+      "name": "lora-r4-attention",
+      "method": "lora",
+      "rank": 4,
+      "alpha": 8,
+      "dropout": 0.05,
+      "targets": ["q_proj", "k_proj", "v_proj", "o_proj"],
+      "merge_policy": "optional-after-evaluation"
+    },
+    {
+      "name": "lora-r8-attention",
+      "method": "lora",
+      "rank": 8,
+      "alpha": 16,
+      "dropout": 0.05,
+      "targets": ["q_proj", "k_proj", "v_proj", "o_proj"],
+      "merge_policy": "optional-after-evaluation"
+    },
+    {
+      "name": "qlora-r8-all-linear",
+      "method": "qlora-nf4",
+      "rank": 8,
+      "alpha": 16,
+      "dropout": 0.05,
+      "targets": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ],
+      "merge_policy": "reload-nonquantized-base-then-merge"
+    },
+    {
+      "name": "qlora-r16-all-linear",
+      "method": "qlora-nf4",
+      "rank": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "targets": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ],
+      "merge_policy": "reload-nonquantized-base-then-merge"
+    }
+  ]
+}

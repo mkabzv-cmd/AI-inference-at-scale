@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "contract_name": "oms-operations-acceptance-v1",
+  "frozen_on": "2026-10-21",
+  "acceptance_sha256": "a211e81819734c4af3e5bfd138e8cf11baeea3250dab15b520050cb3136209cb",
+  "evaluation_config_sha256": "230f82b3719f942f1773bbea131dbb83ad9e30ad833f8f03a0ac0bc150a665e6",
+  "evaluator_sha256": "f5897aa1fde41be0fdccec4fd7f01d39afe0a9d536d8e3bd1b4afbe1d2573797",
+  "change_policy": "Create a new contract version; do not rewrite historical results."
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "project_id": "__REQUIRED__",
+  "environment_id": "__REQUIRED__",
+  "release_id": "__REQUIRED__",
+  "validation_mode": "operator-run",
+  "cluster_context": "__REQUIRED__",
+  "namespace": "__REQUIRED__",
+  "region": "__REQUIRED__",
+  "network_exposure": "private",
+  "service_type": "ClusterIP",
+  "serving_topology": "one-gpu",
+  "nodes": 1,
+  "gpus_per_node": 1,
+  "interconnect": "not-required",
+  "model": {
+    "id": "__REQUIRED__",
+    "revision": "__REQUIRED__",
+    "tokenizer_revision": "__REQUIRED__"
+  },
+  "operator": "__REQUIRED__",
+  "captured_at": "__REQUIRED__"
+}

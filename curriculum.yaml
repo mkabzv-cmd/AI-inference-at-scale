@@ -1,6 +1,6 @@
 schema_version: 1
-last_reviewed: 2026-10-21
-status: active-development
+last_reviewed: "2026-10-21"
+status: all-lessons-draft
 
 phases:
   - id: phase-00-foundations
@@ -25,62 +25,62 @@ phases:
   - id: phase-02-engines
     title: Single-GPU inference engines
     lessons:
-      - { id: "11", slug: transformers-baseline, status: outline, compute: [g1] }
-      - { id: "12", slug: benchmarking-methodology, status: outline, compute: [g1] }
-      - { id: "13", slug: vllm-one-gpu, status: outline, compute: [g1] }
-      - { id: "14", slug: sglang-one-gpu, status: outline, compute: [g1] }
-      - { id: "15", slug: llama-cpp-gguf, status: outline, compute: [local-cpu, g1] }
-      - { id: "16", slug: capstone-engine-shootout, status: outline, compute: [g1] }
+      - { id: "11", slug: transformers-baseline, status: draft, compute: [g1] }
+      - { id: "12", slug: benchmarking-methodology, status: draft, compute: [g1] }
+      - { id: "13", slug: vllm-one-gpu, status: draft, compute: [g1] }
+      - { id: "14", slug: sglang-one-gpu, status: draft, compute: [g1] }
+      - { id: "15", slug: llama-cpp-gguf, status: draft, compute: [local-cpu, g1] }
+      - { id: "16", slug: capstone-engine-shootout, status: draft, compute: [g1] }
 
   - id: phase-03-optimization
     title: Inference optimization internals
     lessons:
-      - { id: "17", slug: prefill-decode-memory-accounting, status: outline, compute: [g1] }
-      - { id: "18", slug: batching-scheduling-paged-attention, status: outline, compute: [g1] }
-      - { id: "19", slug: quantization-systems-tradeoffs, status: outline, compute: [g1] }
-      - { id: "20", slug: attention-kernels-compilation-cuda-graphs, status: outline, compute: [g1] }
-      - { id: "21", slug: prefix-cache-chunked-prefill-speculative, status: outline, compute: [g1] }
-      - { id: "22", slug: disciplined-tuning-workflow, status: outline, compute: [g1] }
-      - { id: "23", slug: capstone-optimize-under-slo, status: outline, compute: [g1] }
+      - { id: "17", slug: prefill-decode-memory-accounting, status: draft, compute: [g1] }
+      - { id: "18", slug: batching-scheduling-paged-attention, status: draft, compute: [g1] }
+      - { id: "19", slug: quantization-systems-tradeoffs, status: draft, compute: [g1] }
+      - { id: "20", slug: attention-kernels-compilation-cuda-graphs, status: draft, compute: [g1] }
+      - { id: "21", slug: prefix-cache-chunked-prefill-speculative, status: draft, compute: [g1] }
+      - { id: "22", slug: disciplined-tuning-workflow, status: draft, compute: [g1] }
+      - { id: "23", slug: capstone-optimize-under-slo, status: draft, compute: [g1] }
 
   - id: phase-04-distributed
     title: Multi-node distributed inference
     lessons:
-      - { id: "24", slug: distributed-process-fundamentals, status: outline, compute: [local-cpu, g3] }
-      - { id: "25", slug: parallelism-taxonomy-arithmetic, status: outline, compute: [local-cpu] }
-      - { id: "26", slug: ray-kuberay-orchestration, status: outline, compute: [g3] }
-      - { id: "27", slug: nccl-network-characterization, status: outline, compute: [g3] }
-      - { id: "28", slug: toy-model-multinode-mechanics, status: outline, compute: [g3] }
-      - { id: "29", slug: pipeline-parallel-large-model, status: outline, compute: [g3] }
-      - { id: "30", slug: tensor-vs-pipeline-vs-data, status: outline, compute: [g3] }
-      - { id: "31", slug: capstone-distributed-inference-study, status: outline, compute: [g3] }
+      - { id: "24", slug: distributed-process-fundamentals, status: draft, compute: [local-cpu, g3] }
+      - { id: "25", slug: parallelism-taxonomy-arithmetic, status: draft, compute: [local-cpu] }
+      - { id: "26", slug: ray-kuberay-orchestration, status: draft, compute: [g3] }
+      - { id: "27", slug: nccl-network-characterization, status: draft, compute: [g3] }
+      - { id: "28", slug: toy-model-multinode-mechanics, status: draft, compute: [g3] }
+      - { id: "29", slug: pipeline-parallel-large-model, status: draft, compute: [g3] }
+      - { id: "30", slug: tensor-vs-pipeline-vs-data, status: draft, compute: [g3] }
+      - { id: "31", slug: capstone-distributed-inference-study, status: draft, compute: [g3] }
 
   - id: phase-05-finetuning
     title: Fine-tuning and serving the result
     lessons:
-      - { id: "32", slug: training-computation-graph, status: outline, compute: [local-cpu, g1] }
-      - { id: "33", slug: dataset-engineering-chat-templates, status: outline, compute: [local-cpu] }
-      - { id: "34", slug: evaluation-before-optimization, status: outline, compute: [local-cpu, g1] }
-      - { id: "35", slug: single-gpu-sft, status: outline, compute: [g1] }
-      - { id: "36", slug: lora-qlora, status: outline, compute: [g1] }
-      - { id: "37", slug: training-performance-controls, status: outline, compute: [g1] }
-      - { id: "38", slug: ddp-fsdp2-zero, status: outline, compute: [g3] }
-      - { id: "39", slug: capstone-adapt-package-serve, status: outline, compute: [g1, g3] }
+      - { id: "32", slug: training-computation-graph, status: draft, compute: [local-cpu, g1] }
+      - { id: "33", slug: dataset-engineering-chat-templates, status: draft, compute: [local-cpu] }
+      - { id: "34", slug: evaluation-before-optimization, status: draft, compute: [local-cpu, g1] }
+      - { id: "35", slug: single-gpu-sft, status: draft, compute: [g1] }
+      - { id: "36", slug: lora-qlora, status: draft, compute: [g1] }
+      - { id: "37", slug: training-performance-controls, status: draft, compute: [g1] }
+      - { id: "38", slug: ddp-fsdp2-zero, status: draft, compute: [g3] }
+      - { id: "39", slug: capstone-adapt-package-serve, status: draft, compute: [g1, g3] }
 
   - id: phase-06-rag
     title: Retrieval-augmented generation
     lessons:
-      - { id: "40", slug: rag-vs-finetuning-long-context, status: outline, compute: [local-cpu] }
-      - { id: "41", slug: ingestion-chunks-embeddings-indexes, status: outline, compute: [local-cpu, g1] }
-      - { id: "42", slug: retrieval-hybrid-reranking, status: outline, compute: [local-cpu, g1] }
-      - { id: "43", slug: grounded-generation-rag-evaluation-security, status: outline, compute: [g1] }
-      - { id: "44", slug: capstone-knowledge-system, status: outline, compute: [local-cpu, g1] }
+      - { id: "40", slug: rag-vs-finetuning-long-context, status: draft, compute: [local-cpu] }
+      - { id: "41", slug: ingestion-chunks-embeddings-indexes, status: draft, compute: [local-cpu, g1] }
+      - { id: "42", slug: retrieval-hybrid-reranking, status: draft, compute: [local-cpu, g1] }
+      - { id: "43", slug: grounded-generation-rag-evaluation-security, status: draft, compute: [g1] }
+      - { id: "44", slug: capstone-knowledge-system, status: draft, compute: [local-cpu, g1] }
 
   - id: phase-07-production
     title: Production and LLMOps
     lessons:
-      - { id: "45", slug: observability-load-capacity, status: outline, compute: [g1, g3] }
-      - { id: "46", slug: autoscaling-reliability, status: outline, compute: [g1, g3] }
-      - { id: "47", slug: security-governance, status: outline, compute: [local-cpu, g1] }
-      - { id: "48", slug: cicd-gitops-reproducibility, status: outline, compute: [local-cpu, g1] }
-      - { id: "49", slug: final-capstone-open-model-platform, status: outline, compute: [g1, g3, advanced] }
+      - { id: "45", slug: observability-load-capacity, status: draft, compute: [g1, g3] }
+      - { id: "46", slug: autoscaling-reliability, status: draft, compute: [g1, g3] }
+      - { id: "47", slug: security-governance, status: draft, compute: [local-cpu, g1] }
+      - { id: "48", slug: cicd-gitops-reproducibility, status: draft, compute: [local-cpu, g1] }
+      - { id: "49", slug: final-capstone-open-model-platform, status: draft, compute: [g1, g3, advanced] }

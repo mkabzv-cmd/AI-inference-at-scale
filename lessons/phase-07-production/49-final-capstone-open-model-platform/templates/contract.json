@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "project_id": "__REQUIRED__",
+  "validation_mode": "operator-run",
+  "claim_scope": "__REQUIRED__",
+  "environment_id": "__REQUIRED__",
+  "release_id": "__REQUIRED__",
+  "serving_topology": "one-gpu",
+  "features": {
+    "adapter": false,
+    "rag": false
+  },
+  "model": {
+    "id": "__REQUIRED__",
+    "revision": "__REQUIRED__",
+    "tokenizer_revision": "__REQUIRED__"
+  },
+  "paths": {
+    "environment": "environment.json",
+    "release": "release.json",
+    "evidence_index": "evidence-index.json",
+    "kubernetes_manifest": "k8s/platform.yaml"
+  },
+  "required_files": [
+    "ADR.md",
+    "COST-PLAN.md",
+    "RUNBOOK.md",
+    "THREAT-MODEL.md",
+    "artifact-records/adapter.json",
+    "artifact-records/eval-dataset.json",
+    "artifact-records/rag-index.json",
+    "artifact-records/serving-config.json",
+    "contract.json",
+    "environment.json",
+    "evidence/cleanup.json",
+    "evidence/cost.json",
+    "evidence/performance.json",
+    "evidence/quality.json",
+    "evidence/reliability.json",
+    "evidence/security.json",
+    "k8s/platform.yaml",
+    "release.json"
+  ]
+}

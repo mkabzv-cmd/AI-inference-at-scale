@@ -1,0 +1,18 @@
+{
+  "date_utc": "replace-after-run",
+  "aws_region": "sanitize-before-sharing",
+  "kubernetes_version": "replace-after-run",
+  "node_instance_type": "replace-after-run",
+  "gpu_name": "replace-after-run",
+  "gpu_driver": "replace-after-run",
+  "node_ami_or_os": "replace-after-run",
+  "cpu_limit": "same-for-comparable-runs",
+  "memory_limit": "same-for-comparable-runs",
+  "image_digests": {
+    "transformers": "sha256:replace",
+    "vllm": "sha256:replace",
+    "sglang": "sha256:replace",
+    "llama-cpp": "sha256:replace"
+  },
+  "notes": "Never include account IDs, cluster endpoints, role names, tokens, or private registry credentials."
+}

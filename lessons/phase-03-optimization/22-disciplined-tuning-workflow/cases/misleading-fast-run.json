@@ -1,0 +1,15 @@
+{
+  "schema_version": "oms-run-summary/v1",
+  "run_id": "misleading-fixture",
+  "result_kind": "synthetic_training_fixture_not_measurement",
+  "controlled_workload_hash": "fixture-workload-v1",
+  "changed_variable": "max_output_tokens:96->24",
+  "summary": {
+    "success_rate": 1.0,
+    "quality_pass_rate": 0.58,
+    "request_throughput_rps": 8.9,
+    "ttft_p95_ms": 540,
+    "tpot_p95_ms": 30,
+    "output_tokens_mean": 24
+  }
+}

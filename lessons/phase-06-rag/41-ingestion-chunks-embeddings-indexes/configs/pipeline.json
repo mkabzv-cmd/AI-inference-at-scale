@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "allowed_licenses": [
+    "Apache-2.0",
+    "CC0-1.0"
+  ],
+  "chunking": {
+    "target_words": 28,
+    "overlap_sentences": 1
+  },
+  "embedding": {
+    "algorithm": "signed-word-and-character-hash",
+    "dimensions": 96,
+    "l2_normalize": true
+  },
+  "approximate_index": {
+    "hyperplanes": 5,
+    "max_hamming_distance": 1
+  }
+}

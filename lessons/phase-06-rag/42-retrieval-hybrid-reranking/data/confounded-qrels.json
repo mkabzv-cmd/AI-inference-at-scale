@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "index_source_sha256": "wrong-source-snapshot",
+  "queries": [
+    {
+      "id": "unauthorized-judgment",
+      "tenant_id": "beta",
+      "text": "How long are Alpha API tokens valid?",
+      "relevance": {
+        "chk_c24be6435c797f88b4d3665d": 3
+      },
+      "intent": "This relevance label violates the declared tenant boundary"
+    }
+  ]
+}

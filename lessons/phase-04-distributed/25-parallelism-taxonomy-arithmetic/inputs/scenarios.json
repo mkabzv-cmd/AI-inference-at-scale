@@ -1,0 +1,56 @@
+[
+  {
+    "name": "small-dp3",
+    "model": "divisible-small-shape",
+    "gpus": 3,
+    "dp": 3,
+    "tp": 1,
+    "pp": 1,
+    "expected_valid": true
+  },
+  {
+    "name": "small-tp3",
+    "model": "divisible-small-shape",
+    "gpus": 3,
+    "dp": 1,
+    "tp": 3,
+    "pp": 1,
+    "expected_valid": true
+  },
+  {
+    "name": "small-pp3",
+    "model": "divisible-small-shape",
+    "gpus": 3,
+    "dp": 1,
+    "tp": 1,
+    "pp": 3,
+    "expected_valid": true
+  },
+  {
+    "name": "power-of-two-invalid-tp3",
+    "model": "power-of-two-7b-shape",
+    "gpus": 3,
+    "dp": 1,
+    "tp": 3,
+    "pp": 1,
+    "expected_valid": false
+  },
+  {
+    "name": "thirty-billion-pp3",
+    "model": "illustrative-30-layer",
+    "gpus": 3,
+    "dp": 1,
+    "tp": 1,
+    "pp": 3,
+    "expected_valid": true
+  },
+  {
+    "name": "factor-product-mismatch",
+    "model": "divisible-small-shape",
+    "gpus": 3,
+    "dp": 2,
+    "tp": 1,
+    "pp": 1,
+    "expected_valid": false
+  }
+]

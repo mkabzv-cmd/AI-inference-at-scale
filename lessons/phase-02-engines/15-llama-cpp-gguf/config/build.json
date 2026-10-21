@@ -1,0 +1,12 @@
+{
+  "llama_cpp_release": "v0.5.0",
+  "llama_cpp_commit": "7fe450e19305b828c199d602c23a8337aaa1f03b",
+  "cpu_build": {
+    "cmake": ["GGML_NATIVE=OFF", "GGML_CUDA=OFF", "LLAMA_CURL=ON"]
+  },
+  "cuda_build": {
+    "cmake": ["GGML_NATIVE=OFF", "GGML_CUDA=ON", "LLAMA_CURL=ON"]
+  },
+  "validated": "2026-10-21",
+  "note": "Source and direct inputs are pinned; deploy the built image by digest."
+}

@@ -108,6 +108,7 @@ scale the managed GPU node group back to zero.
 │   ├── gpu-smoke-test.yaml
 │   └── gpu-two-request-failure.yaml
 └── scripts/
+    ├── assert-eks-target.sh
     ├── cleanup-local.sh
     ├── prepare-simulated-node.sh
     ├── verify-gpu.sh
@@ -442,12 +443,22 @@ Set safe placeholders locally:
 export EKS_CLUSTER='REPLACE_WITH_CLUSTER_NAME'
 export GPU_NODEGROUP='REPLACE_WITH_GPU_NODE_GROUP'
 export AWS_REGION='REPLACE_WITH_REGION'
+export CONFIRM_GPU_NODEGROUP="$GPU_NODEGROUP"
 ```
 
 Never commit real account, cluster, role, node-group, subnet, or registry
 identifiers into this public repository.
 
-Inspect, do not mutate:
+Verify that the active `kubectl` API endpoint is the named EKS cluster, the
+managed group is `ACTIVE` with `minSize: 0`, its desired size is zero or one,
+and any existing lesson namespace has the expected ownership labels:
+
+```bash
+./scripts/assert-eks-target.sh
+```
+
+The exact confirmation prevents a stale shell variable from silently selecting
+another node group. Inspect, do not mutate:
 
 ```bash
 aws eks describe-nodegroup \
@@ -728,6 +739,7 @@ First inspect the current scaling values and record them. Then, only on the
 intended lab group:
 
 ```bash
+./scripts/assert-eks-target.sh
 aws eks update-nodegroup-config \
   --cluster-name "$EKS_CLUSTER" \
   --nodegroup-name "$GPU_NODEGROUP" \
@@ -1211,6 +1223,13 @@ kind delete cluster --name llm-scheduler-lab
 ```
 
 ### Track B
+
+Re-run the endpoint, node-group, exact-confirmation, and namespace-ownership
+checks. This catches a context switch before cleanup changes anything:
+
+```bash
+./scripts/assert-eks-target.sh
+```
 
 Delete workload objects first:
 

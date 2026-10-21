@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-45/capacity-report.schema.json",
+  "title": "Lesson 45 capacity report",
+  "type": "object",
+  "required": ["schema_version", "stages", "first_slo_breach", "interpretation"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "stages": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "stage",
+          "concurrency",
+          "requests_per_second",
+          "p95_ttft_seconds",
+          "p95_total_seconds",
+          "slo_pass"
+        ]
+      }
+    },
+    "first_slo_breach": {"type": ["string", "null"]},
+    "interpretation": {"type": "string"}
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "schema_version": "oms-scheduler-matrix/v1",
+  "controlled_variables": {
+    "workload": "configs/workload.json",
+    "block_size_tokens": 16,
+    "total_blocks": 64
+  },
+  "experiments": [
+    {
+      "name": "static-baseline",
+      "policy": "static",
+      "max_num_seqs": 2,
+      "max_num_batched_tokens": 32
+    },
+    {
+      "name": "continuous-controlled",
+      "policy": "continuous",
+      "max_num_seqs": 2,
+      "max_num_batched_tokens": 32
+    },
+    {
+      "name": "continuous-larger-token-budget",
+      "policy": "continuous",
+      "max_num_seqs": 2,
+      "max_num_batched_tokens": 64
+    }
+  ]
+}

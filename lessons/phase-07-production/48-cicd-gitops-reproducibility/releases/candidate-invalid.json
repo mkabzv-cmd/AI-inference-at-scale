@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "release_id": "oms-invalid",
+  "kind": "teaching-fixture",
+  "source_revision": "main",
+  "image": "example.invalid/oms-platform:latest",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "main",
+    "tokenizer_revision": "different"
+  },
+  "adapter": {
+    "enabled": true,
+    "format": "pickle",
+    "sha256": "not-a-digest",
+    "base_model_revision": "wrong"
+  },
+  "index": {
+    "version": "latest",
+    "sha256": "not-a-digest"
+  },
+  "configuration_sha256": "not-a-digest",
+  "gates": [
+    {
+      "name": "quality-evaluation",
+      "status": "fail",
+      "evidence_sha256": "not-a-digest"
+    }
+  ],
+  "smoke_response": "anything"
+}

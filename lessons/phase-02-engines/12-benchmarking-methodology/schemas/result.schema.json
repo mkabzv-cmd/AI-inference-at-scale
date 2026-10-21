@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/open-model-systems/oms-benchmark-v1.schema.json",
+  "title": "Open Model Systems benchmark result",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "run_id",
+    "started_at_utc",
+    "engine",
+    "model",
+    "environment",
+    "workload",
+    "requests",
+    "summary"
+  ],
+  "properties": {
+    "schema_version": {"const": "oms-benchmark/v1"},
+    "run_id": {"type": "string", "minLength": 1},
+    "started_at_utc": {"type": "string", "format": "date-time"},
+    "engine": {
+      "type": "object",
+      "required": ["name", "version", "config"],
+      "properties": {
+        "name": {"type": "string"},
+        "version": {"type": "string"},
+        "config": {"type": "object"}
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": ["id", "revision", "artifact"],
+      "properties": {
+        "id": {"type": "string"},
+        "revision": {"type": "string"},
+        "artifact": {"type": "string"}
+      }
+    },
+    "environment": {"type": "object"},
+    "workload": {"type": "object"},
+    "requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "request_id",
+          "prompt_id",
+          "status_code",
+          "e2e_ms",
+          "quality_pass"
+        ]
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "measured_requests",
+        "successful_requests",
+        "success_rate",
+        "quality_pass_rate",
+        "request_throughput_per_second",
+        "latency_ms",
+        "ttft_ms",
+        "tpot_ms"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

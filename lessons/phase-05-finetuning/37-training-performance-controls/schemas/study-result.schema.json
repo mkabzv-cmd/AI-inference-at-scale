@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-37/study-result.schema.json",
+  "title": "Controlled training performance study",
+  "type": "object",
+  "required": ["schema_version", "evidence_kind", "invariants", "runs"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "evidence_kind": {"type": "string", "minLength": 1},
+    "invariants": {"type": "object"},
+    "runs": {"type": "array", "minItems": 2}
+  }
+}

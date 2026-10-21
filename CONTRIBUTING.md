@@ -28,6 +28,7 @@ This course values reproducibility and explanation over the number of tutorials.
 - [ ] Expected output is abbreviated rather than copied from huge logs.
 - [ ] Cost and cleanup warnings are visible before resource creation.
 - [ ] `make validate` passes.
+- [ ] `make test-cpu` passes when the change affects an offline fixture.
 - [ ] A second learner completed the lesson.
 
 ## Style

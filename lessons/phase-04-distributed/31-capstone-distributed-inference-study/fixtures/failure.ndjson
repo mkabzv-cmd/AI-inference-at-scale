@@ -1,0 +1,5 @@
+{"timestamp":"2026-10-21T00:00:00Z","event":"baseline","strategy":"pipeline-parallel","api_health":"ok","ready_pods":3}
+{"timestamp":"2026-10-21T00:00:05Z","event":"participant_deleted","pod":"fixture-worker"}
+{"timestamp":"2026-10-21T00:00:10Z","event":"observed","api_health":"failed","ready_pods":2}
+{"timestamp":"2026-10-21T00:01:00Z","event":"pod_replaced","api_health":"failed","ready_pods":3}
+{"timestamp":"2026-10-21T00:02:00Z","event":"engine_restarted","api_health":"ok","ready_pods":3}

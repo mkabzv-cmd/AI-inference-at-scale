@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "experiment": "lesson-35-qwen-sft",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "trust_remote_code": false
+  },
+  "seed": 3501,
+  "maximum_sequence_length": 512,
+  "microbatch_size": 1,
+  "gradient_accumulation_steps": 8,
+  "maximum_optimizer_steps": 50,
+  "learning_rate": 0.00002,
+  "weight_decay": 0.01,
+  "warmup_steps": 5,
+  "maximum_gradient_norm": 1.0,
+  "validation_every_steps": 10,
+  "checkpoint_every_steps": 10,
+  "precision": "bf16",
+  "gradient_checkpointing": false,
+  "assistant_loss_only": true
+}

@@ -1,49 +1,107 @@
-schema_version: 1
+schema_version: 2
+last_reviewed: "2026-10-21"
+
+revision_policy:
+  immutable_revisions_required: true
+  accepted_revision_formats:
+    - 40-character Git commit
+    - 64-character Git commit
+  floating_revisions_forbidden:
+    - main
+    - master
+    - latest
+  note: Resolve a candidate to a commit before downloading weights or starting billable compute.
 
 profiles:
   tiny:
-    purpose: correctness, mechanics, and smoke tests
+    purpose: correctness, mechanics, CPU smoke tests, and the shared serving baseline
     parameter_range: 0.5B-1.5B
-    required_fields:
+    course_default:
+      model_id: Qwen/Qwen2.5-0.5B-Instruct
+      model_revision: 7ae557604adf67be50417f59c2c2f167def9a775
+      tokenizer_id: Qwen/Qwen2.5-0.5B-Instruct
+      tokenizer_revision: 7ae557604adf67be50417f59c2c2f167def9a775
+      license: Apache-2.0
+      gated: false
+      parameter_count: 494032768
+      source_precision: BF16
+      primary_weight_bytes: 988097824
+      supported_engines:
+        - transformers
+        - vllm
+        - sglang
+      intended_compute:
+        - local-cpu
+        - aws-g5-single
+    gguf_default:
+      model_id: Qwen/Qwen2.5-0.5B-Instruct-GGUF
+      model_revision: 9217f5db79a29953eb74d5343926648285ec7e67
+      source_model_id: Qwen/Qwen2.5-0.5B-Instruct
+      source_model_revision: 7ae557604adf67be50417f59c2c2f167def9a775
+      filename: qwen2.5-0.5b-instruct-q4_k_m.gguf
+      quantization: Q4_K_M
+      license: Apache-2.0
+      file_bytes: 491400032
+      supported_engines:
+        - llama.cpp
+      intended_compute:
+        - local-cpu
+        - aws-g5-single
+
+  small:
+    purpose: affordable single-GPU serving, engine comparison, and fine-tuning
+    parameter_range: 3B-8B
+    selection_state: learner-selected
+    minimum_required_record:
       - model_id
       - model_revision
       - tokenizer_id
       - tokenizer_revision
       - license
-      - expected_download_bytes
+      - source_precision_or_quantization
+      - expected_weight_bytes
+      - supported_engines
+      - measured_peak_vram_bytes
+    intended_compute:
+      - aws-g5-single
 
-  small:
-    purpose: single-GPU serving, engine comparison, and affordable fine-tuning
-    parameter_range: 3B-8B
-    required_fields:
+  medium:
+    purpose: memory-pressure analysis and early model-sharding experiments
+    parameter_range: 14B-32B
+    typical_representation: weight-quantized
+    selection_state: learner-selected
+    minimum_required_record:
       - model_id
       - model_revision
       - tokenizer_revision
       - license
-      - supported_engines
-      - minimum_vram_bytes
-
-  medium:
-    purpose: memory pressure and early model-sharding experiments
-    parameter_range: 14B-32B
-    typical_representation: quantized
-    required_fields:
-      - model_id
-      - model_revision
       - quantization
-      - license
+      - expected_weight_bytes
       - supported_parallel_degrees
-      - minimum_total_vram_bytes
+      - measured_total_vram_bytes
+    intended_compute:
+      - aws-g5-single
+      - aws-g5-three-node
 
   large:
-    purpose: three-node pipeline-parallel capstone
+    purpose: three-node pipeline-parallel experimentation on ordinary G-series networking
     parameter_range: 70B-class
-    typical_representation: 4-bit
-    required_fields:
+    typical_representation: 4-bit weight quantization
+    selection_state: resolve-at-lesson-time
+    reference_candidate:
+      model_id: Qwen/Qwen2.5-72B-Instruct-AWQ
+      model_revision: null
+      reason: Upstream snapshots can change; lesson 29 resolves and records an immutable commit before launch.
+    minimum_required_record:
       - model_id
       - model_revision
-      - quantization
+      - tokenizer_revision
       - license
+      - quantization
       - expected_weight_bytes
       - supported_engines
-      - minimum_total_vram_bytes
+      - supported_parallel_degrees
+      - measured_total_vram_bytes
+    intended_compute:
+      - aws-g5-three-node
+    warning: Feasibility depends on the exact checkpoint, engine, context length, KV-cache budget, and per-node usable VRAM.

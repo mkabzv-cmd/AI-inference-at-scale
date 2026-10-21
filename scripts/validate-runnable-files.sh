@@ -28,6 +28,24 @@ done < <(
     | LC_ALL=C sort
 )
 
+# `artifacts/` is reserved for generated, ignored learner evidence. Keeping an
+# input fixture or template below a nested directory with this name silently
+# drops it from Git and makes a fresh clone incomplete.
+while IFS= read -r artifact_dir; do
+  relative_artifact_dir="${artifact_dir#"$repo_root"/lessons/}"
+  if [[ ! "$relative_artifact_dir" =~ ^phase-[^/]+/[^/]+/artifacts$ ]]; then
+    printf 'Nested artifacts directory would be ignored by Git: %s\n' \
+      "$artifact_dir" >&2
+    failures=$((failures + 1))
+  fi
+done < <(
+  find "$repo_root/lessons" \
+    -type d \
+    -name artifacts \
+    -print \
+    | LC_ALL=C sort
+)
+
 if ! python3 - "$repo_root" <<'PY'
 import ast
 import json
@@ -191,6 +209,70 @@ for path in (candidate for candidate in files if candidate.suffix == ".json"):
         print(f"Invalid JSON: {path}: {error}", file=sys.stderr)
         failures += 1
 
+versions_text = (root / "versions.lock").read_text(encoding="utf-8")
+checkout_pin_match = re.search(
+    r'^actions_checkout\s*=\s*"(?P<revision>[0-9a-f]{40})"\s*$',
+    versions_text,
+    flags=re.MULTILINE,
+)
+if checkout_pin_match is None:
+    print(
+        "versions.lock must record a 40-character actions_checkout revision",
+        file=sys.stderr,
+    )
+    failures += 1
+    checkout_pin = None
+else:
+    checkout_pin = checkout_pin_match.group("revision")
+
+action_use_pattern = re.compile(
+    r"^\s*(?:-\s+)?uses:\s*(?P<target>[^\s#]+)"
+)
+for path in (
+    candidate for candidate in files if candidate.suffix in {".yaml", ".yml"}
+):
+    try:
+        lines = path.read_text(encoding="utf-8").splitlines()
+    except UnicodeDecodeError as error:
+        print(f"Invalid UTF-8 YAML: {path}: {error}", file=sys.stderr)
+        failures += 1
+        continue
+
+    for line_number, line in enumerate(lines, start=1):
+        match = action_use_pattern.match(line)
+        if match is None:
+            continue
+        target = match.group("target").strip("\"'")
+        if target.startswith("./") or target.startswith("docker://"):
+            continue
+        if "@" not in target:
+            print(
+                f"GitHub Action has no revision at "
+                f"{path.relative_to(root)}:{line_number}",
+                file=sys.stderr,
+            )
+            failures += 1
+            continue
+        action, revision = target.rsplit("@", 1)
+        if not re.fullmatch(r"[0-9a-f]{40}", revision):
+            print(
+                f"GitHub Action is not pinned to a full commit at "
+                f"{path.relative_to(root)}:{line_number}: {action}",
+                file=sys.stderr,
+            )
+            failures += 1
+        if (
+            action == "actions/checkout"
+            and checkout_pin is not None
+            and revision != checkout_pin
+        ):
+            print(
+                f"actions/checkout pin differs from versions.lock at "
+                f"{path.relative_to(root)}:{line_number}",
+                file=sys.stderr,
+            )
+            failures += 1
+
 for path in (candidate for candidate in files if candidate.suffix == ".md"):
     try:
         text = prose_without_code_or_comments(path.read_text(encoding="utf-8"))
@@ -250,4 +332,4 @@ if [[ "$failures" -ne 0 ]]; then
 fi
 
 printf '%s\n' \
-  'Validated shell/Python syntax, JSON, relative links, and script permissions'
+  'Validated shell/Python syntax, JSON, action pins, relative links, and script permissions'

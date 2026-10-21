@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "filter_stage": "after_ranking",
+  "top_k": 3,
+  "candidate_k": 8,
+  "bm25": {"k1": 1.2, "b": 0.75},
+  "rrf": {"rank_constant": 60, "sparse_weight": 1.0, "dense_weight": 1.0},
+  "reranker": {"base_weight": 0.35, "token_overlap_weight": 0.45, "heading_overlap_weight": 0.2}
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "project_id": "oms-fixture",
+  "validation_mode": "fixture",
+  "claim_scope": "verifier-exercise-only",
+  "environment_id": "local-fixture",
+  "release_id": "oms-fixture-1",
+  "serving_topology": "one-gpu",
+  "features": {
+    "adapter": true,
+    "rag": true
+  },
+  "model": {
+    "id": "fixture/tiny-open-model",
+    "revision": "1111111111111111111111111111111111111111",
+    "tokenizer_revision": "1111111111111111111111111111111111111111"
+  },
+  "paths": {
+    "environment": "environment.json",
+    "release": "release.json",
+    "evidence_index": "evidence-index.json",
+    "kubernetes_manifest": "k8s/platform.yaml"
+  },
+  "required_files": [
+    "ADR.md",
+    "COST-PLAN.md",
+    "RUNBOOK.md",
+    "THREAT-MODEL.md",
+    "artifact-records/adapter.json",
+    "artifact-records/eval-dataset.json",
+    "artifact-records/rag-index.json",
+    "artifact-records/serving-config.json",
+    "contract.json",
+    "environment.json",
+    "evidence/cleanup.json",
+    "evidence/cost.json",
+    "evidence/performance.json",
+    "evidence/quality.json",
+    "evidence/reliability.json",
+    "evidence/security.json",
+    "k8s/platform.yaml",
+    "release.json"
+  ]
+}

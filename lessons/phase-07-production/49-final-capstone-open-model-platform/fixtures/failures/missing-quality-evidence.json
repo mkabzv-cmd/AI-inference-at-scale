@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "name": "missing-quality-evidence",
+  "expect_codes": [
+    "QUALITY_EVIDENCE_MISSING"
+  ],
+  "operations": [
+    {
+      "op": "delete_file",
+      "path": "evidence/quality.json"
+    }
+  ]
+}

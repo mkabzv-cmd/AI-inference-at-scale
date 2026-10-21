@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "id": "beta-cannot-see-alpha-token-policy",
+      "tenant_id": "beta",
+      "text": "How long are Alpha production API tokens valid?",
+      "forbidden_document_ids": ["alpha-access-policy", "alpha-support-guide"]
+    },
+    {
+      "id": "alpha-cannot-see-beta-release-policy",
+      "tenant_id": "alpha",
+      "text": "When is the Beta production release freeze?",
+      "forbidden_document_ids": ["beta-release-policy"]
+    }
+  ]
+}

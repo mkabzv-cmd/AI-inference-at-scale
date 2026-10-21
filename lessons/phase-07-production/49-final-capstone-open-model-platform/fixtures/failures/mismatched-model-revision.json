@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "name": "mismatched-model-revision",
+  "expect_codes": [
+    "MODEL_IDENTITY_MISMATCH"
+  ],
+  "operations": [
+    {
+      "op": "set_json",
+      "path": "release.json",
+      "pointer": "/model/revision",
+      "value": "ffffffffffffffffffffffffffffffffffffffff"
+    }
+  ]
+}

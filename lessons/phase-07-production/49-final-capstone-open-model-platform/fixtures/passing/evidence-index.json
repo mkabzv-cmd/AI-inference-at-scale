@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "project_id": "oms-fixture",
+  "release_id": "oms-fixture-1",
+  "generated_by": "lesson-49-fixture-builder-v1",
+  "entries": [
+    {
+      "path": "ADR.md",
+      "sha256": "86571cf0a1ffae890ed4ec08244c1fb660630a2000e29c5dbdaa209a92107591",
+      "kind": "markdown"
+    },
+    {
+      "path": "COST-PLAN.md",
+      "sha256": "3bd512baeb2cdbc444ab4938bbff7a5d97557b18a1dd13d6bccc653753d8b640",
+      "kind": "markdown"
+    },
+    {
+      "path": "RUNBOOK.md",
+      "sha256": "835892a63de341365d3fc69ccb5322d5f5ab189a23e0a26dfe6fc46a1d5897be",
+      "kind": "markdown"
+    },
+    {
+      "path": "THREAT-MODEL.md",
+      "sha256": "291afee03341caa0a2ccc4c4aa9c327bd4d61043754c38bbd09c27f02650606a",
+      "kind": "markdown"
+    },
+    {
+      "path": "artifact-records/adapter.json",
+      "sha256": "36887bb0194000a8f71dd0749c315d37548bffba259950884696874e5f8a39bc",
+      "kind": "json"
+    },
+    {
+      "path": "artifact-records/eval-dataset.json",
+      "sha256": "7df45385e5769de475cb645295264f5f54c4804155036767507710541263fe70",
+      "kind": "json"
+    },
+    {
+      "path": "artifact-records/rag-index.json",
+      "sha256": "6b5b578f7a9552a512e43f840547dd361ab7c238f342ae5b309ee826ac8eec4f",
+      "kind": "json"
+    },
+    {
+      "path": "artifact-records/serving-config.json",
+      "sha256": "235db60f006ad17dabf96e83cee9019befed32a6716dded4f194e87b3d339152",
+      "kind": "json"
+    },
+    {
+      "path": "contract.json",
+      "sha256": "8f309810d0b1c8cdceff294a8c1d95eecca6a658fcff28ce309b54e16e70b8da",
+      "kind": "json"
+    },
+    {
+      "path": "environment.json",
+      "sha256": "4db18cd12ef7199cd5789f600d82c97ee996ae42aa2151f7a97b52f12c2836e9",
+      "kind": "json"
+    },
+    {
+      "path": "evidence/cleanup.json",
+      "sha256": "ccd0aa1536dc516b87dbe5578454367b515d54f7a86c9558b4e68e2e6f8d6bce",
+      "kind": "json"
+    },
+    {
+      "path": "evidence/cost.json",
+      "sha256": "40af2bdeaabdc9fce56924cfef018570233766c2701f06e8d78fbd2e33ec5c2d",
+      "kind": "json"
+    },
+    {
+      "path": "evidence/performance.json",
+      "sha256": "ff0222d01c3bde96c88c52416bc7bc9352d167f1c35b81e67976574e81d55299",
+      "kind": "json"
+    },
+    {
+      "path": "evidence/quality.json",
+      "sha256": "13059aba03d40802d70ce664f8bd4d6b7853bc959fc0ee9f1dd8d82d1078f1b8",
+      "kind": "json"
+    },
+    {
+      "path": "evidence/reliability.json",
+      "sha256": "f55e0cf5c5bd1f41750eb3d6914f0b62fe30d51114a4fcf8b2dfa5509bfc966b",
+      "kind": "json"
+    },
+    {
+      "path": "evidence/security.json",
+      "sha256": "42f28afa03de64ab9bca9ba0ba3a14bec36e2eab24ceeb2cf5fce7a7e6359567",
+      "kind": "json"
+    },
+    {
+      "path": "k8s/platform.yaml",
+      "sha256": "997f666e7ea8ea9fc460a25b4be33a644bdfd19cf288f322e1a2139215d6a5c0",
+      "kind": "kubernetes"
+    },
+    {
+      "path": "release.json",
+      "sha256": "ea47e70204d1bda7b3a7c329c5dc13011303040f60ab985f23f40dabc4fb6e0b",
+      "kind": "json"
+    }
+  ]
+}

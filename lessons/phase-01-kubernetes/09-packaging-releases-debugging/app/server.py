@@ -18,6 +18,8 @@ MESSAGE = os.environ.get("APP_MESSAGE", "hello from lesson 09")
 VERSION = os.environ.get("APP_VERSION", "dev")
 FAULT_MODE = os.environ.get("FAULT_MODE", "none")
 READY_DELAY_SECONDS = float(os.environ.get("READY_DELAY_SECONDS", "0"))
+BIND_HOST = os.environ.get("BIND_HOST", "127.0.0.1")
+PORT = int(os.environ.get("PORT", "8080"))
 
 
 def is_ready() -> bool:
@@ -85,7 +87,11 @@ def main() -> int:
         )
         return 42
 
-    server = ThreadingHTTPServer(("0.0.0.0", 8080), Handler)
+    if BIND_HOST not in {"127.0.0.1", "0.0.0.0"}:
+        raise ValueError("BIND_HOST must be 127.0.0.1 or 0.0.0.0")
+    if not 1 <= PORT <= 65535:
+        raise ValueError("PORT must be in [1, 65535]")
+    server = ThreadingHTTPServer((BIND_HOST, PORT), Handler)
 
     def stop(_signum: int, _frame: object) -> None:
         threading.Thread(target=server.shutdown, daemon=True).start()
@@ -96,7 +102,8 @@ def main() -> int:
         json.dumps(
             {
                 "event": "server_started",
-                "port": 8080,
+                "bind_host": BIND_HOST,
+                "port": PORT,
                 "version": VERSION,
                 "fault_mode": FAULT_MODE,
                 "ready_delay_seconds": READY_DELAY_SECONDS,

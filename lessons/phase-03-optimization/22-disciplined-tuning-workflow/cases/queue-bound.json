@@ -1,0 +1,21 @@
+{
+  "schema_version": "oms-pathology-fixture/v1",
+  "result_kind": "synthetic_training_fixture_not_measurement",
+  "case_id": "queue-bound",
+  "symptoms": {
+    "gpu_utilization_percent": 91,
+    "kv_cache_utilization_percent": 42,
+    "request_queue_p95_ms": 1880,
+    "ttft_p95_ms": 2050,
+    "tpot_p95_ms": 24,
+    "client_e2e_p95_ms": 3900,
+    "success_rate": 1.0,
+    "quality_pass_rate": 1.0
+  },
+  "controlled_observations": {
+    "arrival_rate_rps": 7.5,
+    "completion_rate_rps": 5.1,
+    "output_tokens_mean": 96
+  },
+  "expected_primary_bottleneck": "admission_queue_saturation"
+}

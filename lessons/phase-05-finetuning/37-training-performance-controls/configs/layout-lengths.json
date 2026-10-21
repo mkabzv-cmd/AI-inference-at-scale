@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "maximum_sequence_length": 512,
+  "educational_token_lengths": [121, 207, 88, 301, 156, 244, 97, 185],
+  "warning": "These are fixed teaching lengths, not Qwen benchmark measurements."
+}

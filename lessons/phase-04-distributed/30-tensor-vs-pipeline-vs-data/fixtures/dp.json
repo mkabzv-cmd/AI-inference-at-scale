@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "experiment_id": "fixture-dp",
+  "strategy": "data-parallel",
+  "correctness": {"passed": true},
+  "environment": {
+    "model_id": "fixture/model",
+    "model_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "image_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "vllm_observed_version": "0.28.0",
+    "ray_observed_version": "2.59.0",
+    "workload_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "concurrency": 3,
+    "request_count": 12,
+    "fixture": true
+  },
+  "measurements": {
+    "wall_seconds": 4.0,
+    "requests_per_second": 3.0,
+    "latency_seconds": {
+      "median": 0.8,
+      "p90_nearest_rank": 1.0,
+      "maximum": 1.1
+    }
+  },
+  "limitations": ["synthetic fixture"]
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "oms-capstone-result-set/v1",
+  "result_kind": "synthetic_selection_fixture_not_engine_measurement",
+  "environment": {
+    "gpu": "fictional-training-gpu",
+    "warning": "Never copy these numbers into a hardware report."
+  },
+  "candidates": [
+    {
+      "id": "b0-eager-small",
+      "success_rate": 1.0,
+      "quality_pass_rate": 1.0,
+      "ttft_p95_ms": 3100,
+      "e2e_p95_ms": 7200,
+      "output_throughput_tokens_per_second": 18.0,
+      "peak_gpu_memory_gib": 14.0
+    },
+    {
+      "id": "c1-graphs-capacity",
+      "success_rate": 1.0,
+      "quality_pass_rate": 1.0,
+      "ttft_p95_ms": 1900,
+      "e2e_p95_ms": 6100,
+      "output_throughput_tokens_per_second": 24.0,
+      "peak_gpu_memory_gib": 17.0
+    },
+    {
+      "id": "c2-prefix-cache",
+      "success_rate": 0.96,
+      "quality_pass_rate": 1.0,
+      "ttft_p95_ms": 1500,
+      "e2e_p95_ms": 5600,
+      "output_throughput_tokens_per_second": 29.0,
+      "peak_gpu_memory_gib": 22.0
+    }
+  ]
+}

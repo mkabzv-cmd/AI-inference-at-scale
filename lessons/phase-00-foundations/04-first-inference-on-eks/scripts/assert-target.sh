@@ -90,7 +90,7 @@ print(f"[ok] existing namespace has the expected lesson ownership: {expected_nam
 ' "$LAB_NAMESPACE" <<<"$namespace_json"
 }
 
-if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+if [[ "${BASH_SOURCE[0]:-}" == "$0" ]]; then
   for command_name in aws kubectl python3; do
     command -v "$command_name" >/dev/null 2>&1 || {
       printf '[fail] required command not found: %s\n' "$command_name" >&2

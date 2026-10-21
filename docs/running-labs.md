@@ -5,11 +5,12 @@ the explanation and the files needed to reproduce its result.
 
 ## Current validation boundary
 
-Lessons 00–10 are practical drafts, not published lessons. Automated checks
+Lessons 00–49 are practical drafts, not published lessons. Automated checks
 confirm repository structure, metadata consistency, source syntax, relative
-links, and common secret patterns. They do not prove that your container
-runtime, local cluster, EKS cluster, GPU driver, IAM permissions, model access,
-or regional AWS configuration matches the lesson.
+links, executable helpers, and common secret patterns. CPU-safe mechanism labs
+are run where the repository provides them. These checks do not prove that your
+container runtime, local cluster, EKS cluster, GPU driver, IAM permissions,
+model access, network topology, or regional AWS configuration matches a lesson.
 
 Treat expected output as a target to verify, not as proof that the command was
 already executed in your environment. A lesson becomes `published` only after
@@ -81,6 +82,18 @@ example-6d4f...              1/1     Running   0          20s
 Generated names, ages, IP addresses, hashes, and timings will differ. Compare
 the meaningful fields, such as `READY`, `STATUS`, requested GPU count, HTTP
 status, or response schema.
+
+From the repository root, run the portable offline fixture suite with:
+
+```bash
+make test-cpu
+```
+
+This exercises offline mechanism simulators, result contracts, and
+expected-failure paths without installing third-party Python packages.
+Generated lesson evidence and interpreter caches remain ignored. A green
+offline suite does not validate the container, GPU, Kubernetes, EKS, or
+cloud-specific portions of a lesson.
 
 ## Two execution tracks
 

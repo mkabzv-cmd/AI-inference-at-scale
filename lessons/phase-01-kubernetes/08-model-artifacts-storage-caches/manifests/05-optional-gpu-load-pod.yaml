@@ -8,7 +8,10 @@ metadata:
     lesson.open-model-course/id: "08"
 spec:
   restartPolicy: Never
+  automountServiceAccountToken: false
+  enableServiceLinks: false
   securityContext:
+    runAsNonRoot: true
     fsGroup: 10001
     fsGroupChangePolicy: OnRootMismatch
     seccompProfile:
@@ -39,9 +42,16 @@ spec:
         readOnlyRootFilesystem: true
         capabilities:
           drop: ["ALL"]
+      resources:
+        requests:
+          cpu: 250m
+          memory: 256Mi
+        limits:
+          cpu: "2"
+          memory: 2Gi
   containers:
     - name: load-model
-      image: pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
+      image: pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime@sha256:c8268a92a69bd500f8be0e665b2630ee006dadaf7bfbc24249141b15ff622755
       env:
         - name: HOME
           value: /tmp

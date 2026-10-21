@@ -1,0 +1,15 @@
+{
+  "schema_version": "oms-run-summary/v1",
+  "run_id": "baseline-fixture",
+  "result_kind": "synthetic_training_fixture_not_measurement",
+  "controlled_workload_hash": "fixture-workload-v1",
+  "changed_variable": "none",
+  "summary": {
+    "success_rate": 1.0,
+    "quality_pass_rate": 1.0,
+    "request_throughput_rps": 4.8,
+    "ttft_p95_ms": 820,
+    "tpot_p95_ms": 31,
+    "output_tokens_mean": 96
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "engine": "teaching-simulator",
+  "engine_version": "1.0.0-fixture",
+  "tensor_parallel_size": 1,
+  "pipeline_parallel_size": 1,
+  "data_parallel_size": 1,
+  "dtype": "fixture-fp16",
+  "quantization": "none",
+  "max_model_length": 1024,
+  "max_concurrent_requests": 2,
+  "gpu_memory_utilization": 0.75,
+  "prefix_cache": false,
+  "chunked_prefill": false,
+  "speculative_decoding": false,
+  "request_limits": {
+    "max_prompt_tokens": 512,
+    "max_output_tokens": 128,
+    "timeout_seconds": 30
+  }
+}

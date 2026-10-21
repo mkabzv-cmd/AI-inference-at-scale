@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "project_id": "__REQUIRED__",
+  "release_id": "__REQUIRED__",
+  "evidence_type": "cost",
+  "origin": "observed",
+  "claim_scope": "__REQUIRED__",
+  "status": "incomplete",
+  "attestation": {
+    "actor": "__REQUIRED__",
+    "observed_at": "__REQUIRED__",
+    "command": "__REQUIRED__",
+    "result_source": "__REQUIRED__",
+    "live_environment": true
+  },
+  "currency": "USD",
+  "budget_limit": 0.0,
+  "estimated_total": 0.0,
+  "observed_total": 0.0,
+  "gpu_hours_limit": 0.0,
+  "gpu_hours_observed": 0.0,
+  "estimate_inputs_sha256": "__REQUIRED__",
+  "billing_evidence_sha256": "__REQUIRED__"
+}

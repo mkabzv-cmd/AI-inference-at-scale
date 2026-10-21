@@ -1,0 +1,68 @@
+[
+  {
+    "schema_version": 1,
+    "experiment_id": "offline-fixture-data-parallel-1",
+    "study_id": "offline-fixture",
+    "strategy": "data-parallel",
+    "repetition": 1,
+    "correctness": {"passed": true},
+    "environment": {"model_id":"fixture/model","model_revision":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","image_digest":"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","workload_sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","request_count":3,"concurrency":3,"instance_type":"fixture.one-gpu","vllm_expected_version":"0.28.0","ray_expected_version":"2.59.0","vllm_observed_version":"0.28.0","ray_observed_version":"2.59.0","max_model_len":512,"max_num_seqs":4,"model_cache_gib_per_node":10},
+    "measurements": {"wall_seconds":1.0,"requests_per_second":3.0,"median_end_to_end_seconds":0.8},
+    "limitations": ["synthetic fixture"]
+  },
+  {
+    "schema_version": 1,
+    "experiment_id": "offline-fixture-data-parallel-2",
+    "study_id": "offline-fixture",
+    "strategy": "data-parallel",
+    "repetition": 2,
+    "correctness": {"passed": true},
+    "environment": {"model_id":"fixture/model","model_revision":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","image_digest":"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","workload_sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","request_count":3,"concurrency":3,"instance_type":"fixture.one-gpu","vllm_expected_version":"0.28.0","ray_expected_version":"2.59.0","vllm_observed_version":"0.28.0","ray_observed_version":"2.59.0","max_model_len":512,"max_num_seqs":4,"model_cache_gib_per_node":10},
+    "measurements": {"wall_seconds":1.1,"requests_per_second":2.8,"median_end_to_end_seconds":0.9},
+    "limitations": ["synthetic fixture"]
+  },
+  {
+    "schema_version": 1,
+    "experiment_id": "offline-fixture-tensor-parallel-1",
+    "study_id": "offline-fixture",
+    "strategy": "tensor-parallel",
+    "repetition": 1,
+    "correctness": {"passed": true},
+    "environment": {"model_id":"fixture/model","model_revision":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","image_digest":"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","workload_sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","request_count":3,"concurrency":3,"instance_type":"fixture.one-gpu","vllm_expected_version":"0.28.0","ray_expected_version":"2.59.0","vllm_observed_version":"0.28.0","ray_observed_version":"2.59.0","max_model_len":512,"max_num_seqs":4,"model_cache_gib_per_node":10},
+    "measurements": {"wall_seconds":2.0,"requests_per_second":1.5,"median_end_to_end_seconds":1.7},
+    "limitations": ["synthetic fixture"]
+  },
+  {
+    "schema_version": 1,
+    "experiment_id": "offline-fixture-tensor-parallel-2",
+    "study_id": "offline-fixture",
+    "strategy": "tensor-parallel",
+    "repetition": 2,
+    "correctness": {"passed": true},
+    "environment": {"model_id":"fixture/model","model_revision":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","image_digest":"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","workload_sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","request_count":3,"concurrency":3,"instance_type":"fixture.one-gpu","vllm_expected_version":"0.28.0","ray_expected_version":"2.59.0","vllm_observed_version":"0.28.0","ray_observed_version":"2.59.0","max_model_len":512,"max_num_seqs":4,"model_cache_gib_per_node":10},
+    "measurements": {"wall_seconds":2.1,"requests_per_second":1.4,"median_end_to_end_seconds":1.8},
+    "limitations": ["synthetic fixture"]
+  },
+  {
+    "schema_version": 1,
+    "experiment_id": "offline-fixture-pipeline-parallel-1",
+    "study_id": "offline-fixture",
+    "strategy": "pipeline-parallel",
+    "repetition": 1,
+    "correctness": {"passed": true},
+    "environment": {"model_id":"fixture/model","model_revision":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","image_digest":"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","workload_sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","request_count":3,"concurrency":3,"instance_type":"fixture.one-gpu","vllm_expected_version":"0.28.0","ray_expected_version":"2.59.0","vllm_observed_version":"0.28.0","ray_observed_version":"2.59.0","max_model_len":512,"max_num_seqs":4,"model_cache_gib_per_node":10},
+    "measurements": {"wall_seconds":1.5,"requests_per_second":2.0,"median_end_to_end_seconds":1.2},
+    "limitations": ["synthetic fixture"]
+  },
+  {
+    "schema_version": 1,
+    "experiment_id": "offline-fixture-pipeline-parallel-2",
+    "study_id": "offline-fixture",
+    "strategy": "pipeline-parallel",
+    "repetition": 2,
+    "correctness": {"passed": true},
+    "environment": {"model_id":"fixture/model","model_revision":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","image_digest":"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","workload_sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","request_count":3,"concurrency":3,"instance_type":"fixture.one-gpu","vllm_expected_version":"0.28.0","ray_expected_version":"2.59.0","vllm_observed_version":"0.28.0","ray_observed_version":"2.59.0","max_model_len":512,"max_num_seqs":4,"model_cache_gib_per_node":10},
+    "measurements": {"wall_seconds":1.6,"requests_per_second":1.9,"median_end_to_end_seconds":1.3},
+    "limitations": ["synthetic fixture"]
+  }
+]

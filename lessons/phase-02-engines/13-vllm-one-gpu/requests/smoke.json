@@ -1,0 +1,13 @@
+{
+  "model": "course-model",
+  "messages": [
+    {
+      "role": "user",
+      "content": "In two sentences, explain why continuous batching differs from waiting to form a fixed batch."
+    }
+  ],
+  "max_tokens": 80,
+  "temperature": 0.0,
+  "seed": 42,
+  "stream": false
+}

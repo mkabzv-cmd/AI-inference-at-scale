@@ -1,0 +1,18 @@
+{
+  "answer": "A fabricated claim. [S99]",
+  "abstained": false,
+  "claims": [
+    {
+      "text": "A fabricated claim.",
+      "citation_ids": ["S99"],
+      "source_spans": [
+        {
+          "citation_id": "S99",
+          "chunk_id": "chk_missing",
+          "quote": "text that is absent"
+        }
+      ]
+    }
+  ],
+  "context": []
+}

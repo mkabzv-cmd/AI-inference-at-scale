@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "scenarios": [
+    {
+      "id": "broken-unknown-criterion",
+      "description": "This fixture refers to a criterion that the decision contract does not define.",
+      "importance": {
+        "telepathy": 5
+      },
+      "hard_requirements": [],
+      "expected_recommendation": "prompting"
+    }
+  ]
+}

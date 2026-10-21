@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "step_seconds": 10,
+  "arrivals_per_step": [
+    2, 2, 2, 2, 2,
+    18, 18, 18, 18, 18, 18, 18, 18,
+    4, 4, 4, 4, 4,
+    0, 0, 0, 0, 0, 0
+  ],
+  "service_requests_per_ready_pod_step": 4,
+  "minimum_pods": 1,
+  "maximum_pods": 4,
+  "cold_start_steps": 3,
+  "maximum_queue": 32,
+  "queue_target_per_pod": 4,
+  "scale_up_cooldown_steps": 1,
+  "scale_down_delay_steps": 4,
+  "simulated_cpu_utilization": 0.35,
+  "cpu_target_utilization": 0.7,
+  "slo": {
+    "maximum_rejected_requests": 40,
+    "maximum_p95_wait_steps": 8,
+    "maximum_scale_actions": 10
+  }
+}

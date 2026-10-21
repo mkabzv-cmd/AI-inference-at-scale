@@ -1,0 +1,21 @@
+{
+  "schema_version": "oms-pathology-fixture/v1",
+  "result_kind": "synthetic_training_fixture_not_measurement",
+  "case_id": "kv-bound",
+  "symptoms": {
+    "gpu_utilization_percent": 62,
+    "kv_cache_utilization_percent": 99,
+    "request_queue_p95_ms": 940,
+    "ttft_p95_ms": 1210,
+    "tpot_p95_ms": 48,
+    "client_e2e_p95_ms": 6100,
+    "success_rate": 0.94,
+    "quality_pass_rate": 1.0
+  },
+  "controlled_observations": {
+    "preemption_count": 37,
+    "recomputed_tokens": 28400,
+    "prompt_tokens_p95": 6040
+  },
+  "expected_primary_bottleneck": "kv_capacity_and_preemption"
+}

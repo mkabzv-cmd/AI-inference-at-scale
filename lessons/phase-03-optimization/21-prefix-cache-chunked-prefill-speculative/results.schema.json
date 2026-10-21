@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "result_kind",
+    "prefix_cache",
+    "chunked_prefill",
+    "speculative_decoding"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "oms-reuse-lookahead/v1"
+    },
+    "result_kind": {
+      "const": "deterministic_mechanism_simulation_not_engine_measurement"
+    }
+  }
+}

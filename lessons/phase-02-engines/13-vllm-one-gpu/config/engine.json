@@ -1,0 +1,12 @@
+{
+  "engine": "vllm",
+  "version": "0.28.0",
+  "image_tag": "vllm/vllm-openai:v0.28.0",
+  "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "served_model_name": "course-model",
+  "dtype": "float16",
+  "max_model_len": 4096,
+  "gpu_memory_utilization": 0.8,
+  "max_num_seqs": 16
+}

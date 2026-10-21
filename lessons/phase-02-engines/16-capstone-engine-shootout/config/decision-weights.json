@@ -1,0 +1,19 @@
+{
+  "weights": {
+    "latency_fit": 0.2,
+    "throughput_fit": 0.2,
+    "quality_correctness": 0.2,
+    "memory_capacity": 0.1,
+    "operability": 0.15,
+    "compatibility": 0.1,
+    "portability": 0.05
+  },
+  "scoring_scale": {
+    "1": "does not meet the requirement",
+    "2": "major gaps or risky workaround",
+    "3": "meets minimum with known trade-offs",
+    "4": "strong fit with minor trade-offs",
+    "5": "best-supported fit for this stated workload"
+  },
+  "rule": "Weights must be chosen before looking at benchmark winners."
+}

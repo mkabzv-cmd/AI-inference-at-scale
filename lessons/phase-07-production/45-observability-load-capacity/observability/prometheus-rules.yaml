@@ -1,0 +1,30 @@
+groups:
+  - name: oms-model-service
+    interval: 30s
+    rules:
+      - record: oms:request_error_ratio:5m
+        expr: |
+          sum(rate(oms_requests_errors_total[5m]))
+          /
+          clamp_min(sum(rate(oms_requests_completed_total[5m])) + sum(rate(oms_requests_errors_total[5m])), 1)
+      - record: oms:queue_per_capacity
+        expr: |
+          sum(oms_requests_queued)
+          /
+          clamp_min(sum(oms_model_capacity), 1)
+      - alert: OMSModelQueueSustained
+        expr: oms:queue_per_capacity > 1
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: Model request queue exceeds active service capacity
+          description: Correlate queue, TTFT, active sequences, KV cache, GPU utilization, and node readiness before scaling.
+      - alert: OMSModelErrorsHigh
+        expr: oms:request_error_ratio:5m > 0.01
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: Model request error ratio exceeds one percent
+          description: Inspect status code, request ID, trace, engine errors, Pod events, and recent release changes.

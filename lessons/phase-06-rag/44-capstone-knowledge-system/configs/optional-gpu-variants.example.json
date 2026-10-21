@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "allowed_host_suffixes": [".svc.cluster.local"],
+  "variants": {
+    "base": {
+      "base_url": "https://base-model.model-serving.svc.cluster.local:8443/v1",
+      "model": "reviewed-base-model",
+      "bearer_token_env": "COURSE_MODEL_BEARER_TOKEN",
+      "ca_bundle_env": "COURSE_MODEL_CA_BUNDLE"
+    },
+    "tuned": {
+      "base_url": "https://tuned-model.model-serving.svc.cluster.local:8443/v1",
+      "model": "reviewed-tuned-model",
+      "bearer_token_env": "COURSE_MODEL_BEARER_TOKEN",
+      "ca_bundle_env": "COURSE_MODEL_CA_BUNDLE"
+    }
+  },
+  "warning": "Example internal endpoints only. Resolve exact model revisions, provision the engine or gateway native bearer credential and reviewed CA bundle through your secret provider, enforce narrow egress, and approve data transfer before use."
+}

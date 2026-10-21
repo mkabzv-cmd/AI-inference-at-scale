@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/course/lesson-41-results.schema.json",
+  "type": "object",
+  "required": ["schema_version", "corpus", "exact", "approximate", "lineage_verified"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "corpus": {
+      "type": "object",
+      "required": ["documents", "chunks", "manifest_sha256"],
+      "properties": {
+        "documents": {"type": "integer", "minimum": 1},
+        "chunks": {"type": "integer", "minimum": 1},
+        "manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "exact": {"type": "object"},
+    "approximate": {"type": "object"},
+    "lineage_verified": {"const": true}
+  }
+}

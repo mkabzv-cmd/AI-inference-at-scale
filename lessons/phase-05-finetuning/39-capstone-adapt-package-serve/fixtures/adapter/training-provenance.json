@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "method": "lora",
+  "base_model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+  "base_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+  "dataset_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "training_config_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "rank": 8,
+  "alpha": 16,
+  "targets": ["q_proj", "k_proj", "v_proj", "o_proj"],
+  "course_fixture": true
+}

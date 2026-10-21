@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "criteria": {
+    "behavior_change": "Ability to change response style, format, or learned task behavior",
+    "knowledge_freshness": "Ability to incorporate frequently changing knowledge",
+    "source_citations": "Ability to expose source evidence with the answer",
+    "low_request_latency": "Ability to avoid large per-request context/retrieval overhead",
+    "rapid_update": "Ability to update knowledge without retraining weights",
+    "access_filtering": "Ability to filter knowledge per caller before generation",
+    "small_operations_surface": "Ability to avoid another online data/index service"
+  },
+  "strategies": {
+    "prompting": {
+      "capabilities": {
+        "behavior_change": 2,
+        "knowledge_freshness": 1,
+        "source_citations": 1,
+        "low_request_latency": 5,
+        "rapid_update": 2,
+        "access_filtering": 1,
+        "small_operations_surface": 5
+      },
+      "supports": ["no_external_knowledge", "simple_instruction_change"]
+    },
+    "long_context": {
+      "capabilities": {
+        "behavior_change": 1,
+        "knowledge_freshness": 4,
+        "source_citations": 5,
+        "low_request_latency": 2,
+        "rapid_update": 5,
+        "access_filtering": 3,
+        "small_operations_surface": 5
+      },
+      "supports": ["citations", "daily_updates", "per_request_filtering"]
+    },
+    "rag": {
+      "capabilities": {
+        "behavior_change": 1,
+        "knowledge_freshness": 5,
+        "source_citations": 5,
+        "low_request_latency": 3,
+        "rapid_update": 5,
+        "access_filtering": 5,
+        "small_operations_surface": 2
+      },
+      "supports": ["citations", "daily_updates", "per_request_filtering"]
+    },
+    "finetuning": {
+      "capabilities": {
+        "behavior_change": 5,
+        "knowledge_freshness": 1,
+        "source_citations": 1,
+        "low_request_latency": 5,
+        "rapid_update": 1,
+        "access_filtering": 1,
+        "small_operations_surface": 4
+      },
+      "supports": ["learned_behavior", "stable_low_latency"]
+    },
+    "rag_plus_finetuning": {
+      "capabilities": {
+        "behavior_change": 5,
+        "knowledge_freshness": 5,
+        "source_citations": 5,
+        "low_request_latency": 2,
+        "rapid_update": 5,
+        "access_filtering": 5,
+        "small_operations_surface": 1
+      },
+      "supports": [
+        "citations",
+        "daily_updates",
+        "per_request_filtering",
+        "learned_behavior"
+      ]
+    }
+  }
+}

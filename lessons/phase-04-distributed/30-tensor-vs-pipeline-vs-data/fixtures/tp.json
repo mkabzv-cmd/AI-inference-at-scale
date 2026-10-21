@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "experiment_id": "fixture-tp",
+  "strategy": "tensor-parallel",
+  "correctness": {"passed": true},
+  "environment": {
+    "model_id": "fixture/model",
+    "model_revision": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "image_digest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "vllm_observed_version": "0.28.0",
+    "ray_observed_version": "2.59.0",
+    "workload_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "concurrency": 3,
+    "request_count": 12,
+    "fixture": true
+  },
+  "measurements": {
+    "wall_seconds": 8.0,
+    "requests_per_second": 1.5,
+    "latency_seconds": {
+      "median": 1.7,
+      "p90_nearest_rank": 2.0,
+      "maximum": 2.2
+    }
+  },
+  "limitations": ["synthetic fixture"]
+}

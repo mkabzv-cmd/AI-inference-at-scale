@@ -12,6 +12,9 @@ Course examples must:
 - treat retrieved documents and model outputs as untrusted data;
 - keep runtime adapter loading and arbitrary remote code disabled by default.
 
-For a suspected vulnerability in course code, contact the repository owner
-privately before opening a public issue. Replace this paragraph with the actual
-private reporting channel before publishing the repository.
+For a suspected vulnerability in course code, use GitHub's private
+vulnerability-reporting flow from the repository's **Security** tab when it is
+available. Otherwise, contact the maintainer privately through the contact
+method on the maintainer's GitHub profile. Do not include exploit details,
+credentials, private infrastructure identifiers, or customer data in a public
+issue.

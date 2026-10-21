@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "project_id": "__REQUIRED__",
+  "release_id": "__REQUIRED__",
+  "evidence_type": "reliability",
+  "origin": "observed",
+  "claim_scope": "__REQUIRED__",
+  "status": "incomplete",
+  "attestation": {
+    "actor": "__REQUIRED__",
+    "observed_at": "__REQUIRED__",
+    "command": "__REQUIRED__",
+    "result_source": "__REQUIRED__",
+    "live_environment": true
+  },
+  "failure_injection": "incomplete",
+  "bounded_degradation": "incomplete",
+  "readiness_recovery": "incomplete",
+  "rollback_to_known_good": "incomplete",
+  "post_rollback_smoke": "incomplete",
+  "reproduction_by_second_operator": "incomplete",
+  "timeline_sha256": "__REQUIRED__"
+}

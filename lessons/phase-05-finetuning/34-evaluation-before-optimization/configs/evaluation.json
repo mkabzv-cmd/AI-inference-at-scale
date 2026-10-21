@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "contract_name": "oms-operations-acceptance-v1",
+  "required_term_threshold": 0.67,
+  "normalization": {
+    "unicode": "NFKC",
+    "lowercase": true,
+    "collapse_whitespace": true
+  },
+  "decoding": {
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 160,
+    "seed": 3401
+  }
+}

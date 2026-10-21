@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-36/adapter-manifest.schema.json",
+  "title": "PEFT adapter provenance manifest",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_type",
+    "base_model_id",
+    "base_model_revision",
+    "dataset_manifest_sha256",
+    "training_config_sha256",
+    "files"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "artifact_type": {"const": "peft-adapter"},
+    "base_model_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40,64}$"
+    },
+    "files": {"type": "array", "minItems": 2}
+  }
+}

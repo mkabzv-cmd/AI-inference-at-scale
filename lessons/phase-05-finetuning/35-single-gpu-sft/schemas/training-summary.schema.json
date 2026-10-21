@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-35/training-summary.schema.json",
+  "title": "Lesson 35 training summary",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "config_sha256",
+    "optimizer_step",
+    "complete",
+    "finite"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "config_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "optimizer_step": {"type": "integer", "minimum": 0},
+    "complete": {"type": "boolean"},
+    "finite": {"type": "boolean"}
+  }
+}

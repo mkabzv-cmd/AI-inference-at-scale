@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "project_id": "oms-fixture",
+  "release_id": "oms-fixture-1",
+  "evidence_type": "cleanup",
+  "origin": "synthetic",
+  "claim_scope": "verifier-exercise-only",
+  "status": "pass",
+  "attestation": {
+    "actor": "fixture-generator",
+    "observed_at": "2026-10-21T12:00:00Z",
+    "command": "checked-in synthetic fixture",
+    "result_source": "deterministic teardown test values; no cloud resources existed",
+    "live_environment": false
+  },
+  "inventory_before": [
+    {
+      "kind": "synthetic-workload",
+      "id": "fixture-only"
+    }
+  ],
+  "teardown_actions": [
+    {
+      "action": "remove-synthetic-workload",
+      "status": "pass"
+    }
+  ],
+  "inventory_after": [],
+  "residual_billable_resources": [],
+  "load_generators_stopped": true,
+  "endpoint_removed": true,
+  "gpu_capacity_released": true,
+  "verification_commands": [
+    "synthetic fixture assertion"
+  ],
+  "inventory_sha256": "3434343434343434343434343434343434343434343434343434343434343434"
+}

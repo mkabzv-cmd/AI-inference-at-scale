@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms-distributed-results.schema.json",
+  "title": "Open Model Systems distributed experiment record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "strategy",
+    "correctness",
+    "environment",
+    "measurements",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "strategy": {
+      "enum": [
+        "collective",
+        "data-parallel",
+        "tensor-parallel",
+        "pipeline-parallel",
+        "ray-placement",
+        "network",
+        "toy-sharding",
+        "capstone"
+      ]
+    },
+    "correctness": {
+      "type": "object",
+      "required": ["passed"],
+      "properties": {
+        "passed": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "environment": {
+      "type": "object"
+    },
+    "measurements": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

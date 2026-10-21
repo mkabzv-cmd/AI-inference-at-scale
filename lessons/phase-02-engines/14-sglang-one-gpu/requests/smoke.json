@@ -1,0 +1,13 @@
+{
+  "model": "course-model",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Explain in two sentences how prefix reuse can avoid repeated prompt work."
+    }
+  ],
+  "max_tokens": 80,
+  "temperature": 0.0,
+  "seed": 42,
+  "stream": false
+}

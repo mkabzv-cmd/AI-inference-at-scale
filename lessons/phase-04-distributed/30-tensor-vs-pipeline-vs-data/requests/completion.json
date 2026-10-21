@@ -1,0 +1,7 @@
+{
+  "model": "lesson-30-model",
+  "prompt": "A model can be distributed by",
+  "max_tokens": 16,
+  "temperature": 0,
+  "seed": 42
+}

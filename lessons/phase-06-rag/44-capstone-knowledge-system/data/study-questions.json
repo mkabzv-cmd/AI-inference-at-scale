@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "questions": [
+    {
+      "id": "token-expiry",
+      "tenant_id": "alpha",
+      "question": "After how many hours do production API tokens expire?",
+      "expected_phrases": ["twelve hours"],
+      "requires_current_knowledge": true,
+      "requires_citation": true
+    },
+    {
+      "id": "support-hours-v1",
+      "tenant_id": "alpha",
+      "question": "During which UTC hours is the Alpha support desk staffed?",
+      "expected_phrases": ["08:00", "18:00", "weekdays"],
+      "requires_current_knowledge": true,
+      "requires_citation": true
+    },
+    {
+      "id": "restore-validation",
+      "tenant_id": "beta",
+      "question": "What must be validated before application traffic is redirected after restore?",
+      "expected_phrases": ["record counts"],
+      "requires_current_knowledge": true,
+      "requires_citation": true
+    }
+  ],
+  "update_probe": {
+    "tenant_id": "alpha",
+    "question": "During which hours is the Alpha support desk staffed?",
+    "v1_expected_phrases": ["08:00", "18:00", "weekdays"],
+    "v2_expected_phrases": ["twenty-four hours", "seven days"]
+  }
+}

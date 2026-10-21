@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "index_source_sha256": "f84050791aec38a48d7f78ee9c96f30df0f86c2bd3227abaa2af13430b83c874",
+  "questions": [
+    {
+      "id": "token-expiry",
+      "tenant_id": "alpha",
+      "question": "After how many hours do production API tokens expire?",
+      "answerable": true,
+      "expected_phrases": ["twelve hours"],
+      "relevant_chunk_ids": [
+        "chk_c24be6435c797f88b4d3665d",
+        "chk_aa956d81037d561312c97778"
+      ]
+    },
+    {
+      "id": "support-hours",
+      "tenant_id": "alpha",
+      "question": "During which UTC hours is the Alpha support desk staffed?",
+      "answerable": true,
+      "expected_phrases": ["08:00", "18:00", "weekdays"],
+      "relevant_chunk_ids": ["chk_0cb78f3adc5a597e5fb66fc4"]
+    },
+    {
+      "id": "recovery-objective",
+      "tenant_id": "beta",
+      "question": "How many minutes is the database recovery time objective?",
+      "answerable": true,
+      "expected_phrases": ["thirty minutes"],
+      "relevant_chunk_ids": ["chk_6ab725d722a70af2c5169314"]
+    },
+    {
+      "id": "redirect-gate",
+      "tenant_id": "alpha",
+      "question": "What must be validated before application traffic is redirected after restore?",
+      "answerable": true,
+      "expected_phrases": ["record counts"],
+      "relevant_chunk_ids": ["chk_3d7e75941d46993a6c9273f5"]
+    },
+    {
+      "id": "readiness-index",
+      "tenant_id": "beta",
+      "question": "Which endpoint signal verifies that the requested corpus index is loaded?",
+      "answerable": true,
+      "expected_phrases": ["readiness endpoint"],
+      "relevant_chunk_ids": ["chk_2aa2eb3ef512a927b4b93575"]
+    },
+    {
+      "id": "unsupported-phone",
+      "tenant_id": "alpha",
+      "question": "What is the chief executive's personal mobile phone number?",
+      "answerable": false,
+      "expected_phrases": [],
+      "relevant_chunk_ids": []
+    },
+    {
+      "id": "cross-tenant-question",
+      "tenant_id": "beta",
+      "question": "After how many hours do Alpha production API tokens expire?",
+      "answerable": false,
+      "expected_phrases": [],
+      "relevant_chunk_ids": [],
+      "forbidden_document_ids": ["alpha-access-policy", "alpha-support-guide"]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "dataset_id": "lesson-49-synthetic-cases",
+  "revision": "fixture-v1",
+  "license_review": "synthetic-public-domain-teaching-data",
+  "split": "capstone-evaluation",
+  "case_count": 4,
+  "content_included": true,
+  "case_ids": [
+    "answerable-1",
+    "abstain-1",
+    "injection-1",
+    "tenant-boundary-1"
+  ],
+  "cases_manifest_sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+}

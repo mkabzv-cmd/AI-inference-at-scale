@@ -1,0 +1,39 @@
+{
+  "schema_version": "oms-tuning-matrix/v1",
+  "frozen": {
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "prompt_set": "lesson-12-or-team-reviewed-set",
+    "sampling": {
+      "temperature": 0,
+      "max_tokens": 96
+    },
+    "concurrency": 8,
+    "measured_requests": 100
+  },
+  "experiments": [
+    {
+      "id": "b0",
+      "hypothesis": "establish repeatable baseline",
+      "changed_variable": "none",
+      "max_num_seqs": 8,
+      "max_num_batched_tokens": 1024,
+      "gpu_memory_utilization": 0.8
+    },
+    {
+      "id": "e1",
+      "hypothesis": "larger token budget reduces queueing at the frozen workload",
+      "changed_variable": "max_num_batched_tokens",
+      "max_num_seqs": 8,
+      "max_num_batched_tokens": 2048,
+      "gpu_memory_utilization": 0.8
+    },
+    {
+      "id": "e2",
+      "hypothesis": "more KV capacity reduces preemption",
+      "changed_variable": "gpu_memory_utilization",
+      "max_num_seqs": 8,
+      "max_num_batched_tokens": 1024,
+      "gpu_memory_utilization": 0.85
+    }
+  ]
+}

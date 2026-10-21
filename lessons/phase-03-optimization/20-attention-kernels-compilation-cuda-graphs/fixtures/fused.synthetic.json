@@ -1,0 +1,10 @@
+{
+  "schema_version": "oms-synthetic-launch-trace/v1",
+  "result_kind": "illustrative_structure_not_profiler_measurement",
+  "mode": "fused_attention",
+  "events": [
+    "fused_qkv_projection",
+    "flash_attention_forward",
+    "output_projection_residual"
+  ]
+}

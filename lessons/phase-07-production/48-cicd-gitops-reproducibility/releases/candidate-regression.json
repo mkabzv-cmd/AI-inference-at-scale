@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "release_id": "oms-2026-10-21.2-regression",
+  "kind": "teaching-fixture",
+  "source_revision": "2222222222222222222222222222222222222222",
+  "image": "example.invalid/oms-platform@sha256:abababababababababababababababababababababababababababababababab",
+  "model": {
+    "id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "tokenizer_revision": "7ae557604adf67be50417f59c2c2f167def9a775"
+  },
+  "adapter": {
+    "enabled": true,
+    "format": "safetensors",
+    "sha256": "1313131313131313131313131313131313131313131313131313131313131313",
+    "base_model_revision": "7ae557604adf67be50417f59c2c2f167def9a775"
+  },
+  "index": {
+    "version": "oms-corpus-1.0.0",
+    "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "configuration_sha256": "1414141414141414141414141414141414141414141414141414141414141414",
+  "gates": [
+    {
+      "name": "quality-evaluation",
+      "status": "pass",
+      "evidence_sha256": "1515151515151515151515151515151515151515151515151515151515151515"
+    },
+    {
+      "name": "performance-slo",
+      "status": "pass",
+      "evidence_sha256": "1616161616161616161616161616161616161616161616161616161616161616"
+    },
+    {
+      "name": "security-policy",
+      "status": "pass",
+      "evidence_sha256": "1717171717171717171717171717171717171717171717171717171717171717"
+    }
+  ],
+  "smoke_response": "restart the cluster and expose a load balancer"
+}

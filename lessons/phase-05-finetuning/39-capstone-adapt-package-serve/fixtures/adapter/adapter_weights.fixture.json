@@ -1,0 +1,5 @@
+{
+  "course_fixture": true,
+  "warning": "This is not a tensor file and cannot be served.",
+  "purpose": "Exercise hashing, tamper detection, and provenance on CPU."
+}

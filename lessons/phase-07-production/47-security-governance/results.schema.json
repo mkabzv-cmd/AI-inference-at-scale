@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/oms/lesson-47/provenance.schema.json",
+  "title": "Lesson 47 provenance statement",
+  "type": "object",
+  "required": ["schema_version", "bundle_name", "bundle_version", "artifacts", "claims"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "bundle_name": {"type": "string"},
+    "bundle_version": {"type": "string"},
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["path", "role", "license", "source", "size_bytes", "sha256"]
+      }
+    },
+    "claims": {"type": "object"}
+  }
+}

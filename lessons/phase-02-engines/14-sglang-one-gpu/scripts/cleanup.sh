@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+: "${LAB_NAMESPACE:=open-models-l14}"
+if [[ ! "$LAB_NAMESPACE" =~ ^open-models-[a-z0-9]([-a-z0-9]*[a-z0-9])?$ ]] ||
+  (( ${#LAB_NAMESPACE} > 63 )); then
+  echo "refusing unexpected namespace" >&2
+  exit 1
+fi
+if kubectl get namespace "$LAB_NAMESPACE" >/dev/null 2>&1; then
+  owner="$(
+    kubectl get namespace "$LAB_NAMESPACE" \
+      -o jsonpath='{.metadata.labels.app\.kubernetes\.io/part-of}'
+  )"
+  lesson="$(
+    kubectl get namespace "$LAB_NAMESPACE" \
+      -o jsonpath='{.metadata.labels.open-model-systems\.io/lesson}'
+  )"
+  [[ "$owner" == "open-model-systems-course" && "$lesson" == "14" ]] || {
+    echo "refusing to delete a namespace without lesson-14 ownership labels" >&2
+    exit 1
+  }
+fi
+kubectl delete namespace "$LAB_NAMESPACE" --ignore-not-found --wait=true
+! kubectl get namespace "$LAB_NAMESPACE" >/dev/null 2>&1
+printf 'namespace absent; restore GPU node-group capacity\n'

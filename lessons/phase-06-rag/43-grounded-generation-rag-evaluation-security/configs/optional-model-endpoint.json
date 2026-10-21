@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "api_style": "openai-compatible-chat-completions",
+  "base_url": "http://127.0.0.1:8001/v1",
+  "model": "locally-served-reviewed-model",
+  "timeout_seconds": 30,
+  "allowed_hosts": ["127.0.0.1"],
+  "send_authorization_header": false,
+  "purpose": "Optional local endpoint; deterministic extraction remains the verified baseline"
+}

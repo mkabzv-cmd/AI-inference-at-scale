@@ -96,7 +96,7 @@ lesson_pattern = re.compile(
     r'^\s{6}- \{\s*id:\s*"(?P<id>\d{2})",\s*'
     r"slug:\s*(?P<slug>[a-z0-9-]+),\s*"
     r"status:\s*(?P<status>[a-z-]+),\s*"
-    r"compute:\s*\[[^\]]*\]\s*\}\s*$"
+    r"compute:\s*\[(?P<compute>[^\]]*)\]\s*\}\s*$"
 )
 status_pattern = re.compile(
     r"^\*\*Status:\*\*\s+([a-z-]+)\s*$",
@@ -109,10 +109,52 @@ allowed_statuses = {
     "published",
     "refresh-needed",
 }
+allowed_compute_profiles = {
+    "local-cpu",
+    "g1",
+    "g3",
+    "advanced",
+}
+expected_phase_ranges = {
+    "phase-00-foundations": range(0, 5),
+    "phase-01-kubernetes": range(5, 11),
+    "phase-02-engines": range(11, 17),
+    "phase-03-optimization": range(17, 24),
+    "phase-04-distributed": range(24, 32),
+    "phase-05-finetuning": range(32, 40),
+    "phase-06-rag": range(40, 45),
+    "phase-07-production": range(45, 50),
+}
+expected_phase_by_id = {
+    f"{lesson_id:02d}": phase
+    for phase, lesson_ids in expected_phase_ranges.items()
+    for lesson_id in lesson_ids
+}
 
 entries = []
 failures = 0
 current_phase = None
+
+schema_lines = [
+    line for line in curriculum_lines if re.match(r"^schema_version:\s*", line)
+]
+status_lines = [
+    line for line in curriculum_lines if re.match(r"^status:\s*", line)
+]
+if schema_lines != ["schema_version: 1"]:
+    print(
+        "curriculum.yaml must declare exactly `schema_version: 1`",
+        file=sys.stderr,
+    )
+    failures += 1
+if status_lines != ["status: all-lessons-draft"]:
+    print(
+        "curriculum.yaml must declare exactly `status: all-lessons-draft` "
+        "for this release",
+        file=sys.stderr,
+    )
+    failures += 1
+
 for line_number, line in enumerate(curriculum_lines, start=1):
     phase_match = phase_pattern.match(line)
     if phase_match:
@@ -135,6 +177,11 @@ for line_number, line in enumerate(curriculum_lines, start=1):
                 "slug": lesson_match.group("slug"),
                 "status": lesson_match.group("status"),
                 "phase": current_phase,
+                "compute": [
+                    value.strip()
+                    for value in lesson_match.group("compute").split(",")
+                    if value.strip()
+                ],
             }
         )
     elif re.match(r'^\s*-\s*\{\s*id:\s*"\d{2}"', line):
@@ -179,10 +226,10 @@ status_counts = collections.Counter()
 
 for entry in entries:
     lesson_id = entry["id"]
-    expected_status = "draft" if int(lesson_id) <= 10 else "outline"
+    expected_status = "draft"
     if entry["status"] != expected_status:
         print(
-            f"Current authored-slice policy requires lesson {lesson_id} to be "
+            f"All-lessons draft policy requires lesson {lesson_id} to be "
             f"{expected_status}, not {entry['status']}",
             file=sys.stderr,
         )
@@ -191,6 +238,40 @@ for entry in entries:
     if entry["status"] not in allowed_statuses:
         print(
             f"Unknown status for lesson {lesson_id}: {entry['status']}",
+            file=sys.stderr,
+        )
+        failures += 1
+
+    expected_phase = expected_phase_by_id.get(lesson_id)
+    if entry["phase"] != expected_phase:
+        print(
+            f"Lesson {lesson_id} belongs in {expected_phase}, not "
+            f"{entry['phase']}",
+            file=sys.stderr,
+        )
+        failures += 1
+
+    compute_profiles = entry["compute"]
+    unknown_compute_profiles = sorted(
+        set(compute_profiles) - allowed_compute_profiles
+    )
+    if not compute_profiles:
+        print(
+            f"Lesson {lesson_id} must declare at least one compute profile",
+            file=sys.stderr,
+        )
+        failures += 1
+    if len(compute_profiles) != len(set(compute_profiles)):
+        print(
+            f"Lesson {lesson_id} repeats a compute profile: "
+            + ", ".join(compute_profiles),
+            file=sys.stderr,
+        )
+        failures += 1
+    if unknown_compute_profiles:
+        print(
+            f"Lesson {lesson_id} has unknown compute profiles: "
+            + ", ".join(unknown_compute_profiles),
             file=sys.stderr,
         )
         failures += 1
@@ -260,6 +341,8 @@ if not failures:
     print(
         "Validated lesson metadata: "
         f"{status_counts['draft']} draft, "
+        f"{status_counts['review']} review, "
+        f"{status_counts['published']} published, "
         f"{status_counts['outline']} outline"
     )
 

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "experiment": "lesson-35-cpu-lifecycle",
+  "seed": 3501,
+  "initial_weight": -1.5,
+  "examples": [
+    {"x": 1.0, "y": 2.0},
+    {"x": 2.0, "y": 4.0},
+    {"x": 3.0, "y": 6.0},
+    {"x": 4.0, "y": 8.0}
+  ],
+  "gradient_accumulation_steps": 4,
+  "maximum_optimizer_steps": 12,
+  "learning_rate": 0.08,
+  "warmup_steps": 2,
+  "maximum_gradient_norm": 5.0,
+  "checkpoint_every_steps": 1
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "project_id": "oms-fixture",
+  "environment_id": "local-fixture",
+  "release_id": "oms-fixture-1",
+  "validation_mode": "fixture",
+  "cluster_context": "no-cluster-synthetic-fixture",
+  "namespace": "oms-fixture",
+  "region": "not-applicable",
+  "network_exposure": "private",
+  "service_type": "ClusterIP",
+  "serving_topology": "one-gpu",
+  "nodes": 1,
+  "gpus_per_node": 1,
+  "interconnect": "not-required",
+  "model": {
+    "id": "fixture/tiny-open-model",
+    "revision": "1111111111111111111111111111111111111111",
+    "tokenizer_revision": "1111111111111111111111111111111111111111"
+  },
+  "operator": "fixture-generator",
+  "captured_at": "2026-10-21T12:00:00Z"
+}

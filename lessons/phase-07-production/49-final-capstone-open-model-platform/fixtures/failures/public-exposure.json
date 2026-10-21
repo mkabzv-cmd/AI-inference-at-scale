@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "name": "public-exposure",
+  "expect_codes": [
+    "PUBLIC_EXPOSURE"
+  ],
+  "operations": [
+    {
+      "op": "replace_text",
+      "path": "k8s/platform.yaml",
+      "old": "type: ClusterIP",
+      "new": "type: LoadBalancer"
+    }
+  ]
+}

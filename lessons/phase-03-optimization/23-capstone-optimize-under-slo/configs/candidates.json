@@ -1,0 +1,41 @@
+{
+  "schema_version": "oms-capstone-candidates/v1",
+  "frozen": {
+    "model_id": "Qwen/Qwen2.5-0.5B-Instruct",
+    "model_revision": "7ae557604adf67be50417f59c2c2f167def9a775",
+    "served_model_name": "oms-model",
+    "max_model_len": 4096,
+    "dtype": "half",
+    "replicas": 1,
+    "gpu_count": 1
+  },
+  "candidates": [
+    {
+      "id": "b0-eager-small",
+      "hypothesis": "transparent low-capacity baseline",
+      "gpu_memory_utilization": 0.75,
+      "max_num_seqs": 4,
+      "max_num_batched_tokens": 512,
+      "enforce_eager": true,
+      "enable_prefix_caching": false
+    },
+    {
+      "id": "c1-graphs-capacity",
+      "hypothesis": "graph replay and a larger scheduler budget improve the frozen workload",
+      "gpu_memory_utilization": 0.8,
+      "max_num_seqs": 8,
+      "max_num_batched_tokens": 1024,
+      "enforce_eager": false,
+      "enable_prefix_caching": false
+    },
+    {
+      "id": "c2-prefix-cache",
+      "hypothesis": "repeated exact prefixes benefit from KV-block reuse",
+      "gpu_memory_utilization": 0.8,
+      "max_num_seqs": 8,
+      "max_num_batched_tokens": 512,
+      "enforce_eager": false,
+      "enable_prefix_caching": true
+    }
+  ]
+}

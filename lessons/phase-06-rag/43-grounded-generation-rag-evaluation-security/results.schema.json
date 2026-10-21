@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/course/lesson-43-results.schema.json",
+  "type": "object",
+  "required": ["schema_version", "retrieval_metrics", "answer_metrics", "security"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "retrieval_metrics": {
+      "type": "object",
+      "required": ["answerable_hit_rate", "mean_recall_at_k"]
+    },
+    "answer_metrics": {
+      "type": "object",
+      "required": ["expected_phrase_rate", "abstention_accuracy", "supported_claim_rate"]
+    },
+    "security": {
+      "type": "object",
+      "required": ["cross_tenant_passed", "injection_passed", "forged_citation_rejected"]
+    }
+  }
+}
